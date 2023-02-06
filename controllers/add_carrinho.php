@@ -10,6 +10,7 @@ if (isset($_GET['id']) && $_GET['add'] == "carrinho") {
     } else {
         $_SESSION['itens'][$idproduto] += 1;
     }
-    header('location:../index.php');
+    //volta
+    echo "<script>javascript:history.go(-1)</script>";
 }
     

@@ -1,7 +1,8 @@
         <?php
         session_start();
+        include "model/getcarrinho.php";
         if(isset($_SESSION['itens'])){
-            $itens = count($_SESSION['itens']);
+            $itens = $qtd;
         }else{
             $itens = 0;
         }
@@ -36,7 +37,7 @@
 
                 <div class="item-carrinho">
                     <div class="itens_bag"><?= $itens ?></div>
-                    <div><a href="views/carrinho.php"><img src="https://cdn-icons-png.flaticon.com/512/3139/3139155.png"></a></div>
+                    <div><a href="carrinho.php"><img src="https://cdn-icons-png.flaticon.com/512/3139/3139155.png"></a></div>
 
                 </div>
 
