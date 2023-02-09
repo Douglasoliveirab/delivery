@@ -1,13 +1,11 @@
         <?php
         session_start();
-        include "model/getcarrinho.php";
-        if(isset($_SESSION['itens'])){
-            $itens = $qtd;
+        include "../controllers/getcarrinho.php";
+        if (isset($_SESSION['itens'])) {
+            $itens = countItens();
         }else{
             $itens = 0;
         }
-        
-
         ?>
 
         <!DOCTYPE html>
@@ -16,7 +14,7 @@
         <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <link rel="stylesheet" href="assets/css/index.css">
+            <link rel="stylesheet" href="../assets/css/index.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Loja Etec</title>
         </head>
@@ -44,7 +42,7 @@
             </div>
 
             <div class="controle-img-topo">
-                <img src="assets/imagens/imagen-top.png" alt="" class="">
+                <img src="../assets/imagens/imagen-top.png" alt="" class="">
             </div>
 
             <div class="slogan">
@@ -59,22 +57,23 @@
                 <p> <input type="text" name="search-produto" class="input-search"> </p>
                 <p> <input type="submit" class="btn-search" value="Pesquisar"> </p>
             </div>
-            <br>
+            
             <div class="categorias">
-            <div class="itens-categorias">
+                <div class="itens-categorias">
                     <a href="#">Comida</a>
                 </div>
                 <div class="itens-categorias">
-                <a href="#">Hambúrguer</a> 
+                    <a href="#">Hambúrguer</a>
                 </div>
                 <div class="itens-categorias">
-                <a href="categorias/pizzas.php">Pizzas</a>
+                    <a href="../categorias/pizzas.php">Pizzas</a>
                 </div>
                 <div class="itens-categorias">
-                    <a href="categorias/hotdog.php">Hotdog</a>
+                    <a href="../categorias/hotdog.php">Hotdog</a>
                 </div>
             </div>
 
+            
         </body>
 
         </html>

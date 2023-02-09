@@ -127,6 +127,7 @@
     text-align: center;
     width: 100%;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .input-search{
@@ -166,6 +167,8 @@
     border-radius: 5px;
     text-decoration: none;
 }
+
+
 
 
 

@@ -2,4 +2,4 @@
 session_start();
 
 unset($_SESSION['itens']);
-header('location:../carrinho.php');
+header('location: ../views/carrinho.php');

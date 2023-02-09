@@ -1,0 +1,35 @@
+body{
+    background-color: #e9202e;
+}
+
+.container_home{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 40vh;
+  
+  
+}
+
+.itens_home{
+    color:white;
+    font-family: arial;
+    font-weight: bold;
+}
+.container_home img{
+    width: 250px;
+    height: 200px;
+}
+
+.version{
+    bottom:0;
+    color:white;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+
+}
+

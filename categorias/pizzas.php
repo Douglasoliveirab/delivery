@@ -1,5 +1,5 @@
 <?php
-include "../model/query.php";
+include "../models/query.php";
 
 $dados = getPizzas($conexao);
 echo $dados;
