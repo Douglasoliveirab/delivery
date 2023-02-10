@@ -9,11 +9,11 @@ function getPizzas($conexao)
     $fetch = $select->fetchAll();
 
     foreach ($fetch as $produto) {
-        echo "nome: " . $produto['nome'] . "<br/>";
-        echo $produto['desc'] . "<br/>";
-        echo "R$ " . number_format($produto['preco'],2,",",".") . "<br/>";
-        echo '<a href="../controllers/add_carrinho.php?add=carrinho&id='.$produto['id'].'">Adicionar</a>';
-        echo "<hr/>";
+        echo 'nome:  '. $produto["nome"].' <br/>
+         descrição:'. $produto["desc"].'  <br/>
+         R$  '. number_format($produto['preco'],2,",",".").'<br/>
+         <a href="../controllers/add_carrinho.php?add=carrinho&id='.$produto["id"].'">Adicionar</a>
+         <hr/>';
     }
 }
 //funcao pega todos os produtos da categoria hot-dog
@@ -24,10 +24,10 @@ function getDog($conexao)
     $fetch = $select->fetchAll();
 
     foreach ($fetch as $produto) {
-        echo "nome: " . $produto['nome'] . "<br/>";
-        echo $produto['desc'] . "<br/>";
-        echo "R$ " . number_format($produto['preco'],2,",",".") . "<br/>";
-        echo '<a href="../controllers/add_carrinho.php?add=carrinho&id='.$produto['id'].'">Adicionar</a>';
-        echo "<hr/>";
+        echo 'nome: '. $produto['nome'] .'<br/>
+        descrição:'. $produto['desc'] .'<br/>
+         R$ ' . number_format($produto["preco"],2,",",".") . '<br/>
+         <a href="../controllers/add_carrinho.php?add=carrinho&id='.$produto["id"].'">Adicionar</a>
+        <hr/>';
     }
 }
