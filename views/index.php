@@ -28,9 +28,12 @@
             <div class="controle-itens2">
 
                 <div class="itens-head2">
-                    <div class="itens">LOGIN</div>
-                    <div class="itens">CADASTRO</div>
-                    <div class="itens">PEDIDOS</div>
+                    <div class="itens">
+                        <a href="login_cliente.html">LOGIN</a>
+                    </div>
+
+                    <div class="itens"><a href="#">CADASTRO</a></div>
+                    <div class="itens"><a href="#">PEDIDOS</a></div>
                 </div>
 
                 <div class="item-carrinho">
