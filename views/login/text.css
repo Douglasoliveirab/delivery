@@ -1,0 +1,207 @@
+/*corpo da aplicação*/
+body{
+    color:black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    cursor: auto;
+
+}
+
+body::-webkit-scrollbar{
+    width: 0;
+}
+/*Fim corpo da aplicação*/
+
+/* Inicio cabecalho */
+.top{
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    color: red;
+    justify-content: space-between;
+
+}
+
+.itens-top{
+   color: red; 
+   margin: 10px;
+    
+
+}
+
+
+
+.itens-top-logo{
+    font-size: 16px;
+    letter-spacing: 1,5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid red;
+    background-color: red;
+    border-radius: 10px;
+    height: 60px;
+    text-decoration: none;
+    
+    color: white;
+
+}
+
+.alinha-user{
+    margin-top: 5px;
+}
+
+.itens-top-logo a{
+    color:white;
+    text-decoration: none;
+}
+
+.img-top{
+    width: 50px;
+    height: 50px;
+}
+
+.menu-categorias{
+    display: flex;
+    margin-top: 0px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    overflow-x: scroll;
+    
+}
+
+.menu-categorias::-webkit-scrollbar{
+    width: 0;
+}
+
+.categorias{
+    color: red;
+    padding: 5px;
+}
+/* Fim cabecalho */
+
+
+/* Inicio Footer */
+.rodape{
+    background-color: #fff;
+    bottom: -1;
+    color: white;
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+   
+    
+}
+
+.texto-rodape{
+    align-items: center;
+    color: red;
+    font-size: 10px;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+}
+
+/* Fim footer*/
+
+/* Inicio banner */
+
+.controle-banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;   
+}
+
+
+/*controle parceiros em alta*/
+
+#text_em_alta{
+    width: 100%;
+    color: black;
+    text-align: center;
+    
+}
+
+.comercios_em_alta{
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  
+  
+  
+}
+
+.comercios_em_alta::-webkit-scrollbar{
+  width: 0;
+}
+
+.comercios{
+    background-color: white;
+    padding: 5px;
+    
+     
+}
+
+.comercios img{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid lightgrey;
+}
+
+/*Fim parceiros em alta*/
+
+/*banner mercado*/
+.controle-banner-promocao{
+    display: flex;
+    overflow-x: auto;
+      
+}
+.banner-feira{
+    width:100%;
+    height: 110px;
+   padding: 5px;
+   border-radius: 15px;
+    
+}
+
+.controle-banner-promocao::-webkit-scrollbar{
+    width: 0;
+}
+.categoria_popular{
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-left: 10px;
+    
+    
+  }
+  
+  .categoria_popular::-webkit-scrollbar{
+    width: 0;
+  }
+  
+  .popular{
+      background-color: white;
+      padding: 5px;
+      
+       
+  }
+  
+  .popular img{
+      width: 65px;
+      height: 65px;
+      border-radius: 10px;
+      background-color: white;
+      border: 2px solid lightgrey;
+  }
+  
+  
+

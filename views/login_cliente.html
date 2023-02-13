@@ -1,0 +1,52 @@
+<?php 
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <title>Login cliente Div</title>
+</head>
+
+<body>
+    <div class="topo">
+        <a href="index.html"> Voltar</a>
+
+    </div>
+
+
+    <div class="container_form">
+        <a href="home.html"> <img src="assets/imagens/div_red-removebg-preview.png" alt="" class="imagem-topo"></a>
+        <div class="titulo_form"><strong>Olá, seja bem-vindo</strong></div>
+        <br>
+        <p>
+        <form action="login/login.php" method="post">
+
+
+            <input type="text" name="usuario" class="campos" placeholder="Digite o seu Email" maxlength="50" required>
+            <br>
+
+            <input type="password" name="senha" class="campos" placeholder="Digite a sua Senha" maxlength="15" required>
+            <br>
+            <br>
+
+            <div class="alinha-botao">
+                <button type="submit" class="btn_envia"><strong>Entrar</strong></button>
+                <button class="btn_novo"><a href="cadastrar.html" style="color: white;text-decoration:none;">Novo
+                        usuario</a></button>
+
+            </div>
+            <br>
+
+        </form>
+        </p>
+
+    </div>
+
+
+</html>

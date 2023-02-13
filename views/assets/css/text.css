@@ -1,0 +1,209 @@
+/*corpo da aplicação*/
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  cursor: auto;
+}
+/*Fim corpo da aplicação*/
+
+/* Inicio cabecalho */
+.top {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.itens-top {
+  margin: 10px;
+}
+
+.itens-top-logo {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 10px;
+  border: 2px solid red;
+  background-color: red;
+  border-radius: 5px;
+  width: 80px;
+  color: white;
+}
+
+.itens-top-logo a {
+  color: white;
+  text-decoration: none;
+  align-items: center;
+  text-align: center;
+  height: 40px;
+  width:80px;
+  font-weight: bold;
+}
+
+.img-top {
+  width: 60px;
+  height: 60px;
+}
+
+.menu-categorias {
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  overflow-x: scroll;
+}
+.container_categorias{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  gap: 1.0rem;
+  padding: 10px;
+}
+
+.itens_categorias{
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  align-items: center;
+
+
+}
+
+.itens_categorias img{
+  width: 60px;
+  height: 60px;
+}
+
+
+
+.menu-categorias::-webkit-scrollbar {
+  width: 0;
+}
+
+.categorias {
+  text-align: center;
+  justify-content: center;
+  color: red;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+/* Fim cabecalho */
+
+/* Inicio Footer */
+.rodape {
+  background-color: #fff;
+  bottom: 0;
+  color: white;
+  position: fixed;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.texto-rodape {
+  align-items: center;
+  color: red;
+  font-size: 10px;
+  justify-content: center;
+  text-align: center;
+  margin: 5px;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fim footer*/
+
+/* Inicio banner */
+
+.controle-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+/*controle parceiros em alta*/
+
+#text_em_alta {
+  width: 100%;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
+
+.comercios_em_alta {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.comercios_em_alta::-webkit-scrollbar {
+  width: 0;
+}
+
+.comercios {
+  background-color: white;
+  padding: 5px;
+}
+
+.comercios img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid lightgrey;
+}
+
+/*Fim parceiros em alta*/
+
+/*banner mercado*/
+.controle-banner-promocao {
+  display: flex;
+  overflow-x: auto;
+}
+.banner-feira {
+  width: 100%;
+  height: 110px;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.controle-banner-promocao::-webkit-scrollbar {
+  width: 0;
+}
+.categoria_popular {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-left: 10px;
+}
+
+.categoria_popular::-webkit-scrollbar {
+  width: 0;
+}
+
+.popular {
+  background-color: white;
+  padding: 5px;
+}
+
+.popular img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid lightgrey;
+}
