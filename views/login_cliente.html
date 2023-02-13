@@ -9,6 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/login.css">
     <title>Login cliente Div</title>
 </head>
@@ -25,7 +26,7 @@ session_start();
         <div class="titulo_form"><strong>Olá, seja bem-vindo</strong></div>
         <br>
         <p>
-        <form action="login/login.php" method="post">
+        <form action="login/login.php" method="post"  id="logar">
 
 
             <input type="text" name="usuario" class="campos" placeholder="Digite o seu Email" maxlength="50" required>
@@ -37,8 +38,33 @@ session_start();
 
             <div class="alinha-botao">
                 <button type="submit" class="btn_envia"><strong>Entrar</strong></button>
-                <button class="btn_novo"><a href="cadastrar.html" style="color: white;text-decoration:none;">Novo
-                        usuario</a></button>
+                <button type="button"class="btn_novo" id="newUser">nova conta</button>
+                <!-- <button type="button"class="btn_novo" id="btn_newUser"><a href="cadastrar.html" style="color: white;text-decoration:none;">Novo
+                        usuario</a></button> -->
+                        
+
+            </div>
+            <br>
+
+        </form>
+
+        <form action="login/login.php" method="post"  class="newConta">
+
+
+            <input type="text" name="usuario" class="campos" placeholder="Digite o seu Email" maxlength="50" required>
+            <br>
+
+            <input type="password" name="senha" class="campos" placeholder="Digite a sua Senha" maxlength="15" required>
+            <br>
+            <br>
+
+            <div class="alinha-botao">
+                <button type="submit" class="btn_envia"><strong>Criar conta</strong></button>
+                <button class="btn_novo" id="nextLogar">
+                    <!-- <a href="cadastrar.html" style="color: white;text-decoration:none;"> -->
+                   Já tenho conta
+                    <!-- </a> -->
+                </button>
 
             </div>
             <br>
@@ -47,6 +73,7 @@ session_start();
         </p>
 
     </div>
+<script src="assets/js/login.js"></script>
 
-
+</body>
 </html>
