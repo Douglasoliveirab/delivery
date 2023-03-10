@@ -3,41 +3,76 @@ CREATE DATABASE lanchonete;
 USE lanchonete;
 
 CREATE TABLE clientes (
-  id INT(11) NOT NULL AUTO_INCREMENT,
+  id_cliente INT(11) NOT NULL AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
+  sobrenome VARCHAR(50) NOT NULL,
+  cpf CHAR(14) NOT NULL,
   email VARCHAR(50) NOT NULL,
   telefone VARCHAR(20) NOT NULL,
   endereco VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE pedidos (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  cliente_id INT(11) NOT NULL,
-  datahora DATETIME NOT NULL,
-  status VARCHAR(20) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (cliente_id) REFERENCES clientes(id)
-);
-
-CREATE TABLE itens_pedido (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  pedido_id INT(11) NOT NULL,
-  produto VARCHAR(50) NOT NULL,
-  quantidade INT(11) NOT NULL,
-  valor_unitario DECIMAL(10,2) NOT NULL,
-  valor_total DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (pedido_id) REFERENCES pedidos(id)
+  senha VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id_cliente)
 );
 
 CREATE TABLE produtos (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(50) NOT NULL,
-  descricao VARCHAR(100),
+  id_produto INT(11) NOT NULL AUTO_INCREMENT,
+  id_categoria INT(11) NOT NULL,
+  nome_produto VARCHAR(50) NOT NULL,
+  img_produto VARCHAR(100) NOT NULL,
+  descricao VARCHAR(100)NOT NULL,
+  custo_produto VARCHAR(100),
   valor DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id_produto),
+  FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
+
+CREATE TABLE pedidos (
+  id_pedido INT(11) NOT NULL AUTO_INCREMENT,
+  id_cliente INT(11) NOT NULL,
+  datahora_pedido DATETIME NOT NULL,
+  numero_pedido VARCHAR (50) NOT NULL,
+  subtotal DECIMAL(10,2) NOT NULL,
+  valor_total DECIMAL(10,2) NOT NULL,
+  status VARCHAR(20) NOT NULL,
+  PRIMARY KEY (id_pedido),
+  FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+
+CREATE TABLE itens_pedido (
+  id_itens_pedido INT(11) NOT NULL AUTO_INCREMENT,
+  id_pedido INT(11) NOT NULL,
+  id_produto VARCHAR(50) NOT NULL,
+  quantidade INT(11) NOT NULL,
+  PRIMARY KEY (id_itens_pedido),
+  FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+  FOREIGN KEY (id_produto) REFERENCES produts(id_produto)
+  
+);
+
+CREATE TABLE categoria(
+   id_categoria INT(11) NOT NULL AUTO_INCREMENT,
+   nome_categoria VARCHAR(50) NOT NULL,
+   PRIMARY KEY (id_categoria)
+);
+
+CREATE TABLE ADINISTRADOR(
+  id_adinistrador INT(11) NOT NULL AUTO_INCREMENT,
+  nome_usuario VARCHAR(50) NOT NULL,
+  senha_usuario VARCHAR(50) NOT NULL,
+  privilegios VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE banner(
+  id_banner INT(11) NOT NULL  AUTO_INCREMENT,
+  img_banner VARCHAR(50) NOT NULL
+
+);
+
+
+
+
+
+
 
 -- INSERT INTO produtos (nome, descricao, valor) VALUES
 --   ('X-Burguer', 'Pão, hambúrguer, queijo, alface e tomate', 10.99),
