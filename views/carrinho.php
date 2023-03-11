@@ -27,9 +27,10 @@ if (count($_SESSION['itens']) == 0) {
         echo "valor dos itens:"  . number_format($totalItens, 2, ",", ".");
         echo " <hr/>";
     }
-    echo "Taxa de entrega:"  . number_format($taxaEntrega, 2, ",", ".") . "</br>";
-    echo "Subtotal:"  . number_format($subtotal, 2, ",", ".") . "</br>";
-    echo "Total:"  . number_format($total, 2, ",", ".") . "</br>";
-    echo "<a href='../controllers/limpar_card.php'>Limpar carrinho</a><br/>";
-    echo "<a href='index.php'>Adicionar mais itens</a>";
+        echo "Taxa de entrega:"  . number_format($taxaEntrega, 2, ",", ".") . "</br>";
+        echo "Subtotal:"  . number_format($subtotal, 2, ",", ".") . "</br>";
+        echo "Total:"  . number_format($total, 2, ",", ".") . "</br>";
+        echo "<a href='../controllers/limpar_card.php'>Limpar carrinho</a><br/>";
+        echo "<a href='index.php'>Adicionar mais itens</a>";
 }
+?>
