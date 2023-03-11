@@ -1,9 +1,10 @@
         <?php
         session_start();
         include "../controllers/getcarrinho.php";
+        include "../.env/conexao.php";
         if (isset($_SESSION['itens'])) {
             $itens = countItens();
-        }else{
+        } else {
             $itens = 0;
         }
         ?>
@@ -28,9 +29,12 @@
             <div class="controle-itens2">
 
                 <div class="itens-head2">
-                    <div class="itens">LOGIN</div>
-                    <div class="itens">CADASTRO</div>
-                    <div class="itens">PEDIDOS</div>
+                    <div class="itens">
+                        <a href="login_cliente.html">LOGIN</a>
+                    </div>
+
+                    <div class="itens"><a href="#">CADASTRO</a></div>
+                    <div class="itens"><a href="#">PEDIDOS</a></div>
                 </div>
 
                 <div class="item-carrinho">
@@ -57,23 +61,22 @@
                 <p> <input type="text" name="search-produto" class="input-search"> </p>
                 <p> <input type="submit" class="btn-search" value="Pesquisar"> </p>
             </div>
-            
-            <div class="categorias">
-                <div class="itens-categorias">
-                    <a href="#">Comida</a>
-                </div>
-                <div class="itens-categorias">
-                    <a href="#">Hambúrguer</a>
-                </div>
-                <div class="itens-categorias">
-                    <a href="../categorias/pizzas.php">Pizzas</a>
-                </div>
-                <div class="itens-categorias">
-                    <a href="../categorias/hotdog.php">Hotdog</a>
-                </div>
-            </div>
+            <?php
+            $select = $conexao->prepare("SELECT * FROM categoria");
+            $select->execute();
+            $categorias = $select->fetchAll();
 
-            
+            echo "<div class='categorias'>";
+            foreach ($categorias as $categoria) {
+                echo "
+                <div class='itens-categorias'>
+                    <a href='#'>" . $categoria["nome_categoria"] . "</a>
+                </div>";
+            }
+            echo " </div>";
+
+            ?>
+
         </body>
 
         </html>

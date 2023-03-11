@@ -1,0 +1,87 @@
+body{
+    color:red;
+    font-size: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.controle_form{
+   
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    margin-top: 50px;
+    border: 1px solid grey;
+    color: grey;
+    font-size: 14px;
+}
+
+.input_form{
+    width: 80%;
+    height: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.btn_envia{
+    background-color: green;
+    width: 80%;
+    height: 30px;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid green;
+}
+
+h3{
+    color: red;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.top_head{
+    display: flex;
+    background-color: #FFF;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+hr{
+    border: 1px solid lightgrey;
+    width: 100%;
+}
+
+.img-top{
+    width: 50px;
+    height: 50px;
+    
+}
+
+.itens-top{
+    margin: 10px;
+    display: flex;
+}
+.itens-top a{
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    margin-right: 10px;
+    text-decoration: none;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    height: 20px;
+    text-align: center;
+    align-items: center;
+}
+
+.user{
+    margin-top: 18px;
+    font-size: 12px;
+
+}

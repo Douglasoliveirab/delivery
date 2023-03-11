@@ -31,3 +31,4 @@ function getDog($conexao)
         <hr/>';
     }
 }
+?>
