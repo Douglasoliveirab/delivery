@@ -62,6 +62,7 @@
                 <p> <input type="submit" class="btn-search" value="Pesquisar"> </p>
             </div>
             <?php
+            //puxa todas as categorias do banco
             $select = $conexao->prepare("SELECT * FROM categoria");
             $select->execute();
             $categorias = $select->fetchAll();
