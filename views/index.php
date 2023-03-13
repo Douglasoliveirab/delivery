@@ -71,8 +71,9 @@
             foreach ($categorias as $categoria) {
                 echo "
                 <div class='itens-categorias'>
-                    <a href='#'>" . $categoria["nome_categoria"] . "</a>
-                </div>";
+                    <a href='../categoria/selecionada.php?id_categoria=".$categoria['id_categoria']."'>" . $categoria["nome_categoria"] . "</a>
+                    
+                    </div>";
             }
             echo " </div>";
 
