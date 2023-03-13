@@ -9,14 +9,14 @@ if (isset($_GET['id_categoria']) && is_numeric($_GET['id_categoria'])) {
 $select = $conexao->prepare("SELECT * FROM produtos WHERE id_categoria = :idCategoria");
 $select->bindValue(':idCategoria', $idCategoria, PDO::PARAM_INT);
 $select->execute();
-$produtos = $select->fetchAll();
+$query = $select->fetchAll();
 
 
-foreach ($produtos as $produto) {
-    echo 'nome:  '. $produto["nome_produto"].' <br/>
-    descrição:'. $produto["descricao"].'  <br/>
-    R$  '. number_format($produto['valor'],2,",",".").'<br/>
-    <a href="../controllers/add_carrinho.php?add=carrinho&id_produto='.$produto["id_produto"].'">Adicionar</a>
+foreach ($query as $produtos) {
+    echo 'nome:  '. $produtos["nome_produto"].' <br/>
+    descrição:'. $produtos["descricao"].'  <br/>
+    R$  '. number_format($produtos['valor'],2,",",".").'<br/>
+    <a href="../views/add_carrinho.php?add=carrinho&id='.$produtos["id_produto"].'">Adicionar</a>
     <hr/>';
 }
 

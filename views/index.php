@@ -2,7 +2,7 @@
         session_start();
         include "../controllers/getcarrinho.php";
         include "../.env/conexao.php";
-        if (isset($_SESSION['itens'])) {
+        if (isset($_SESSION['carrinho'])) {
             $itens = countItens();
         } else {
             $itens = 0;
@@ -71,7 +71,7 @@
             foreach ($categorias as $categoria) {
                 echo "
                 <div class='itens-categorias'>
-                    <a href='../categoria/selecionada.php?id_categoria=".$categoria['id_categoria']."'>" . $categoria["nome_categoria"] . "</a>
+                    <a href='../categorias/selecionada.php?id_categoria=".$categoria['id_categoria']."'>" . $categoria["nome_categoria"] . "</a>
                     
                     </div>";
             }
