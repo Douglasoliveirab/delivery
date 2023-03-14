@@ -16,6 +16,7 @@ CREATE TABLE clientes (
 
 CREATE TABLE categoria (
   id_categoria INT(11) NOT NULL AUTO_INCREMENT,
+  img_categoria VARCHAR(100) NOT NULL,
   nome_categoria VARCHAR(50) NOT NULL,
   PRIMARY KEY (id_categoria)
 );
@@ -66,5 +67,6 @@ CREATE TABLE administrador (
 CREATE TABLE banner (
   id_banner INT(11) NOT NULL AUTO_INCREMENT,
   img_banner VARCHAR(50) NOT NULL,
+  caminho_banner VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_banner)
 );

@@ -44,11 +44,16 @@
                 </div>
 
             </div>
-
-            <div class="controle-img-topo">
-                <img src="../assets/imagens/imagen-top.png" alt="" class="">
-            </div>
-
+            <?php
+            $select = $conexao->prepare("SELECT * FROM banner");
+            $select->execute();
+            $banners = $select->fetchAll();
+           echo ' <div class="controle-img-topo">';
+           foreach ($banners as $banner) {
+             echo "<img src='../painel/".$banner["caminho_banner"].">";
+           }
+            echo '</div>';
+?>
             <div class="slogan">
                 <p>Pensou, pediu chegou!</p>
             </div>
@@ -71,9 +76,10 @@
             foreach ($categorias as $categoria) {
                 echo "
                 <div class='itens-categorias'>
-                    <a href='../categorias/selecionada.php?id_categoria=".$categoria['id_categoria']."'>" . $categoria["nome_categoria"] . "</a>
-                    
-                    </div>";
+                    <a href='../categorias/selecionada.php?id_categoria=".$categoria['id_categoria']."'>" 
+                    . $categoria["nome_categoria"] . 
+                    "</a>
+                </div>";
             }
             echo " </div>";
 
