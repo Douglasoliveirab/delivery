@@ -21,13 +21,7 @@
         </head>
 
         <body>
-
-            <div class="controle-head">
-                <div class="itens-head">Div Lanche</div>
-            </div>
-
             <div class="controle-itens2">
-
                 <div class="itens-head2">
                     <div class="itens">
                         <a href="login_cliente.html">LOGIN</a>
@@ -44,16 +38,18 @@
                 </div>
 
             </div>
+
             <?php
             $select = $conexao->prepare("SELECT * FROM banner");
             $select->execute();
             $banners = $select->fetchAll();
-           echo ' <div class="controle-img-topo">';
-           foreach ($banners as $banner) {
-             echo "<img src='../painel/".$banner["caminho_banner"].">";
-           }
+            echo ' <div class="controle-img-topo">';
+            foreach ($banners as $banner) {
+                echo "<img src='../painel/" . $banner["caminho_banner"] . "'>";
+            }
             echo '</div>';
-?>
+            ?>
+
             <div class="slogan">
                 <p>Pensou, pediu chegou!</p>
             </div>
@@ -75,15 +71,16 @@
             echo "<div class='categorias'>";
             foreach ($categorias as $categoria) {
                 echo "
-                <div class='itens-categorias'>
-                    <a href='../categorias/selecionada.php?id_categoria=".$categoria['id_categoria']."'>" 
-                    . $categoria["nome_categoria"] . 
-                    "</a>
-                </div>";
+            <div class='itens-categorias'>
+                <a href='../categorias/selecionada.php?id_categoria=" . $categoria['id_categoria'] . "'>
+                    <img src='../painel/" . $categoria['img_categoria'] . "'>
+                    " . $categoria['nome_categoria'] . "
+                </a>
+            </div>";
             }
-            echo " </div>";
-
+            echo "</div>";
             ?>
+
 
         </body>
 

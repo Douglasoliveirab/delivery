@@ -4,23 +4,6 @@
     box-sizing: border-box;
 }
 
-.controle-head{
-    margin-top: 10px;
-    display: flex;
-    width: 100%;
-    background-color: white;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.itens-head{
-    color: #e9202e;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    margin-left: 10%;
-    font-size: 20px; 
-}
-
 .iten-menu{
     color: #e9202e;
     font-family: Arial, Helvetica, sans-serif;
@@ -36,6 +19,7 @@
    background-color: white;
    color: #e9202e;
    justify-content: space-around;
+   margin-top: 30px;
    
    
 }
@@ -44,17 +28,13 @@
     display: flex;
     margin-top: 30px;
     color: white;
-    
-  
-
 }
 
 .item-carrinho {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-  text-align: center;
+    text-align: center;
 }
 
 .itens_bag{
@@ -87,22 +67,42 @@
     text-decoration: none;
 }
 
+
 .controle-img-topo{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
     margin-top: 10px;
     width: 80%;
     text-align: center;
     justify-content: center;
-    background-color: #e9202e;
     margin-left: 10%;
     margin-right: 10%;
-    height: 190px;
-    border-radius: 10px;
     align-items: center;
-    color: white;
+    overflow-x: auto;
 }
+/*banners para celular*/
+@media only screen and (max-width: 600px) {
+    .controle-img-topo{
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+        margin-top: 10px;
+        width: 90%;
+        text-align: center;
+        justify-content: left;
+        margin-left: 5%;
+        margin-right: 5%;
+        overflow-x: auto;
+    }
+    .controle-img-topo::-webkit-scrollbar{
+        width: 0;
+        background: transparent;
+    }
+  }
+
 
 .controle-img-topo img{
-    width: 300px;
     height: 200px;
 }
 
@@ -133,7 +133,7 @@
 }
 
 .input-search{
-    max-width: 350px;
+    min-width: 230px;
     height: 30px;
     background-color: lightgrey;
     border: none;
@@ -149,26 +149,83 @@
 }
 
 .categorias{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     text-align: center;
-    flex-wrap: wrap;
 }
 
-.itens-categorias a{
+.itens-categorias{
+    align-items: center;
+    text-align: center;
     font-size: 15px;
-    margin-top: 20px;
-    width: 110px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    margin: 5px;
-    background-color: black;
-    padding: 5px;
-    border-radius: 5px;
-    text-decoration: none;
+        margin-top: 20px;
+        width: 110px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin: 5px;
+        padding: 5px;
+        text-decoration: none;
 }
+
+.itens-categorias img{
+    width:110px;
+    height: 110px;
+    border-radius: 5px;
+}
+.itens-categorias a{
+align-items: center;
+text-align: center;
+ text-decoration: none;
+ color: white;
+ font-weight: bold;
+ font-family: Arial, Helvetica, sans-serif;
+ color:black;
+}
+
+
+/*categorias para celular*/
+@media only screen and (max-width: 600px) {
+    .categorias{
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: left;
+        text-align: center;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    .categorias::-webkit-scrollbar{
+        width: 0;
+        background: transparent;
+    }
+    .itens-categorias{
+        font-size: 15px;
+        margin-top: 20px;
+        width: 110px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin: 5px;
+        padding: 5px;
+        text-decoration: none;
+    }
+
+    .itens-categorias img{
+        width:80px;
+        height: 80px;
+        border-radius: 5px;
+    }
+   
+  }
 
 
 
