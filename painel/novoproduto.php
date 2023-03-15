@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('login/verifica_sessao.php');
+// include('login/verifica_sessao.php');
 
 ?>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ include('login/verifica_sessao.php');
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="assets/css/cdprodutos.css">
+	<link rel="stylesheet" href="./pianelcss/cdprodutos.css">
 	<title>Painel adiministrador</title>
 </head>
 <body>
