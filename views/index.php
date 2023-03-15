@@ -16,11 +16,13 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <link rel="stylesheet" href="../assets/css/index.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Loja Etec</title>
         </head>
 
         <body>
+            <!--INICIO HEAD DESKTOP-->
             <div class="controle-itens2">
                 <div class="itens-head2">
                     <div class="itens">
@@ -36,9 +38,16 @@
                     <div><a href="carrinho.php"><img src="https://cdn-icons-png.flaticon.com/512/3139/3139155.png"></a></div>
 
                 </div>
-
             </div>
-
+            <!-- FIM HEAD DESKTOP-->
+            <!--INICIO HEAD MOBILE-->
+            <footer class="footer">
+                <a href="" class="footer-link"><i class="bi bi-house"></i>Home</a>
+                <a href="#" class="footer-link"><i class="bi bi-list-check"></i>Pedidos</a>
+                <a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Usuário</a>
+                <a href="carrinho.php" class="footer-link"><div class="itens_bag"><?= $itens ?></div><i class="bi bi-cart"></i></a>
+            </footer>
+            <!--FIM HEAD MOBILE-->
             <?php
             $select = $conexao->prepare("SELECT * FROM banner");
             $select->execute();
