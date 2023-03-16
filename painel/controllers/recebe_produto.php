@@ -1,6 +1,6 @@
 <?php
 
-  include "../.env/conexao.php";
+require_once('../../.env/conexao.php');
 
         // // Verifica se é uma imagem válida
         // $tipo = $_FILES['foto']['type'];

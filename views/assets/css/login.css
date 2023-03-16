@@ -54,7 +54,7 @@ body {
 
 .campos {
   margin: 10px;
-  width: 90%;
+  width: 80%;
   border-radius: 5px;
   border: 1px solid lightgrey;
   color: black;
@@ -87,7 +87,7 @@ label {
 }
 
 .btn_envia {
-  width: 100%;
+  width: 80%;
   color: white;
   background-color: red;
   border: 2px solid white;
@@ -102,7 +102,7 @@ label {
 }
 
 .btn_novo {
-  width: 100%;
+  width: 80%;
   color: white;
   background-color: black;
   border: 2px solid white;
@@ -118,8 +118,8 @@ label {
 
 .alinha-botao {
   display: flex;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
   justify-content: center;
 }
 

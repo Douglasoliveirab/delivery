@@ -1,29 +1,28 @@
 <?php
 session_start();
-include('conexao.php');
+require_once('../../.env/conexao.php');
  
-if(empty($_POST['usuario']) || empty($_POST['senha'])) {
-	header('Location: ../login_cliente.html');
+if (empty($_POST['email']) || empty($_POST['senha'])) {
+	header('Location: index.php');
 	exit();
 }
  
-$usuario = mysqli_real_escape_string($conexao, $_POST['usuario']);
-$senha = mysqli_real_escape_string($conexao, $_POST['senha']);
+$email = $_POST['email'];
+$senha = $_POST['senha'];
  
-$query = "select usuario from usuario where usuario = '{$usuario}' and senha = md5('{$senha}')";
+$sql = "SELECT * FROM clientes WHERE email = ?";
+$stmt = $conexao->prepare($sql); 
+$stmt->execute([$email]); 
+$user = $stmt->fetch();
  
-$result = mysqli_query($conexao, $query);
- 
-$row = mysqli_num_rows($result);
- 
-if($row == 1) {
-	$_SESSION['usuario'] = $usuario;
-	header('Location: paineldgccmaga.php');
+if ($user && password_verify($senha, $user['senha'])) {
+	$_SESSION['usuario'] = $user['nome'];
+	 header('Location: ../index.php');
 	exit();
 } else {
 	$_SESSION['nao_autenticado'] = true;
 	header('Location: ../login_cliente.html');
+	
 	exit();
 }
-
 ?>

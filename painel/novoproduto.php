@@ -20,22 +20,25 @@ session_start();
     </div>
 	<hr>
 <div class="controle_form">
-<form action="login/adc_produtos.php" method="POST" enctype="multipart/form-data">
+<form action="controllers/recebe_produto.php" method="POST" enctype="multipart/form-data">
 	<br>
 		<p><h3>Cadastro de novos Produtos</h3></p>
 		
-		<p><label for="nome">Nome do Produto ou Serviço:</label> </p>
+		<p><label for="nome">Nome do Produto</label> </p>
 
-		<p><input type="text" name="nome"  class="input_form" required/></p>
+		<p><input type="text" name="nome_produto"  class="input_form" required/></p>
 		
-		<p><label for="des">Descrição do produto ou Serviço: </label></p>
-		<input type="text" name="desc_produto"  class="input_form" required/></p>
+		<p><label for="des">Descrição</label></p>
+		<input type="text" name="descricao"  class="input_form" required/></p>
 		
-        <p><label for="valor">valor do produto ou Serviço: </label></p>
-		<p><input type="text" name="preco"  class="input_form" required/></p>
+        <p><label for="valor">valor do produto</label></p>
+		<p><input type="text" name="valor"  class="input_form" required/></p>
+
+		<p><label for="valor">custo do produto</label></p>
+		<p><input type="text" name="valor"  class="input_form" required/></p>
 		
-		<p><label for="imagem">Imagem do Produto ou Serviço</label></p>
-		<p><input type="file" name="arquivo"  class="input_form" required/></p>
+		<p><label for="imagem">Imagem do Produto</label></p>
+		<p><input type="file" name="img_produto"  class="input_form" required/></p>
 	
 		<p><input type="submit" value="Finalizar Cadastro" class="btn_envia"/></p>
 		<br>

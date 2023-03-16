@@ -1,5 +1,5 @@
 <?php
-include "../.env/conexao.php";
+require_once('../../.env/conexao.php');
 
 // Verifica se é uma imagem válida
 $tipo = $_FILES['banner']['type'];
@@ -24,5 +24,5 @@ if($tipo == 'image/jpeg' || $tipo == 'image/png') {
 } else {
   echo 'Apenas imagens JPEG e PNG são permitidas.';
 }
-echo "<script>window.location.href='banner.php'</script>";
+echo "<script>window.location.href='../banner.php'</script>";
 ?>

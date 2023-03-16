@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-<form action="recebe_banner.php" method="post" enctype="multipart/form-data">
+<form action="controllers/recebe_banner.php" method="post" enctype="multipart/form-data">
   <label for="banner">Selecione uma imagem:</label>
   <input type="file" name="banner" id="banner">
   <input type="submit" value="Enviar">
