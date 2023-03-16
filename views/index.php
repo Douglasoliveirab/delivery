@@ -1,4 +1,4 @@
-        <?php
+<?php
         session_start();
         include "../controllers/getcarrinho.php";
         include "../.env/conexao.php";
@@ -28,11 +28,15 @@
                 <div class="itens-head2">
                     <div class="itens">
                         <?php
-                        if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ""){
-                            echo '<a href="login_cliente.html">'.$_SESSION['usuario'].'</a>';
-                        }else{
-                           echo "<a href='login_cliente.html'>LOGIN</a>";}
-                         ?>
+                        if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {
+                            $usuario = $_SESSION['usuario'];
+                            $usuario = ucfirst($usuario);
+                            echo '<a href="login_cliente.html">' . $usuario . '</a>';
+                            echo '<a href="login/logout.php">SAIR</a>';
+                        } else {
+                            echo "<a href='login_cliente.html'>LOGIN</a>";
+                        }
+                        ?>
                     </div>
 
                     <div class="itens"><a href="#">ENDEREÇO</a></div>
@@ -51,21 +55,21 @@
                 <!-- <a href="" class="footer-link" active><i class="bi bi-house"></i>Inicio</a> -->
                 <div class="footer-link"><i class="bi bi-geo-alt" id="btn-busca"></i>Endereço</div>
                 <a href="#" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>
-                <?php 
-                if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ""){
-                    echo '<a href="login/logout.php" class="footer-link"><i class="bi bi-person"></i>'.$_SESSION['usuario'].'</a>';
-                }else{
-                  echo '<a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Perfil</a>';
+                <?php
+                if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {
+                    $usuario = $_SESSION['usuario'];
+                    $usuario = ucfirst($usuario);
+                    echo '<a href="login/logout.php" class="footer-link"><i class="bi bi-person"></i>' . $usuario . '</a>';
+                } else {
+                    echo '<a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Perfil</a>';
                 }
                 ?>
-                
-                <?php 
-                if($itens >0){
-                    echo '<a href="carrinho.php" class="footer-link"><div class="itens_bag">'.$itens.'</div><i class="bi bi-basket"></i></a>';
 
-                }else{
-                 echo '<a href="carrinho.php" class="footer-link"><i class="bi bi-basket"></i>Carrinho</a>';
-
+                <?php
+                if ($itens > 0) {
+                    echo '<a href="carrinho.php" class="footer-link"><div class="itens_bag">' . $itens . '</div><i class="bi bi-basket"></i></a>';
+                } else {
+                    echo '<a href="carrinho.php" class="footer-link"><i class="bi bi-basket"></i>Carrinho</a>';
                 }
                 ?>
             </footer>
@@ -88,14 +92,14 @@
             <div class="slogan2">
                 <p>Humm, hoje eu vou querer...</p>
             </div>
-            
+
             <div class="container-busca" id="busca">
-            <div class="iten-search" >
-                <p> <input type="text" name="search-produto" class="input-search"> </p>
-                <p> <input type="submit" class="btn-search" value="Pesquisar"> </p>
+                <div class="iten-search">
+                    <p> <input type="text" name="search-produto" class="input-search"> </p>
+                    <p> <input type="submit" class="btn-search" value="Pesquisar"> </p>
+                </div>
             </div>
-            </div>
-            
+
             <?php
             //puxa todas as categorias do banco
             $select = $conexao->prepare("SELECT * FROM categoria");
@@ -115,7 +119,7 @@
             echo "</div>";
             ?>
 
-        <script src="./assets/js/index.js"></script>
+            <script src="./assets/js/index.js"></script>
         </body>
 
         </html>
