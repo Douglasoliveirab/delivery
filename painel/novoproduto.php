@@ -20,7 +20,7 @@ session_start();
     </div>
 	<hr>
 <div class="controle_form">
-<form action="login/recebe_produto.php" method="POST" enctype="multipart/form-data">
+<form action="controllers/recebe_produto.php" method="POST" enctype="multipart/form-data">
 	<br>
 		<p><h3>Cadastro de novos Produtos</h3></p>
 		
