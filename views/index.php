@@ -27,8 +27,12 @@
             <div class="controle-itens2">
                 <div class="itens-head2">
                     <div class="itens">
-                        <a href="login_cliente.html">LOGIN</a>
-                        
+                        <?php
+                        if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ""){
+                            echo '<a href="login_cliente.html">'.$_SESSION['usuario'].'</a>';
+                        }else{
+                           echo "<a href='login_cliente.html'>LOGIN</a>";}
+                         ?>
                     </div>
 
                     <div class="itens"><a href="#">ENDEREÇO</a></div>
@@ -47,7 +51,14 @@
                 <!-- <a href="" class="footer-link" active><i class="bi bi-house"></i>Inicio</a> -->
                 <div class="footer-link"><i class="bi bi-geo-alt" id="btn-busca"></i>Endereço</div>
                 <a href="#" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>
-                <a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Perfil</a>
+                <?php 
+                if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ""){
+                    echo '<a href="login/logout.php" class="footer-link"><i class="bi bi-person"></i>'.$_SESSION['usuario'].'</a>';
+                }else{
+                  echo '<a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Perfil</a>';
+                }
+                ?>
+                
                 <?php 
                 if($itens >0){
                     echo '<a href="carrinho.php" class="footer-link"><div class="itens_bag">'.$itens.'</div><i class="bi bi-basket"></i></a>';
