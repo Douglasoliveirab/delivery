@@ -2,7 +2,6 @@
 include "../.env/conexao.php";
 include "add_carrinho.php";
 
-session_start();
 
 $subtotal = 0;
 $total = 0;
