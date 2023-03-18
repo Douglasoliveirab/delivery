@@ -19,5 +19,5 @@ foreach ($query as $produtos) {
     <a href="../views/add_carrinho.php?add=carrinho&id='.$produtos["id_produto"].'">Adicionar</a>
     <hr/>';
 }
-
+echo'ola mundo ';
 ?>
