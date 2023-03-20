@@ -12,7 +12,7 @@
 <body>
     <?php
  
-    include "add_carrinho.php";
+    include "../controllers/add_carrinho.php";
     include "cabecalho.php";
 
     $subtotal = 0;
@@ -48,7 +48,7 @@
             $qtd += $quantidade;
 
             echo "<tr>
-                    <td>" . $produtos[0]['nome_produto'] . "  <a href='remover.php?remover=carrinho&id=" . $idProduto . "'>Remover</a></br>
+                    <td>" . $produtos[0]['nome_produto'] . "  <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "'>Remover</a></br>
                     " . $produtos[0]['descricao'] . "</td>
                     <td>" . $quantidade . "</td>
                     <td>R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "</td>
