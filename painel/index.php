@@ -154,6 +154,11 @@
             <li class="active">
               <a href="#"><i class="fa fa-users"></i> <span>Banners</span></a>
             </li>
+             <!-- Optionally, you can add icons to the links -->
+             <li class="active">
+              <a href="pedidos.php">
+                ><i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a
+              >
             <!-- Optionally, you can add icons to the links -->
             <li class="active">
               <a href="#"
