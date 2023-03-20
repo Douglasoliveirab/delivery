@@ -5,22 +5,29 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: #f2f2f2;
+}
+
+
+
+.controle-itens2 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #f2f2f2;
+  color: #e9202e;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
 .iten-menu {
   color: #e9202e;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   margin-right: 10%;
   font-size: 20px;
-}
-
-.controle-itens2 {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: white;
-  color: #e9202e;
-  justify-content: space-around;
-  margin-top: 30px;
 }
 
 .itens-head2 {
