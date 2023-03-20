@@ -18,7 +18,7 @@
   $stmt = $conexao->prepare("SELECT pedidos.*, clientes.nome, clientes.sobrenome, clientes.email, clientes.telefone,clientes.endereco, 
      GROUP_CONCAT(DISTINCT CONCAT(produtos.nome_produto, ' QTD: ', itens_pedido.quantidade) SEPARATOR ', ') 
      AS produtos_e_quantidades, SUM(itens_pedido.quantidade) 
-     AS total_quantidade, SUM(produtos.valor * itens_pedido.quantidade) 
+     AS total_quantidade, SUM(produtos.preco * itens_pedido.quantidade) 
      AS total_valor FROM pedidos 
      JOIN clientes ON pedidos.id_cliente = clientes.id_cliente 
      JOIN itens_pedido ON pedidos.id_pedido = itens_pedido.id_pedido 
