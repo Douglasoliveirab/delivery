@@ -20,40 +20,47 @@
             <!--INICIO HEAD DESKTOP-->
             <div class="controle-itens2">
                 <div class="itens-head2">
+
                     <div class="itens">
                         <?php
-                        if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {
+                        if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "" && 
+                           $_SESSION['id_cliente'] != "" && $_SESSION['endereco'] != "") {
                             $usuario = $_SESSION['usuario'];
                             $usuario = ucfirst($usuario);
-                            echo '<a href="login_cliente.html">' . $usuario . '</a>';
-                            echo '<a href="login/logout.php">SAIR</a>';
+                            $id_cliente = $_SESSION['id_cliente'];
+                             $endereco = $_SESSION['endereco'];
+                             echo '<a href="login/logout.php"></i>SAIR</a>';
+                             echo '<a href="login_cliente.html"><i class="bi bi-person"></i>' . $usuario . '</a>';
+                             echo ' <a href="#"><i class="bi bi-geo-alt" id="btn-busca"></i>'.$endereco.'</a>';
+                            
                         } else {
-                            echo "<a href='login_cliente.html'>LOGIN</a>";
+                            echo "<div class='itens'>
+                            <a href='login_cliente.html'>LOGIN</a>
+                            <a href='#'>ENDEREÇO</a>
+                            <a href='#'>PEDIDOS</a>
+                            </div>";
                         }
                         ?>
                     </div>
-
-                    <div class="itens"><a href="#">ENDEREÇO</a></div>
-                    <div class="itens"><a href="#">PEDIDOS</a></div>
                 </div>
 
                 <div class="item-carrinho">
                     <div class="itens_bag"><?= $itens ?></div>
-                    <div><a href="carrinho.php"><img src="https://cdn-icons-png.flaticon.com/512/3139/3139155.png"></a></div>
-
+                    <div>
+                        <a href="carrinho.php"><i class="bi bi-basket"></i></a></div>
                 </div>
             </div>
             <!-- FIM HEAD DESKTOP-->
             <!--INICIO HEAD MOBILE-->
-            <footer class="footer">
+            <div class="mob">
                 <!-- <a href="" class="footer-link" active><i class="bi bi-house"></i>Inicio</a> -->
-                <div class="footer-link"><i class="bi bi-geo-alt" id="btn-busca"></i>Endereço</div>
+                <a href="login/logout.php" class="footer-link"><i class="bi bi-box-arrow-left"></i>Sair</a>
                 <a href="#" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>
                 <?php
                 if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {
                     $usuario = $_SESSION['usuario'];
                     $usuario = ucfirst($usuario);
-                    echo '<a href="login/logout.php" class="footer-link"><i class="bi bi-person"></i>' . $usuario . '</a>';
+                    echo '<a href="#" class="footer-link"><i class="bi bi-person"></i>' . $usuario . '</a>';
                 } else {
                     echo '<a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Perfil</a>';
                 }
@@ -66,5 +73,5 @@
                     echo '<a href="carrinho.php" class="footer-link"><i class="bi bi-basket"></i>Carrinho</a>';
                 }
                 ?>
-            </footer>
+            </div>
             <!--FIM HEAD MOBILE-->
