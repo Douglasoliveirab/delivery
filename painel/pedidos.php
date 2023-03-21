@@ -15,35 +15,35 @@
   include "../.env/conexao.php";
 
   // Busca o pedido todos os pedidos
-  $stmt = $conexao->prepare("SELECT pedidos.*, clientes.nome, clientes.sobrenome, clientes.email, clientes.telefone,clientes.endereco, 
-     GROUP_CONCAT(DISTINCT CONCAT(produtos.nome_produto, ' QTD: ', itens_pedido.quantidade) SEPARATOR ', ') 
-     AS produtos_e_quantidades, SUM(itens_pedido.quantidade) 
-     AS total_quantidade, SUM(produtos.preco * itens_pedido.quantidade) 
-     AS total_valor FROM pedidos 
-     JOIN clientes ON pedidos.id_cliente = clientes.id_cliente 
-     JOIN itens_pedido ON pedidos.id_pedido = itens_pedido.id_pedido 
-     JOIN produtos ON itens_pedido.id_produto = produtos.id_produto 
-     GROUP BY pedidos.id_pedido, clientes.nome, clientes.sobrenome, clientes.email, clientes.telefone, clientes.endereco;");
+  $stmt = $conexao->prepare("SELECT pedidos.*, clientes.nome, clientes.sobrenome, clientes.email, clientes.telefone,clientes.endereco,
+  GROUP_CONCAT(CONCAT(produtos.nome_produto, ' QTD: ', itens_pedido.quantidade) SEPARATOR ', ') 
+  AS produtos_e_quantidades, SUM(itens_pedido.quantidade) 
+  AS total_quantidade, SUM(produtos.preco * itens_pedido.quantidade) 
+  AS total_valor FROM pedidos 
+  JOIN clientes ON pedidos.id_cliente = clientes.id_cliente 
+  JOIN itens_pedido ON pedidos.id_pedido = itens_pedido.id_pedido 
+  JOIN produtos ON itens_pedido.id_produto = produtos.id_produto 
+  GROUP BY pedidos.id_pedido, clientes.nome, clientes.sobrenome, clientes.email, clientes.telefone, clientes.endereco;");
   $stmt->execute();
   $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   foreach ($pedidos as  $pedido) {
     # code...
     // Imprime os dados do pedido e do cliente
-    echo "ID do Pedido: " . $pedido['id_pedido'] . "<br>";
-    echo "Data/Hora do Pedido: " . $pedido['datahora_pedido'] . "<br>";
-    echo "Número do Pedido: " . $pedido['numero_pedido'] . "<br>";
-    echo "itens do pedido " . $pedido['produtos_e_quantidades'] . "<br>";
-    echo "Subtotal: R$ " . $pedido['subtotal'] . "<br>";
-    echo "Frete: R$ " . $pedido['frete'] . "<br>";
-    echo "Valor Total: R$ " . $pedido['total_valor'] . "<br>";
-    echo "Status: " . $pedido['status'] . "<br>";
-    echo "<br>";
-    echo "Dados do Cliente:<br>";
-    echo "Nome: " . $pedido['nome'] . " " . $pedido['sobrenome'] . "<br>";
-    echo "E-mail: " . $pedido['email'] . "<br>";
-    echo "Telefone: " . $pedido['telefone'] . "<br>";
-    echo "Endereço: " . $pedido['endereco'] . "<br>";
+    echo "ID do Pedido: " . $pedido['id_pedido'] . "<br>
+    Data/Hora do Pedido: " . $pedido['datahora_pedido'] . "<br>
+    Número do Pedido: " . $pedido['numero_pedido'] . "<br>
+    itens do pedido " . $pedido['produtos_e_quantidades'] . "<br>
+     Subtotal: R$ " . $pedido['subtotal'] . "<br>
+    Frete: R$ " . $pedido['frete'] . "<br>
+    Valor Total: R$ " . $pedido['valor_total'] . "<br>
+    Status: " . $pedido['status'] . "<br>
+    <br>
+    Dados do Cliente:<br>
+    Nome: " . $pedido['nome'] . " " . $pedido['sobrenome'] . "<br>
+    E-mail: " . $pedido['email'] . "<br>
+    Telefone: " . $pedido['telefone'] . "<br>
+    Endereço: " . $pedido['endereco'] . "<br>";
 
     // Cria um botão para alterar o status do pedido para "Em preparação"
     echo "<br>";

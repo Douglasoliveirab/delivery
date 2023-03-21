@@ -51,9 +51,9 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`) VALUES
-(2, 'pede1leva2.png', 'banners/pede1leva2.png'),
-(3, 'itenspor499.png', 'banners/itenspor499.png'),
-(5, 'salgadinhos.png', 'banners/salgadinhos.png');
+(1, 'pede1leva2.png', 'banners/pede1leva2.png'),
+(2, 'itenspor499.png', 'banners/itenspor499.png'),
+(3, 'salgadinhos.png', 'banners/salgadinhos.png');
 
 -- --------------------------------------------------------
 
@@ -133,6 +133,8 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (14, 16, 3, 3),
 (15, 17, 4, 2),
 (16, 17, 3, 7);
+(19, 19, 3, 5);
+(19, 19, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -180,10 +182,11 @@ CREATE TABLE `produtos` (
 -- Despejando dados para a tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `valor`) VALUES
+INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`) VALUES
+(1, 1, 'Refrigerante', 'refrigerante.jpg', 'Refrigerante sabor cola, 350ml', '2.50', '5.00'),
 (2, 1, 'Refrigerante', 'refrigerante.jpg', 'Refrigerante sabor cola, 350ml', '2.50', '5.00'),
-(3, 1, 'Refrigerante', 'refrigerante.jpg', 'Refrigerante sabor cola, 350ml', '2.50', '5.00'),
-(4, 2, 'DOG ESPECIAL', 'dog.jpg', 'muto bom', '3.50', '15.99');
+(3, 2, 'DOG ESPECIAL', 'dog.jpg', 'muto bom', '3.50', '15.99');
+(4, 2, 'DOG top', 'dog.jpg', 'alface,tomate,batata,palha', '3.50', '9.99');
 
 --
 -- Índices para tabelas despejadas
