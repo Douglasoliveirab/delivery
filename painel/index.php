@@ -154,34 +154,33 @@
             <li class="active">
               <a href="#"><i class="fa fa-users"></i> <span>Banners</span></a>
             </li>
+               <!-- Optionally, you can add icons to the links -->
+               <li class="active">
+              <a href="pedidos.php">
+                <i class="fa fa-users"></i> <span>Pedidos</span></a>
              <!-- Optionally, you can add icons to the links -->
              <li class="active">
-              <a href="pedidos.php">
-                ><i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a
-              >
+              <a href="#">
+                <i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a>
             <!-- Optionally, you can add icons to the links -->
             <li class="active">
-              <a href="#"
-                ><i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a
+              <a href="#"><i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a
               >
             </li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active">
-              <a href="#"
-                ><i class="fa fa-users"></i> <span>Pedidos Recusados</span></a
+              <a href="#"><i class="fa fa-users"></i> <span>Pedidos Recusados</span></a
               >
             </li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active">
-              <a href="#"
-                ><i class="fa fa-users"></i>
+              <a href="#"><i class="fa fa-users"></i>
                 <span>Pedidos em Preparação</span></a
               >
             </li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active">
-              <a href="#"
-                ><i class="fa fa-users"></i> <span>Pedidos Acaminho</span></a
+              <a href="#"><i class="fa fa-users"></i> <span>Pedidos Acaminho</span></a
               >
             </li>
           </ul>
