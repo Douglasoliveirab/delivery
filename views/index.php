@@ -28,9 +28,11 @@
                 <div class="itens-head2">
                     <div class="itens">
                         <?php
-                        if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {
+                        if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "" && 
+                           $_SESSION['id_cliente'] != "") {
                             $usuario = $_SESSION['usuario'];
                             $usuario = ucfirst($usuario);
+                            $id_cliente = $_SESSION['id_cliente'];
                             echo '<a href="login_cliente.html">' . $usuario . '</a>';
                             echo '<a href="login/logout.php">SAIR</a>';
                         } else {

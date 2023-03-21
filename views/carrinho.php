@@ -10,14 +10,17 @@
 </head>
 
 <body>
-    
+
     <?php
 
-   session_start();
+    session_start();
     include "../controllers/add_carrinho.php";
     include "cabecalho.php";
-    
+    date_default_timezone_set('America/Sao_Paulo');
+    $date = new DateTime();
+    $date_time = $date->format('Y-m-d H:i:s');
 
+    // Exibir a data e hora de Brasília
     $subtotal = 0;
     $total = 0;
     $taxaEntrega = 5.00;
@@ -27,10 +30,9 @@
         echo "<div class='container'>
                     <p>Carrinho vazio :(</p>
                     <a href='index.php' class='button-cart'>Continuar comprando</a>
-                    ".$id_cliente."
               </div>";
     } else {
-      $numero_pedido  = '00148';
+
         echo "<div class='container'>
         <form method='post' action='finalizar_pedido.php'>
                 <table>
@@ -46,47 +48,47 @@
             $select->bindParam(1, $idProduto, PDO::PARAM_INT);
             $select->execute();
             $produtos = $select->fetchAll();
-            $status = 'pendente';
+
             $totalItens = $quantidade * $produtos[0]['preco'];
             $subtotal += $totalItens;
             $total = $subtotal + $taxaEntrega;
             $qtd += $quantidade;
-            
+            $id_cliente = $_SESSION['id_cliente'];
+            $numero_pedido  = '00148';
+            $status = 'pendente';
+
+
             echo "<tr>
                     <td>" . $produtos[0]['nome_produto'] . "  <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "'>Remover</a></br>
                     " . $produtos[0]['descricao'] . "</td>
                     <td>" . $quantidade . "</td>
                     <td>R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "</td>
-                    </tr>";
+                    </tr>
+                    ";
 
-                    array_push($_SESSION['itens'],
-    array(
-        'quantidade' => $quantidade,
-        'id_produto' => $idProduto
-
-    )
-
-);
-                   
+            array_push(
+                $_SESSION['itens'],
+                array(
+                    'quantidade' => $quantidade,
+                    'id_produto' => $idProduto
+                )
+            );
         }
-        array_push($_SESSION['dados'],
-        array(
-             'id_cliente' => $usuario,
-            'datahora_pedido' => date('Y-m-d H:i:s'),
-            'numero_pedido' => $numero_pedido,
-            'subtotal' => $subtotal,
-            'frete' => $taxaEntrega,
-            'valor_total' => $total,
-            'status' => $status
+        array_push(
+            $_SESSION['dados'],
+            array(
+                'id_cliente' => $id_cliente,
+                'datahora_pedido' => $date_time,
+                'numero_pedido' => $numero_pedido,
+                'subtotal' => $subtotal,
+                'frete' => $taxaEntrega,
+                'valor_total' => $total,
+                'status' => $status
 
-        )
+            )
+        );
 
-    
-    );
-
-   
-
-   
+        var_dump($_SESSION['dados']);
 
         echo "<p>Subtotal: R$ " . number_format($subtotal, 2, ",", ".") . "</p>
                     <p>Taxa de entrega: R$ " . number_format($taxaEntrega, 2, ",", ".") . "</p>
