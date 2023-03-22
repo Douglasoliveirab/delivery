@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 17/03/2023 às 19:24
+-- Tempo de geração: 22/03/2023 às 21:00
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -43,7 +43,7 @@ CREATE TABLE `administrador` (
 CREATE TABLE `banner` (
   `id_banner` int(11) NOT NULL,
   `img_banner` varchar(50) NOT NULL,
-  `caminho_banner` varchar(200) NOT NULL
+  `caminho_banner` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -63,21 +63,21 @@ INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`) VALUES
 
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
-  `nome_categoria` varchar(50) NOT NULL,
-  `img_categoria` varchar(100) NOT NULL
+  `img_categoria` varchar(100) NOT NULL,
+  `nome_categoria` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nome_categoria`, `img_categoria`) VALUES
-(1, 'Bebidas', 'categorias/bebidas.png'),
-(2, 'Hotdog', 'categorias/hot-dog.png'),
-(3, 'Pizzas', 'categorias/pizzas.png'),
-(4, 'Lanches', 'categorias/lanche.png'),
-(6, 'Comida', 'categorias/comida.png'),
-(7, 'Salgados', 'categorias/salgados.png');
+INSERT INTO `categoria` (`id_categoria`, `img_categoria`, `nome_categoria`) VALUES
+(1, 'categorias/bebidas.png', 'Bebidas'),
+(2, 'categorias/hot-dog.png', 'Hotdog'),
+(3, 'categorias/pizzas.png', 'Pizzas'),
+(4, 'categorias/lanche.png', 'Lanches'),
+(6, 'categorias/comida.png', 'Comida'),
+(7, 'categorias/salgados.png', 'Salgados');
 
 -- --------------------------------------------------------
 
@@ -101,13 +101,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nome`, `sobrenome`, `cpf`, `email`, `telefone`, `endereco`, `senha`) VALUES
-(2, 'João', 'Silva', '123.456.789-00', 'joao.silva@example.com', '(11) 1234-5678', 'Rua A, 123', 'senha123'),
-(3, 'Fulano', 'Silva', '123.456.789-00', 'fulano@mail.com', '(11) 1234-5678', 'Rua A, 123', 'senha123'),
-(4, 'Fulano', 'Silva', '123.456.789-00', 'fulano@mail.com', '(11) 1234-5678', 'Rua A, 123', 'senha123'),
-(5, 'Douglas', 'Silva', '12345678910', 'douglas@gmail.com', '(11) 9999-9999', 'Rua das Flores, 123', 'minhasenha'),
-(6, 'Daniela', 'da silva', '438.288.558-20', 'danny.silva221998@gmail.com', '(53) 54453-3453', '137 Rua Maria Aurora Passini', '$2y$10$wfUtzCZFRrtOcfvDU18GZez.CStlbcc.NuK4WAEAWkTm1IAHK6HlO'),
-(7, 'dgoliver', 'familia', '438.288.558-20', 'dg@gmail', '(11) 11111-1111', 'rua dos burros 120 vila sonia', '$2y$10$iYqlEv6YJ7I7Ecdl9acQJe5wHosgvIOoEEnRWRaIPV5wrdM7wnDdK'),
-(8, 'douglas', 'barroso', '438.288.558-20', 'dg@teste.com', '(11) 99342-6892', '137 Rua Maria Aurora Passini', '$2y$10$jjtzRc27C0wS7l43A0GBvOC0vQeCcVbz8RpjduPVZk8z7zfNt473.');
+(1, 'douglas', 'oliveira', '438.288.558-20', 'dgsoliverfamilia@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$29SPcE9j71B9Nxb3AsfpbeqO4hZyY/IkxTdTBUpKjukGGGuB5KFYm');
 
 -- --------------------------------------------------------
 
@@ -127,14 +121,28 @@ CREATE TABLE `itens_pedido` (
 --
 
 INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quantidade`) VALUES
-(2, 3, 2, 2),
-(3, 3, 3, 1),
-(13, 16, 2, 2),
-(14, 16, 3, 3),
-(15, 17, 4, 2),
-(16, 17, 3, 7);
-(19, 19, 3, 5);
-(19, 19, 2, 3);
+(1, 1, 2, 2),
+(2, 1, 1, 2),
+(3, 1, 4, 1),
+(4, 1, 3, 1),
+(5, 2, 2, 3),
+(6, 2, 1, 3),
+(7, 2, 4, 2),
+(8, 2, 3, 1),
+(9, 3, 4, 2),
+(10, 3, 3, 2),
+(11, 3, 1, 2),
+(12, 4, 2, 2),
+(13, 4, 1, 2),
+(14, 4, 4, 1),
+(15, 5, 2, 1),
+(16, 6, 2, 1),
+(17, 7, 4, 1),
+(18, 8, 2, 1),
+(19, 9, 1, 2),
+(20, 9, 2, 2),
+(21, 9, 4, 2),
+(22, 9, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -158,9 +166,15 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_pedido`, `subtotal`, `frete`, `valor_total`, `status`) VALUES
-(3, 2, '2023-03-10 14:30:00', '0001', '20.00', '5.00', '25.00', 'pendente'),
-(16, 5, '2023-03-10 14:30:00', '00018', '20.00', '5.00', '25.00', 'Em Preparação'),
-(17, 2, '2023-03-10 14:30:00', '0001', '20.00', '5.00', '25.00', 'pendente');
+(1, 1, '2023-03-21 16:37:45', '00148', '45.98', '5.00', '50.98', 'Recusado'),
+(2, 1, '2023-03-21 16:39:40', '00148', '65.97', '5.00', '70.97', 'Em Preparação'),
+(3, 1, '2023-03-21 18:23:13', '00148', '61.96', '5.00', '66.96', 'Em Preparação'),
+(4, 1, '2021-03-23 14:30:00', '00148', '29.99', '5.00', '34.99', 'Em Preparação'),
+(5, 1, '2023-03-21 14:31:00', '00148', '5.00', '5.00', '10.00', 'A caminho'),
+(6, 1, '2021-03-23 14:33:00', '00148', '5.00', '5.00', '10.00', 'A caminho'),
+(7, 1, '2021-03-23 14:37:00', '00148', '9.99', '5.00', '14.99', 'pendente'),
+(8, 1, '2023-03-21 14:38:59', '00148', '5.00', '5.00', '10.00', 'pendente'),
+(9, 1, '2023-03-21 17:26:49', '00148', '71.96', '5.00', '76.96', 'pendente');
 
 -- --------------------------------------------------------
 
@@ -175,7 +189,7 @@ CREATE TABLE `produtos` (
   `img_produto` varchar(100) NOT NULL,
   `descricao` varchar(100) NOT NULL,
   `custo_produto` decimal(10,2) DEFAULT NULL,
-  `valor` decimal(10,2) NOT NULL
+  `preco` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -183,10 +197,12 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`) VALUES
-(1, 1, 'Refrigerante', 'refrigerante.jpg', 'Refrigerante sabor cola, 350ml', '2.50', '5.00'),
-(2, 1, 'Refrigerante', 'refrigerante.jpg', 'Refrigerante sabor cola, 350ml', '2.50', '5.00'),
-(3, 2, 'DOG ESPECIAL', 'dog.jpg', 'muto bom', '3.50', '15.99');
-(4, 2, 'DOG top', 'dog.jpg', 'alface,tomate,batata,palha', '3.50', '9.99');
+(1, 1, 'Refrigerante', 'refrigerante.png\n', 'coca cola, 2l', '2.50', '6.00'),
+(2, 1, 'Refrigerante', '\r\nguarana.png', 'guarana kuat, 350ml', '3.50', '5.50'),
+(3, 2, 'DOG ESPECIAL', 'dog.jpg', 'muto bom', '3.50', '15.99'),
+(4, 2, 'DOG top', 'dog.jpg', 'alface,batat palha,2 salsichas', '3.50', '9.99'),
+(5, 1, 'Cerveja corona', 'corona.png', '330ml', '4.00', '7.00'),
+(6, 1, 'Budweiser', 'bud.png', 'Long Neck 330ml', '4.00', '6.50');
 
 --
 -- Índices para tabelas despejadas
@@ -252,7 +268,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de tabela `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
@@ -264,25 +280,25 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para tabelas despejadas
