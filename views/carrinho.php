@@ -59,7 +59,7 @@
 
 
             echo "<tr>
-                    <td>" . $produtos[0]['nome_produto'] . "  <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "'>Remover</a></br>
+                    <td>" . $produtos[0]['nome_produto'] . "  <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "' class='remover'><i class='bi bi-trash'></i></a></br>
                     " . $produtos[0]['descricao'] . "</td>
                     <td>" . $quantidade . "</td>
                     <td>R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "</td>
@@ -88,7 +88,7 @@
             )
         );
 
-        var_dump($_SESSION['dados']);
+        
 
         echo "<p>Subtotal: R$ " . number_format($subtotal, 2, ",", ".") . "</p>
                     <p>Taxa de entrega: R$ " . number_format($taxaEntrega, 2, ",", ".") . "</p>

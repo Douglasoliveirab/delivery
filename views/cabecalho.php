@@ -29,15 +29,14 @@
                             $usuario = ucfirst($usuario);
                             $id_cliente = $_SESSION['id_cliente'];
                              $endereco = $_SESSION['endereco'];
-                             echo '<a href="login/logout.php"></i>SAIR</a>';
+                             echo '<a href="index.php">Inicio</a>';
+                             echo '<a href="login/logout.php"><i class="bi bi-box-arrow-left"></i>  Sair </a>';
                              echo '<a href="login_cliente.html"><i class="bi bi-person"></i>' . $usuario . '</a>';
                              echo ' <a href="#"><i class="bi bi-geo-alt" id="btn-busca"></i>'.$endereco.'</a>';
                             
                         } else {
                             echo "<div class='itens'>
                             <a href='login_cliente.html'>LOGIN</a>
-                            <a href='#'>ENDEREÇO</a>
-                            <a href='#'>PEDIDOS</a>
                             </div>";
                         }
                         ?>
@@ -55,6 +54,7 @@
             <div class="mob">
                 <!-- <a href="" class="footer-link" active><i class="bi bi-house"></i>Inicio</a> -->
                 <a href="login/logout.php" class="footer-link"><i class="bi bi-box-arrow-left"></i>Sair</a>
+                <a href="index.php" class="footer-link"><i class="bi bi-house"></i>Inicio</a>
                 <a href="#" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>
                 <?php
                 if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {

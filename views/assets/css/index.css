@@ -94,6 +94,7 @@ body{
 
   .controle-itens2 {
     display: none;
+    align-items: center;
   }
   .controle-img-topo {
     display: flex;
