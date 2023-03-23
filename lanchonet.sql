@@ -1,4 +1,4 @@
-CREATE DATABASE lanchonete;
+-- CREATE DATABASE lanchonete;
 
 USE lanchonete;
 
@@ -28,7 +28,7 @@ CREATE TABLE produtos (
   img_produto VARCHAR(100) NOT NULL,
   descricao VARCHAR(100) NOT NULL,
   custo_produto DECIMAL(10,2),
-  valor DECIMAL(10,2) NOT NULL,
+  preco DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (id_produto),
   FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
