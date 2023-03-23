@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function countItens()
 {
     $qtd = 0;
