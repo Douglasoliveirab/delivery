@@ -13,7 +13,7 @@
 
     <?php
 
-    session_start();
+    
     include "../controllers/add_carrinho.php";
     include "cabecalho.php";
     date_default_timezone_set('America/Sao_Paulo');
