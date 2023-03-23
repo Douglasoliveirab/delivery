@@ -10,7 +10,7 @@
 <body>
 <?php
 session_start();
-include "../views/cabecalho.php";
+include "cabecalho.php";
 if (isset($_GET['id_categoria']) && is_numeric($_GET['id_categoria'])) {
     
     $idCategoria = $_GET['id_categoria'];
