@@ -39,7 +39,7 @@
                  <tr>
                     <th>Produto</th>
                     <th>Quantidade</th>
-                    <th>Preço</th>
+                    <th>Preço Unitario</th>
                  </tr>";
         $_SESSION['dados'] = array();
         $_SESSION['itens'] = array();
