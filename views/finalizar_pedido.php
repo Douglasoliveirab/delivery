@@ -35,7 +35,7 @@ try {
 
         // Executar a consulta SQL para os pedidos
         if ($stmt_pedidos->execute()) {
-           
+            echo "Pedido inserido com sucesso!\n";
 
             // Obter o id do último pedido inserido
             $id_pedido = $conexao->lastInsertId();
@@ -49,10 +49,18 @@ try {
                 $stmt_itens->bindParam(':quantidade', $item['quantidade'], PDO::PARAM_INT);
 
                 // Executar a consulta SQL para os itens do pedido
-              
+                if ($stmt_itens->execute()) {
+                    echo "Item do pedido inserido com sucesso!\n";
+                } else {
+                    throw new Exception("Erro ao inserir item do pedido na tabela: " . $stmt_itens->errorInfo()[2]);
+                }
             }
-        } 
+        } else {
+            throw new Exception("Erro ao inserir pedido(s) na tabela: " . $stmt_pedidos->errorInfo()[2]);
+        }
     }
+
+    $conexao->commit();
     require  '../vendor/autoload.php'; // You have to require the library from your Composer vendor folder
     $accessToken = "APP_USR-1472282048459445-032409-cb28e763a5c0258351c4844cb36f0d9c-1337839420";
     MercadoPago\SDK::setAccessToken($accessToken); // Either Production or SandBox AccessToken
@@ -98,8 +106,16 @@ try {
     
     $link = $preference->init_point;
     
-    header("Location: {$link}"); // redirect to the Mercado Pago checkout page
     
+    header("Location: {$link}"); // redirect to the Mercado Pago checkout page
+    // Limpar a sessão 'dados'
+    unset($_SESSION['dados']);
+    unset($_SESSION['carrinho']);
+
+   
+     exit;
+    
+
 } catch (Exception $e) {
     $conexao->rollBack();
     echo "Erro na transação: " . $e->getMessage();
