@@ -23,7 +23,7 @@
     // Exibir a data e hora de Brasília
     $subtotal = 0;
     $total = 0;
-    $taxaEntrega = 5.00;
+    $taxaEntrega = 0.00;
     $qtd = 0;
 
     if (count($_SESSION['carrinho']) == 0) {

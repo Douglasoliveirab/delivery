@@ -70,8 +70,9 @@ try {
     $items = array(); // initialize an array to store the items
     
     foreach($_SESSION['dados'] as $produto){
+       $numero_pedido =$produto['numero_pedido'];
         $item = new MercadoPago\Item();
-        $item->title = $produto['numero_pedido'];
+        $item->title = $numero_pedido;
         $item->quantity = 1;
         $item->unit_price = (double) $produto['valor_total'];
         array_push($items, $item);
@@ -80,7 +81,7 @@ try {
     $preference->items = $items; // set the items array in the preference object
     
     $preference->back_urls = array(
-        "success" => "https://seusite.com.br/failure",
+        "success" => "https://seusite.com.br/success",
         "failure" => "https://seusite.com.br/failure",
         "pending" => "https://seusite.com.br/pending"
     );
@@ -100,8 +101,8 @@ try {
     );
     
     $preference->notification_url = 'https://seusite.com.br/notification.php';
-    $preference->external_reference = '1234';
-    
+    $preference->external_reference = $numero_pedido;
+
     $preference->save();
     
     $link = $preference->init_point;
