@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,7 @@
 </head>
 <body>
 <?php
-session_start();
+
 include "cabecalho.php";
 if (isset($_GET['id_categoria']) && is_numeric($_GET['id_categoria'])) {
     

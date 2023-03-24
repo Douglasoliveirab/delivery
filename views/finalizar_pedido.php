@@ -35,7 +35,7 @@ try {
 
         // Executar a consulta SQL para os pedidos
         if ($stmt_pedidos->execute()) {
-            echo "Pedido inserido com sucesso!\n";
+           
 
             // Obter o id do último pedido inserido
             $id_pedido = $conexao->lastInsertId();
@@ -49,26 +49,57 @@ try {
                 $stmt_itens->bindParam(':quantidade', $item['quantidade'], PDO::PARAM_INT);
 
                 // Executar a consulta SQL para os itens do pedido
-                if ($stmt_itens->execute()) {
-                    echo "Item do pedido inserido com sucesso!\n";
-                } else {
-                    throw new Exception("Erro ao inserir item do pedido na tabela: " . $stmt_itens->errorInfo()[2]);
-                }
+              
             }
-        } else {
-            throw new Exception("Erro ao inserir pedido(s) na tabela: " . $stmt_pedidos->errorInfo()[2]);
-        }
+        } 
     }
-
-    $conexao->commit();
-    echo "Transação concluída com sucesso!\n";
-    // Limpar a sessão 'dados'
-    unset($_SESSION['dados']);
-    unset($_SESSION['carrinho']);
-    header('Location: index.php');
-     exit;
+    require __DIR__ . '/vendor/autoload.php'; // You have to require the library from your Composer vendor folder
+    $accessToken = "APP_USR-1472282048459445-032409-cb28e763a5c0258351c4844cb36f0d9c-1337839420";
+    MercadoPago\SDK::setAccessToken($accessToken); // Either Production or SandBox AccessToken
     
-
+    $preference = new MercadoPago\Preference();
+    
+    $items = array(); // initialize an array to store the items
+    
+    foreach($_SESSION['dados'] as $produto){
+        $item = new MercadoPago\Item();
+        $item->title = $produto['numero_pedido'];
+        $item->quantity = 1;
+        $item->unit_price = (double) $produto['valor_total'];
+        array_push($items, $item);
+    }
+    
+    $preference->items = $items; // set the items array in the preference object
+    
+    $preference->back_urls = array(
+        "success" => "https://seusite.com.br/failure",
+        "failure" => "https://seusite.com.br/failure",
+        "pending" => "https://seusite.com.br/pending"
+    );
+    
+    $preference->payment_methods = array(
+        "excluded_payment_methods" => array(
+            array("id" => "amex")
+        ),
+        "excluded_payment_types" => array(
+            array("id" => "atm")
+        ),
+        "excluded_payment_types" => array(
+            array("id" => "ticket")
+        ),
+       
+        "installments" => 6
+    );
+    
+    $preference->notification_url = 'https://seusite.com.br/notification.php';
+    $preference->external_reference = '1234';
+    
+    $preference->save();
+    
+    $link = $preference->init_point;
+    
+    header("Location: {$link}"); // redirect to the Mercado Pago checkout page
+    
 } catch (Exception $e) {
     $conexao->rollBack();
     echo "Erro na transação: " . $e->getMessage();

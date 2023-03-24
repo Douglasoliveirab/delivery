@@ -9,7 +9,7 @@ CREATE TABLE lojas (
   horario_funcionamento VARCHAR(50) NOT NULL,
   PRIMARY KEY (id_loja),
   id_admin INT(11) NOT NULL,
-  id_forma_pagamento INT(11) NOT NULL,
+  -- id_forma_pagamento INT(11) NOT NULL,
   FOREIGN KEY (id_admin) REFERENCES admin(id_admin),
   FOREIGN KEY (id_forma_pagamento) REFERENCES formas_pagamento(id_forma_pagamento)
 );
