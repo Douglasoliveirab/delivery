@@ -53,7 +53,7 @@ try {
             }
         } 
     }
-    require __DIR__ . '/vendor/autoload.php'; // You have to require the library from your Composer vendor folder
+    require  '../vendor/autoload.php'; // You have to require the library from your Composer vendor folder
     $accessToken = "APP_USR-1472282048459445-032409-cb28e763a5c0258351c4844cb36f0d9c-1337839420";
     MercadoPago\SDK::setAccessToken($accessToken); // Either Production or SandBox AccessToken
     
