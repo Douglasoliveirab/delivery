@@ -1,21 +1,21 @@
 <?php
 session_start();
 
-// Faça a conexão com o banco de dados aqui
+// Faz conexão com o banco de dados aqui
 include "../.env/conexao.php";
 
-// Prepare a consulta SQL para inserir os pedidos
+// Prepara a consulta SQL para inserir os pedidos
 $sql_pedidos = "INSERT INTO pedidos (id_pedido, id_cliente, datahora_pedido, numero_pedido, subtotal, frete, valor_total, status) 
         VALUES (:id_pedido, :id_cliente, :datahora_pedido, :numero_pedido, :subtotal, :frete, :valor_total, :status)";
 
-// Prepare a declaração SQL para os pedidos
+// Prepara a declaração SQL para os pedidos
 $stmt_pedidos = $conexao->prepare($sql_pedidos);
 
-// Prepare a consulta SQL para inserir os itens do pedido
+// Prepara a consulta SQL para inserir os itens do pedido
 $sql_itens = "INSERT INTO itens_pedido (id_pedido, id_produto, quantidade) 
               VALUES (:id_pedido, :id_produto, :quantidade)";
 
-// Prepare a declaração SQL para os itens do pedido
+// Prepara a declaração SQL para os itens do pedido
 $stmt_itens = $conexao->prepare($sql_itens);
 
 try {
@@ -61,14 +61,18 @@ try {
     }
 
     $conexao->commit();
+
+    //Faz a requisicao e envia os valores para o mercado pago
     require  '../vendor/autoload.php'; // You have to require the library from your Composer vendor folder
+    //Token da conta mercado pago
     $accessToken = "APP_USR-1472282048459445-032409-cb28e763a5c0258351c4844cb36f0d9c-1337839420";
     MercadoPago\SDK::setAccessToken($accessToken); // Either Production or SandBox AccessToken
     
     $preference = new MercadoPago\Preference();
     
     $items = array(); // initialize an array to store the items
-    
+
+    // Loop para pegar os dados do acrrinho e enviar para a Mp
     foreach($_SESSION['dados'] as $produto){
        $numero_pedido =$produto['numero_pedido'];
         $item = new MercadoPago\Item();
@@ -78,7 +82,7 @@ try {
         array_push($items, $item);
     }
     
-    $preference->items = $items; // set the items array in the preference object
+    $preference->items = $items; // definir a matriz de itens no objeto de preferência
     
     $preference->back_urls = array(
         "success" => "https://seusite.com.br/success",
@@ -86,6 +90,7 @@ try {
         "pending" => "https://seusite.com.br/pending"
     );
     
+    // Exclui os metodos de pagemntos nos arrays abaixo
     $preference->payment_methods = array(
         "excluded_payment_methods" => array(
             array("id" => "amex")
@@ -99,17 +104,18 @@ try {
        
         "installments" => 6
     );
-    
+    //Url para notificação de status
     $preference->notification_url = 'https://seusite.com.br/notification.php';
+    // referencia do numero do pedido para atualizar ststaus no banco
     $preference->external_reference = $numero_pedido;
 
     $preference->save();
     
     $link = $preference->init_point;
     
-    
-    header("Location: {$link}"); // redirect to the Mercado Pago checkout page
-    // Limpar a sessão 'dados'
+    // redireciona para a pagina de checkout  Mercado Pago 
+    header("Location: {$link}"); 
+    // Limpar a sessão 'dados' e também a carrinho
     unset($_SESSION['dados']);
     unset($_SESSION['carrinho']);
 
