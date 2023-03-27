@@ -39,7 +39,7 @@
                  <tr>
                     <th>Produto</th>
                     <th>Quantidade</th>
-                    <th>Preço</th>
+                    <th>Preço Unitario</th>
                  </tr>";
         $_SESSION['dados'] = array();
         $_SESSION['itens'] = array();
@@ -54,8 +54,9 @@
             $total = $subtotal + $taxaEntrega;
             $qtd += $quantidade;
             $id_cliente = $_SESSION['id_cliente'];
-            $numero_pedido  = '00148';
-            $status = 'pendente';
+            $numero_pedido  = $_SESSION['id_cliente'] ." ".date('YmdHis');
+            $status_pedido = 'pendente';
+            $status_pagamento = 'pendente';
 
 
             echo "<tr>
@@ -83,12 +84,13 @@
                 'subtotal' => $subtotal,
                 'frete' => $taxaEntrega,
                 'valor_total' => $total,
-                'status' => $status
+                'status_pedido' => $status_pedido,
+                'status_pagamento' => $status_pagamento
 
             )
         );
 
-        
+      
 
         echo "<p>Subtotal: R$ " . number_format($subtotal, 2, ",", ".") . "</p>
                     <p>Taxa de entrega: R$ " . number_format($taxaEntrega, 2, ",", ".") . "</p>
