@@ -3,10 +3,13 @@ session_start();
 
 // Faz conexão com o banco de dados aqui
 include "../.env/conexao.php";
+require  '../vendor/autoload.php';
+$accessToken = "TEST-1472282048459445-032409-8723148853628c0116c89b140f329544-1337839420";
+MercadoPago\SDK::setAccessToken($accessToken);
 
 // Prepara a consulta SQL para inserir os pedidos
-$sql_pedidos = "INSERT INTO pedidos (id_pedido, id_cliente, datahora_pedido, numero_pedido, subtotal, frete, valor_total, status) 
-        VALUES (:id_pedido, :id_cliente, :datahora_pedido, :numero_pedido, :subtotal, :frete, :valor_total, :status)";
+$sql_pedidos = "INSERT INTO pedidos (id_pedido, id_cliente, datahora_pedido, numero_pedido, subtotal, frete, valor_total, status_pedido, status_pagamento) 
+        VALUES (:id_pedido, :id_cliente, :datahora_pedido, :numero_pedido, :subtotal, :frete, :valor_total, :status_pedido, :status_pagamento)";
 
 // Prepara a declaração SQL para os pedidos
 $stmt_pedidos = $conexao->prepare($sql_pedidos);
@@ -31,8 +34,8 @@ try {
         $stmt_pedidos->bindParam(':subtotal', $pedido['subtotal'], PDO::PARAM_STR);
         $stmt_pedidos->bindParam(':frete', $pedido['frete'], PDO::PARAM_STR);
         $stmt_pedidos->bindParam(':valor_total', $pedido['valor_total'], PDO::PARAM_STR);
-        $stmt_pedidos->bindParam(':status', $pedido['status'], PDO::PARAM_STR);
-
+        $stmt_pedidos->bindParam(':status_pedido', $pedido['status_pedido'], PDO::PARAM_STR);
+        $stmt_pedidos->bindParam(':status_pagamento', $pedido['status_pagamento'], PDO::PARAM_STR);
         // Executar a consulta SQL para os pedidos
         if ($stmt_pedidos->execute()) {
             echo "Pedido inserido com sucesso!\n";
@@ -62,53 +65,35 @@ try {
 
     $conexao->commit();
 
-    //Faz a requisicao e envia os valores para o mercado pago
-    require  '../vendor/autoload.php'; // You have to require the library from your Composer vendor folder
-    //Token da conta mercado pago
-    $accessToken = "APP_USR-1472282048459445-032409-cb28e763a5c0258351c4844cb36f0d9c-1337839420";
-    MercadoPago\SDK::setAccessToken($accessToken); // Either Production or SandBox AccessToken
-    
+  
     $preference = new MercadoPago\Preference();
-    
-    $items = array(); // initialize an array to store the items
 
-    // Loop para pegar os dados do acrrinho e enviar para a Mp
-    foreach($_SESSION['dados'] as $produto){
-       $numero_pedido =$produto['numero_pedido'];
-        $item = new MercadoPago\Item();
-        $item->title = $numero_pedido;
-        $item->quantity = 1;
-        $item->unit_price = (double) $produto['valor_total'];
-        array_push($items, $item);
-    }
-    
-    $preference->items = $items; // definir a matriz de itens no objeto de preferência
+    $item = new MercadoPago\Item();
+    $item->title = 'pedido delivery'; // Nome do produto
+    $item->quantity = 1; // Quantidade do produto
+    $item->unit_price = (double)$pedido['valor_total']; // Preço unitário do produto
+    $preference->items = array($item);
     
     $preference->back_urls = array(
-        "success" => "https://seusite.com.br/success",
-        "failure" => "https://seusite.com.br/failure",
-        "pending" => "https://seusite.com.br/pending"
+        "success" => "localhost/delivery/views/notification.php", // URL de sucesso
+        "failure" => "localhost/delivery/views/notification.php", // URL de falha
+        "pending" => "localhost/delivery/views/notification.php" // URL pendente
     );
     
-    // Exclui os metodos de pagemntos nos arrays abaixo
     $preference->payment_methods = array(
         "excluded_payment_methods" => array(
             array("id" => "amex")
         ),
         "excluded_payment_types" => array(
-            array("id" => "atm")
-        ),
-        "excluded_payment_types" => array(
+            array("id" => "atm"),
             array("id" => "ticket")
         ),
-       
         "installments" => 6
     );
-    //Url para notificação de status
-    $preference->notification_url = 'https://seusite.com.br/notification.php';
-    // referencia do numero do pedido para atualizar ststaus no banco
-    $preference->external_reference = $numero_pedido;
-
+    
+    $preference->notification_url = 'https://seusite.com.br/notification.php'; // URL de notificação de pagamento
+    $preference->external_reference = $pedido['numero_pedido']; // Referência externa para a ordem de pagamento
+    
     $preference->save();
     
     $link = $preference->init_point;
@@ -116,7 +101,6 @@ try {
     // redireciona para a pagina de checkout  Mercado Pago 
     header("Location: {$link}"); 
     // Limpar a sessão 'dados' e também a carrinho
-    unset($_SESSION['dados']);
     unset($_SESSION['carrinho']);
 
    
@@ -127,4 +111,3 @@ try {
     $conexao->rollBack();
     echo "Erro na transação: " . $e->getMessage();
 }
-?>

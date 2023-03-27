@@ -21,7 +21,7 @@
   AS total_quantidade, SUM(produtos.preco * itens_pedido.quantidade) 
   AS total_valor FROM pedidos 
   JOIN clientes ON pedidos.id_cliente = clientes.id_cliente 
-  JOIN itens_pedido ON pedidos.id_pedido = itens_pedido.id_pedido 
+  JOIN itens_pedido ON pedidos.id_pedido = itens_pedido.id_pedido
   JOIN produtos ON itens_pedido.id_produto = produtos.id_produto 
   GROUP BY pedidos.id_pedido, clientes.nome, clientes.sobrenome, clientes.email, clientes.telefone, clientes.endereco;");
   $stmt->execute();
@@ -37,7 +37,8 @@
      Subtotal: R$ " . $pedido['subtotal'] . "<br>
     Frete: R$ " . $pedido['frete'] . "<br>
     Valor Total: R$ " . $pedido['valor_total'] . "<br>
-    Status: " . $pedido['status'] . "<br>
+    Status Pedido: " . $pedido['status_pedido'] . "<br>
+    Status Pagamento: " . $pedido['status_pagamento'] . "<br>
     <br>
     Dados do Cliente:<br>
     Nome: " . $pedido['nome'] . " " . $pedido['sobrenome'] . "<br>
@@ -49,16 +50,16 @@
     echo "<br>";
     echo "<form method='POST'>";
     echo "<input type='hidden' name='id_pedido' value='" . $pedido['id_pedido'] . "'>";
-    if ($pedido['status'] === "pendente") {
+    if ($pedido['status_pedido'] === "pendente") {
       echo "<button type='submit' name='alterar_status'class='btn btn-recusado' value='recusado'>Recusar Pedido</button>";
       echo "<button type='submit' name='alterar_status'class='btn btn-em-preparacao' value='em_preparacao'>Aceitar Pedido</button>";
-    } elseif ($pedido['status'] === "A caminho") {
+    } elseif ($pedido['status_pedido'] === "A caminho") {
       echo "<button type='submit' name='alterar_status'class='btn btn-recusado' value='recusado'>Recusar Pedido</button>";
       echo "<button type='submit' name='alterar_status' class='btn btn-finalizado' value='finalizado'>Finalizado</button>";
-    } elseif ($pedido['status'] === "Em Preparação") {
+    } elseif ($pedido['status_pedido'] === "Em Preparação") {
       echo "<button type='submit' name='alterar_status'class='btn btn-recusado' value='recusado'>Recusar Pedido</button>";
       echo "<button type='submit' name='alterar_status'class='btn btn-saiu-entrega' value='saiu_entrega'>A caminho</button>";
-    } elseif ($pedido['status'] === "Finalizado") {
+    } elseif ($pedido['status_peido'] === "Finalizado") {
 
       echo "<button type='submit' name='alterar_status'class='btn btn-em-preparacao' value='em_preparacao'>Retomar Pedido</button>";
     } else {
@@ -84,10 +85,10 @@
         $novo_status = 'Finalizado';
         break;
       default:
-        $novo_status = $pedido['status'];
+        $novo_status = $pedido['status_pedido'];
         break;
     }
-    $stmt = $conexao->prepare("UPDATE pedidos SET status = :novo_status WHERE id_pedido = :id_pedido");
+    $stmt = $conexao->prepare("UPDATE pedidos SET status_pedido = :novo_status WHERE id_pedido = :id_pedido");
     $stmt->bindParam(':novo_status', $novo_status);
     $stmt->bindParam(':id_pedido', $_POST['id_pedido']);
     $stmt->execute();
