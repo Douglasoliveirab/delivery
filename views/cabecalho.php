@@ -1,6 +1,6 @@
 
          <?php   
-         
+         session_start();
         include "../controllers/getcarrinho.php";
         include "../.env/conexao.php";
         if (isset($_SESSION['carrinho'])) {
