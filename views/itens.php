@@ -35,7 +35,7 @@ echo '<div class="container_produtos">';
 foreach ($query as $produtos) {
     echo '<div class="produto">
     <div class="conteudo" style="display:flex;align-items:center">
-    <img src="../painel/produtos/'. $produtos["img_produto"].'">
+    <img src="../painel/'. $produtos["img_produto"].'">
     <div>
       <h3>'. $produtos["nome_produto"].'</h3>
       <p class="descricao">'. $produtos["descricao"].'</p>

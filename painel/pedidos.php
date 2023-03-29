@@ -12,6 +12,7 @@
 
 <body>
   <?php
+  session_start();
   include "../.env/conexao.php";
 
   // Busca o pedido todos os pedidos

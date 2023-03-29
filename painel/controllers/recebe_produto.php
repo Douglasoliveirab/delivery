@@ -1,12 +1,7 @@
 <?php
 session_start();
 include "../../.env/conexao.php";
-echo "nome do produto: ".$_POST['nome_produto']."<br>";
-echo "imagem do produto: ".$_FILES['img_produto']['name']."<br>";
-echo "descrição: ".$_POST['descricao']."<br>";
-echo "custo: ".$_POST['custo_produto']."<br>";
-echo "preço: ".$_POST['preco']."<br>";
-echo "categoria: ".$_POST['id_categoria']."<br>";
+
 
 
 // Verifica se é uma imagem válida
