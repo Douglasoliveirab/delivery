@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "../controllers/add_carrinho.php";
+include "cabecalho.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +19,7 @@
     <?php
 
     
-    include "../controllers/add_carrinho.php";
-    include "cabecalho.php";
+   
     date_default_timezone_set('America/Sao_Paulo');
     $date = new DateTime();
     $date_time = $date->format('Y-m-d H:i:s');
