@@ -44,7 +44,7 @@ $produtos = $select->fetchAll();
                                         <?php foreach ($produtos as $produto){
                                             
                                             echo'<tr style="align-items:center;">
-                                            <td><img src="'.$produto['img_produto'].'" style="width:50px;height:60px;"></td>
+                                            <td><img src="produtos/'.$produto['img_produto'].'" style="width:50px;height:60px;"></td>
                                             <td>'.$produto['id_categoria'].'</td> 
                                             <td>'.$produto['nome_produto'].'</td>
                                              <td>'.$produto['descricao'].'</td>
@@ -69,3 +69,5 @@ $produtos = $select->fetchAll();
                         </div>
                     </div>
 
+                 </body>
+            </html>

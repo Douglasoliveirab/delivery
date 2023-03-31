@@ -62,4 +62,6 @@ $categorias = $select->fetchAll();
                             <!-- /.box-body -->
                         </div>
                     </div>
+                 </body>
+            </html>
 
