@@ -10,16 +10,35 @@ if (isset($_GET['delete'])) {
     header("Location: all_produtos.php");
     exit();
 }
+if (isset($_GET['todos'])) {
+    $select = $conexao->prepare("SELECT * FROM produtos");
+    $select->execute();
+$produtos = $select->fetchAll();
+}
 
+elseif (isset($_GET['ativos'])) {
 $select = $conexao->prepare("SELECT * FROM produtos WHERE  status_produto = 'ativo'");
 $select->execute();
 $produtos = $select->fetchAll();
+}else{
+    $select = $conexao->prepare("SELECT * FROM produtos WHERE  status_produto = 'ativo'");
+$select->execute();
+$produtos = $select->fetchAll();
+}
 include "master.php";
 ?>
 
 
 
 <ol class="breadcrumb">
+
+    
+                    <li>
+                    <a href="?todos" class="btn btn-default">Mostrar Todos os Produtos</a>
+                    </li>
+                    <li>
+                      <a href="?ativos" class="btn btn-default">Mostrar Produtos Ativos</a>
+                  </li>
 
                     <li>
                         <a href="/"><i class="fa fa-home"></i> Home</a>
@@ -70,7 +89,7 @@ include "master.php";
                                                  </button>
                                                  <a href="?delete='.$produto['id_produto'].'" class="btn btn-danger btn-xs btn-flat">
                                                      Excluir
-                                                 </button>
+                                                 </a>
                                              </td>
                                              </tr>';
                                         }
