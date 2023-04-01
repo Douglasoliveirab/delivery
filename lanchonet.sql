@@ -40,6 +40,7 @@ CREATE TABLE produtos (
   descricao VARCHAR(100) NOT NULL,
   custo_produto DECIMAL(10,2),
   preco DECIMAL(10,2) NOT NULL,
+  status_produto VARCHAR(10) NOT NULL,
   PRIMARY KEY (id_produto),
   FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
