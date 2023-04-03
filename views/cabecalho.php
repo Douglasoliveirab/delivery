@@ -55,16 +55,20 @@
             <!--INICIO HEAD MOBILE-->
             <div class="mob">
                 <!-- <a href="" class="footer-link" active><i class="bi bi-house"></i>Inicio</a> -->
-                <a href="login/logout.php" class="footer-link"><i class="bi bi-box-arrow-left"></i>Sair</a>
-                <a href="index.php" class="footer-link"><i class="bi bi-house"></i>Inicio</a>
-                <a href="pedidos_cliente.php?id_cliente=<?php echo $id_cliente; ?>" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>
+               
+               
 
                 <?php
                 if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {
                     $usuario = $_SESSION['usuario'];
                     $usuario = ucfirst($usuario);
+                    echo '<a href="login/logout.php" class="footer-link"><i class="bi bi-box-arrow-left"></i>Sair</a>';
+                    echo '<a href="index.php" class="footer-link"><i class="bi bi-house"></i>Inicio</a>';
+                    echo ' <a href="pedidos_cliente.php?id_cliente=<?php echo $id_cliente; ?>" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>';
                     echo '<a href="#" class="footer-link"><i class="bi bi-person"></i>' . $usuario . '</a>';
                 } else {
+                    echo '<a href="index.php" class="footer-link"><i class="bi bi-house"></i>Inicio</a>';
+                    echo ' <a href="login_cliente.html" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>';
                     echo '<a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Perfil</a>';
                 }
                 ?>
