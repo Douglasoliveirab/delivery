@@ -28,7 +28,7 @@ include "../.env/conexao.php";
   JOIN clientes ON pedidos.id_cliente = clientes.id_cliente 
   JOIN itens_pedido ON pedidos.id_pedido = itens_pedido.id_pedido
   JOIN produtos ON itens_pedido.id_produto = produtos.id_produto 
-  WHERE pedidos.status_pedido = 'pendente'
+  WHERE pedidos.status_pedido = 'A caminho'
   GROUP BY pedidos.id_pedido, clientes.nome, clientes.sobrenome, clientes.email, clientes.telefone, clientes.endereco;");
   $stmt->execute();
   $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -61,10 +61,10 @@ include "../.env/conexao.php";
     echo "<br>";
     echo "<form method='POST' action='atualiza_status.php'>";
     echo "<input type='hidden' name='id_pedido' value='" . $pedido['id_pedido'] . "'>";
-    if ($pedido['status_pedido'] === "pendente") {
-      echo "<button type='submit' name='alterar_status'class='btn btn-recusado' value='recusado'>Recusar Pedido</button>";
-      echo "<button type='submit' name='alterar_status'class='btn btn-em-preparacao' value='em_preparacao'>Aceitar Pedido</button>";
-    } 
+    if ($pedido['status_pedido'] === "A caminho") {
+        echo "<button type='submit' name='alterar_status'class='btn btn-recusado' value='recusado'>Recusar Pedido</button>";
+        echo "<button type='submit' name='alterar_status' class='btn btn-finalizado' value='finalizado'>Finalizado</button>";
+      }
 
     echo "</form>";
   }

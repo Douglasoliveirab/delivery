@@ -57,7 +57,8 @@
                 <!-- <a href="" class="footer-link" active><i class="bi bi-house"></i>Inicio</a> -->
                 <a href="login/logout.php" class="footer-link"><i class="bi bi-box-arrow-left"></i>Sair</a>
                 <a href="index.php" class="footer-link"><i class="bi bi-house"></i>Inicio</a>
-                <a href="#" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>
+                <a href="pedidos_cliente.php?id_cliente=<?php echo $id_cliente; ?>" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>
+
                 <?php
                 if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != "") {
                     $usuario = $_SESSION['usuario'];

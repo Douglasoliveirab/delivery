@@ -77,7 +77,7 @@ include "master.php";
                                         foreach ($produtos as $produto){
                                             
                                             echo'<tr style="align-items:center;">
-                                            <td><img src="produtos/'.$produto['img_produto'].'" style="width:50px;height:60px;"></td>
+                                            <td><img src="'.$produto['img_produto'].'" style="width:50px;height:60px;"></td>
                                             <td>'.$produto['nome_produto'].'</td>
                                              <td>'.$produto['descricao'].'</td>
                                              <td>'.$produto['custo_produto'].'</td>
