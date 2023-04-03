@@ -11,6 +11,8 @@ CREATE TABLE clientes (
   telefone VARCHAR(20) NOT NULL,
   endereco VARCHAR(100) NOT NULL,
   senha VARCHAR(100) NOT NULL,
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE, 
   PRIMARY KEY (id_cliente)
 );
 
@@ -21,6 +23,8 @@ CREATE TABLE enderecos (
   BAIRRO VARCHAR (20) NOT NULL,
   ENDERECO VARCHAR (35) NOT NULL,
   COMPLEMENTO VARCHAR (20),
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE,
   id_cliente INT(11) NOT NULL,
   FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
@@ -29,6 +33,8 @@ CREATE TABLE categoria (
   id_categoria INT(11) NOT NULL AUTO_INCREMENT,
   img_categoria VARCHAR(100) NOT NULL,
   nome_categoria VARCHAR(50) NOT NULL,
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE,
   PRIMARY KEY (id_categoria)
 );
 
@@ -40,6 +46,9 @@ CREATE TABLE produtos (
   descricao VARCHAR(100) NOT NULL,
   custo_produto DECIMAL(10,2),
   preco DECIMAL(10,2) NOT NULL,
+  status_produto VARCHAR(10) NOT NULL,
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE, 
   PRIMARY KEY (id_produto),
   FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 );
@@ -55,6 +64,8 @@ CREATE TABLE pedidos (
   valor_total DECIMAL(10,2) NOT NULL,
   status_pagamento VARCHAR(20) NOT NULL,
   status_pedido VARCHAR(20) NOT NULL,
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE, 
   PRIMARY KEY (id_pedido),
   FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
@@ -64,6 +75,8 @@ CREATE TABLE itens_pedido (
   id_pedido INT(11) NOT NULL,
   id_produto INT(11) NOT NULL,
   quantidade INT(11) NOT NULL,
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE, 
   PRIMARY KEY (id_itens_pedido),
   FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
   FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
@@ -74,6 +87,8 @@ CREATE TABLE administrador (
   nome_usuario VARCHAR(50) NOT NULL,
   senha_usuario VARCHAR(50) NOT NULL,
   privilegios VARCHAR(50) NOT NULL,
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE, 
   PRIMARY KEY (id_administrador)
 );
 
@@ -81,5 +96,7 @@ CREATE TABLE banner (
   id_banner INT(11) NOT NULL AUTO_INCREMENT,
   img_banner VARCHAR(50) NOT NULL,
   caminho_banner VARCHAR(100) NOT NULL,
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE, 
   PRIMARY KEY (id_banner)
 );
