@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 27/03/2023 às 21:50
+-- Tempo de geração: 04/04/2023 às 22:59
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -77,7 +77,7 @@ INSERT INTO `categoria` (`id_categoria`, `img_categoria`, `nome_categoria`) VALU
 (3, 'categorias/pizzas.png', 'Pizzas'),
 (4, 'categorias/lanche.png', 'Lanches'),
 (6, 'categorias/comida.png', 'Comida'),
-(7, 'categorias/salgados.png', 'Salgados');
+(9, 'categorias/salgados.png', 'Salgados');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,8 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id_cliente`, `nome`, `sobrenome`, `cpf`, `email`, `telefone`, `endereco`, `senha`) VALUES
 (1, 'douglas', 'oliveira', '438.288.558-20', 'dgsoliverfamilia@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$29SPcE9j71B9Nxb3AsfpbeqO4hZyY/IkxTdTBUpKjukGGGuB5KFYm'),
-(2, 'cliente t', 'este', '564.444.444-44', 'dgs@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$SS9jQlmL3.YkAxdcR7bfv.BMHmIREpbO8MJy2Wxf6ZlyKz25/amNu');
+(2, 'cliente t', 'este', '564.444.444-44', 'dgs@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$SS9jQlmL3.YkAxdcR7bfv.BMHmIREpbO8MJy2Wxf6ZlyKz25/amNu'),
+(3, 'reinaldo', 'ribeiro', '564.444.444-44', 'reinaldo@gmail.com', '(11) 11111-1111', '140 Centro Francisco morato', '$2y$10$SoPbtogWb91YDYY2ypdHNuypjzOP3n9ITtGv99yj8xfNmPzIHQrWa');
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,42 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (194, 127, 3, 1),
 (195, 128, 3, 1),
 (196, 129, 1, 1),
-(197, 130, 1, 1);
+(197, 130, 1, 1),
+(198, 131, 1, 1),
+(199, 131, 2, 3),
+(200, 132, 1, 1),
+(201, 132, 2, 1),
+(202, 133, 1, 1),
+(203, 134, 5, 1),
+(204, 135, 1, 1),
+(205, 136, 1, 1),
+(206, 137, 6, 1),
+(207, 138, 1, 2),
+(208, 139, 3, 2),
+(209, 140, 5, 1),
+(210, 140, 6, 1),
+(211, 141, 6, 1),
+(212, 142, 1, 1),
+(213, 143, 1, 5),
+(214, 144, 1, 1),
+(215, 145, 5, 1),
+(216, 145, 1, 1),
+(217, 145, 2, 1),
+(218, 145, 6, 1),
+(219, 145, 8, 1),
+(220, 146, 5, 1),
+(221, 146, 1, 1),
+(222, 146, 2, 1),
+(223, 146, 6, 1),
+(224, 146, 8, 1),
+(225, 147, 5, 1),
+(226, 148, 1, 2),
+(227, 148, 3, 1),
+(228, 149, 1, 1),
+(229, 149, 2, 3),
+(230, 149, 5, 5),
+(231, 150, 5, 153),
+(232, 151, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -339,10 +375,10 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_pedido`, `subtotal`, `frete`, `valor_total`, `status_pedido`, `status_pagamento`) VALUES
-(1, 1, '2023-03-21 16:37:45', '00148', '45.98', '5.00', '50.98', 'A caminho', 'aprovado'),
+(1, 1, '2023-03-21 16:37:45', '00148', '45.98', '5.00', '50.98', 'Recusado', 'aprovado'),
 (2, 1, '2023-03-21 16:39:40', '00148', '65.97', '5.00', '70.97', 'Em Preparação', 'aprovado'),
 (3, 1, '2023-03-21 18:23:13', '00148', '61.96', '5.00', '66.96', 'A caminho', 'aprovado'),
-(4, 1, '2021-03-23 14:30:00', '00148', '29.99', '5.00', '34.99', 'A caminho', 'aprovado'),
+(4, 1, '2021-03-23 14:30:00', '00148', '29.99', '5.00', '34.99', 'Recusado', 'aprovado'),
 (5, 1, '2023-03-21 14:31:00', '00148', '5.00', '5.00', '10.00', 'A caminho', 'aprovado'),
 (6, 1, '2021-03-23 14:33:00', '00148', '5.00', '5.00', '10.00', 'A caminho', 'aprovado'),
 (7, 1, '2021-03-23 14:37:00', '00148', '9.99', '5.00', '14.99', 'Em Preparação', 'aprovado'),
@@ -432,7 +468,28 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_ped
 (127, 1, '2023-03-27 15:50:07', '1 20230327155007', '15.99', '5.00', '20.99', 'pendente', 'approved'),
 (128, 1, '2023-03-27 15:55:37', '1 20230327155537', '15.99', '5.00', '20.99', 'pendente', 'rejected'),
 (129, 1, '2023-03-27 16:04:16', '1 20230327160416', '6.00', '5.00', '11.00', 'pendente', 'approved'),
-(130, 1, '2023-03-27 16:33:03', '1 20230327163303', '6.00', '5.00', '11.00', 'pendente', 'pendente');
+(130, 1, '2023-03-27 16:33:03', '1 20230327163303', '6.00', '5.00', '11.00', 'pendente', 'pendente'),
+(131, 1, '2023-03-27 16:56:46', '1 20230327165646', '22.50', '5.00', '27.50', 'Finalizado', 'approved'),
+(132, 1, '2023-03-27 17:19:52', '1 20230327171952', '11.50', '5.00', '16.50', 'pendente', 'pendente'),
+(133, 1, '2023-03-27 17:21:13', '1 20230327172113', '6.00', '5.00', '11.00', 'pendente', 'approved'),
+(134, 1, '2023-03-27 17:28:41', '1 20230327172841', '7.00', '5.00', '12.00', 'pendente', 'pendente'),
+(135, 1, '2023-03-27 17:37:29', '1 20230327173729', '6.00', '5.00', '11.00', 'pendente', 'pendente'),
+(136, 1, '2023-03-27 17:38:41', '1 20230327173841', '6.00', '5.00', '11.00', 'pendente', 'pendente'),
+(137, 1, '2023-03-28 08:46:37', '1 20230328084637', '0.50', '5.00', '5.50', 'pendente', '401'),
+(138, 1, '2023-03-28 09:16:19', '1 20230328091619', '12.00', '5.00', '17.00', 'pendente', 'pendente'),
+(139, 1, '2023-03-28 09:17:37', '1 20230328091737', '31.98', '5.00', '36.98', 'pendente', 'pendente'),
+(140, 1, '2023-03-28 09:27:38', '1 20230328092738', '7.50', '5.00', '12.50', 'pendente', 'pendente'),
+(141, 1, '2023-03-28 09:32:44', '1 20230328093244', '0.50', '5.00', '5.50', 'pendente', 'approved'),
+(142, 1, '2023-03-28 09:53:59', '1 20230328095359', '6.00', '5.00', '11.00', 'pendente', 'pendente'),
+(143, 1, '2023-03-28 11:10:57', '1 20230328111057', '30.00', '5.00', '35.00', 'Recusado', 'pendente'),
+(144, 1, '2023-03-29 16:43:06', '1 20230329164306', '6.00', '5.00', '11.00', 'Em Preparação', 'pendente'),
+(145, 1, '2023-03-29 16:53:29', '1 20230329165329', '30.00', '5.00', '35.00', 'Recusado', 'pendente'),
+(146, 1, '2023-03-29 16:55:14', '1 20230329165514', '30.00', '5.00', '35.00', 'Finalizado', 'pendente'),
+(147, 1, '2023-03-29 17:36:09', '1 20230329173609', '7.00', '5.00', '12.00', 'Finalizado', 'pendente'),
+(148, 3, '2023-04-03 17:03:41', '3 20230403170341', '27.99', '5.00', '32.99', 'pendente', 'pendente'),
+(149, 1, '2023-04-03 17:18:32', '1 20230403171832', '57.50', '5.00', '62.50', 'pendente', 'pendente'),
+(150, 1, '2023-04-04 15:56:57', '1 20230404155657', '1071.00', '5.00', '1076.00', 'pendente', 'pendente'),
+(151, 1, '2023-04-04 17:52:15', '1_20230404175215', '14.00', '5.00', '19.00', 'pendente', 'pendente');
 
 -- --------------------------------------------------------
 
@@ -447,20 +504,23 @@ CREATE TABLE `produtos` (
   `img_produto` varchar(100) NOT NULL,
   `descricao` varchar(100) NOT NULL,
   `custo_produto` decimal(10,2) DEFAULT NULL,
-  `preco` decimal(10,2) NOT NULL
+  `preco` decimal(10,2) NOT NULL,
+  `status_produto` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`) VALUES
-(1, 1, 'Refrigerante', 'refrigerante.png\n', 'coca cola, 2l', '2.50', '6.00'),
-(2, 1, 'Refrigerante', '\r\nguarana.png', 'guarana kuat, 350ml', '3.50', '5.50'),
-(3, 2, 'DOG ESPECIAL', 'dog.jpg', 'muto bom', '3.50', '15.99'),
-(4, 2, 'DOG top', 'dog.jpg', 'alface,batat palha,2 salsichas', '3.50', '9.99'),
-(5, 1, 'Cerveja corona', 'corona.png', '330ml', '4.00', '7.00'),
-(6, 1, 'Budweiser', 'bud.png', 'Long Neck 330ml', '4.00', '0.50');
+INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`, `status_produto`) VALUES
+(1, 1, 'Refrigerante', 'produtos/refrigerante.png\r\n', 'coca cola, 2l', '2.50', '6.00', 'ativo'),
+(2, 1, 'Refrigerante', '\r\nprodutos/guarana.png', 'guarana kuat, 350ml', '3.50', '5.50', 'ativo'),
+(3, 2, 'DOG ESPECIAL', 'produtos/Dog.png', 'muto bom', '3.50', '15.99', 'ativo'),
+(4, 2, 'DOG top', 'produtos/Dog.png', 'alface,batat palha,2 salsichas', '3.50', '9.99', 'ativo'),
+(5, 1, 'Cerveja corona', 'produtos/corona.png', '330ml', '4.00', '7.00', 'ativo'),
+(6, 1, 'Budweiser', 'produtos/bud.png', 'Long Neck 330ml', '4.00', '0.50', 'ativo'),
+(8, 1, 'Coca-Cola ', 'produtos/refrigerante.jpg', '2lTS', '1.00', '11.00', 'inativo'),
+(9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'inativo');
 
 --
 -- Índices para tabelas despejadas
@@ -532,31 +592,31 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restrições para tabelas despejadas
