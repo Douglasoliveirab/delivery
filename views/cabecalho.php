@@ -32,8 +32,10 @@ if (isset($_SESSION['carrinho'])) {
                 $usuario = ucfirst($usuario);
                 $id_cliente = $_SESSION['id_cliente'];
                 $endereco = $_SESSION['endereco'];
-                echo '<a href="index.php">Inicio</a>';
+                
                 echo '<a href="login/logout.php"><i class="bi bi-box-arrow-left"></i>  Sair </a>';
+                echo '<a href="index.php">Inicio</a>';
+                echo ' <a href="pedidos_cliente.php?id_cliente=' . $id_cliente . '" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>';
                 echo '<a href="login_cliente.html"><i class="bi bi-person"></i>' . $usuario . '</a>';
                 echo ' <a href="#"><i class="bi bi-geo-alt" id="btn-busca"></i>' . $endereco . '</a>';
             } else {
