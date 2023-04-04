@@ -59,6 +59,22 @@ body {
   border: 1px solid lightgrey;
   color: black;
   height: 40px;
+  border:none;
+  border-bottom: 1px solid lightgrey;
+}
+
+
+
+.campospw {
+  margin: 10px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  color: black;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  width: 79%;
 }
 
 .campos::placeholder {

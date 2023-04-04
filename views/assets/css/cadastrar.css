@@ -1,0 +1,144 @@
+body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+  }
+  
+  .topo {
+    background-color: red;
+    width: 100%;
+    display: flex;
+    color: #fff;
+  }
+  
+  .topo a {
+    margin: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .imagem-topo {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 50px;
+  }
+  
+  .container_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: black;
+  }
+  
+  .container_form form {
+    width: 60%;
+    border: 2px solid lightgray;
+    padding: 20px;
+    min-width: 300px;
+  }
+  
+  .titulo_form {
+    color: red;
+    text-align: center;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .campos {
+    margin: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    color: black;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid lightgrey;
+  }
+
+  .campospw {
+    margin: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    color: black;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid lightgrey;
+    width: 79%;
+  }
+  
+  
+  .campos::placeholder {
+    color: grey;
+  }
+  
+  label {
+    color: black;
+  }
+  
+  .links_cd {
+    width: 100%;
+    display: flex;
+    text-align: center;
+  
+    justify-content: center;
+  }
+  
+  .link_item {
+    color: red;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  
+  .btn_envia {
+    width: 80%;
+    color: white;
+    background-color: red;
+    border: 2px solid white;
+    height: 40px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+  }
+  
+  .btn_novo {
+    width: 80%;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    height: 40px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+  }
+  
+  .alinha-botao {
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: center;
+  }
+  
+  #logar{
+    display: none;
+  }
+  

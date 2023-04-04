@@ -38,6 +38,7 @@ if (isset($_SESSION['carrinho'])) {
                 echo ' <a href="#"><i class="bi bi-geo-alt" id="btn-busca"></i>' . $endereco . '</a>';
             } else {
                 echo "<div class='itens'>
+                            <a href='cadastre-se.html'>CADASTRE-SE</a>
                             <a href='login_cliente.html'>LOGIN</a>
                             </div>";
             }

@@ -33,4 +33,5 @@ $stmt->bindParam(':senha', $senha_encriptada);
 $stmt->execute();
 
 echo "Dados cadastrados com sucesso.";
+header("location:  ../login_cliente.html");
 ?>
