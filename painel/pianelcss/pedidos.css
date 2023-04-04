@@ -33,3 +33,29 @@
   .btn-finalizado {
     background-color: darkblue;
   }
+
+  
+  .container {
+    display: flex;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+  }
+  
+  .col {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  @media (max-width: 767px) {
+    .row {
+      flex-direction: column;
+    }
+  }
+  

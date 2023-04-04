@@ -20,7 +20,7 @@ if (isset($_GET['id_categoria']) && is_numeric($_GET['id_categoria'])) {
     
     // Aqui você pode executar sua consulta SQL para buscar os dados da categoria
 } 
-$select = $conexao->prepare("SELECT * FROM produtos WHERE id_categoria = :idCategoria");
+$select = $conexao->prepare("SELECT * FROM produtos WHERE id_categoria = :idCategoria and status_produto = 'ativo'" );
 $select->bindValue(':idCategoria', $idCategoria, PDO::PARAM_INT);
 $select->execute();
 $query = $select->fetchAll();

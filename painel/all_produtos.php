@@ -1,14 +1,45 @@
 <?php
 
-include "master.php";
 include "../.env/conexao.php";
-$select = $conexao->prepare("SELECT * FROM produtos ");
+if (isset($_GET['delete'])) {
+    $id = (int) $_GET['delete'];
+
+    $update_produto = $conexao->prepare("UPDATE produtos SET status_produto = 'inativo' WHERE id_produto = ?");
+    $update_produto->bindParam(1, $id, PDO::PARAM_INT);
+    $update_produto->execute();
+    header("Location: all_produtos.php");
+    exit();
+}
+if (isset($_GET['todos'])) {
+    $select = $conexao->prepare("SELECT * FROM produtos");
+    $select->execute();
+$produtos = $select->fetchAll();
+}
+
+elseif (isset($_GET['ativos'])) {
+$select = $conexao->prepare("SELECT * FROM produtos WHERE  status_produto = 'ativo'");
 $select->execute();
 $produtos = $select->fetchAll();
-
+}else{
+    $select = $conexao->prepare("SELECT * FROM produtos WHERE  status_produto = 'ativo'");
+$select->execute();
+$produtos = $select->fetchAll();
+}
+include "master.php";
 ?>
 
+
+
 <ol class="breadcrumb">
+
+    
+                    <li>
+                    <a href="?todos" class="btn btn-default">Mostrar Todos os Produtos</a>
+                    </li>
+                    <li>
+                      <a href="?ativos" class="btn btn-default">Mostrar Produtos Ativos</a>
+                  </li>
+
                     <li>
                         <a href="/"><i class="fa fa-home"></i> Home</a>
                     </li>
@@ -30,33 +61,35 @@ $produtos = $select->fetchAll();
                                     <thead>
                                         <tr>
                                             <th>imagem</th>
-                                            <th>Categoria</th>
                                             <th>Nome do produto</th>
                                             <th>Descrição</th>
                                             <th>Custo Produto</th>
                                             <th>Preço</th>
+                                            <th>status_produto</th>
                                             <th>Ações</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
                                     
-                                        <?php foreach ($produtos as $produto){
+                                        <?php 
+                               
+                                        foreach ($produtos as $produto){
                                             
                                             echo'<tr style="align-items:center;">
-                                            <td><img src="produtos/'.$produto['img_produto'].'" style="width:50px;height:60px;"></td>
-                                            <td>'.$produto['id_categoria'].'</td> 
+                                            <td><img src="'.$produto['img_produto'].'" style="width:50px;height:60px;"></td>
                                             <td>'.$produto['nome_produto'].'</td>
                                              <td>'.$produto['descricao'].'</td>
                                              <td>'.$produto['custo_produto'].'</td>
                                              <td>'.$produto['preco'].'</td>
+                                             <td>'.$produto['status_produto'].'</td>
                                              <td>
                                                  <button type="button" class="btn btn-primary btn-xs btn-flat">
                                                      Editar
                                                  </button>
-                                                 <button type="button" class="btn btn-danger btn-xs btn-flat">
+                                                 <a href="?delete='.$produto['id_produto'].'" class="btn btn-danger btn-xs btn-flat">
                                                      Excluir
-                                                 </button>
+                                                 </a>
                                              </td>
                                              </tr>';
                                         }

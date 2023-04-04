@@ -128,7 +128,7 @@
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="#"><i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a>
+                        <a href="pedidos_aceitos.php"><i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
@@ -141,7 +141,12 @@
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="#"><i class="fa fa-users"></i> <span>Pedidos Acaminho</span></a>
+                        <a href="pedidos_acaminho.php"><i class="fa fa-users"></i> <span>Pedidos Acaminho</span></a>
+                    </li>
+
+                     <!-- Optionally, you can add icons to the links -->
+                     <li class="active">
+                        <a href="pedidos_finalizados.php"><i class="fa fa-users"></i> <span>Pedidos Finalizados</span></a>
                     </li>
                      <!-- Optionally, you can add icons to the links -->
                      <li class="active">

@@ -12,7 +12,7 @@ $categorias = $select->fetchAll();
                     <li>
                         <a href="/"><i class="fa fa-home"></i> Home</a>
                     </li>
-                    <li class="active">Usuários</li>
+                    <li class="active">Categorias</li>
                 </ol>
             </section>
 

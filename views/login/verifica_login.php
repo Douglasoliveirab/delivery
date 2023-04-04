@@ -1,6 +1,6 @@
 <?php
 if(!isset($_SESSION['usuario'])) {
-	header('Location: ..index.php');
+	header('Location: login_cliente.html');
 	
 }
 ?>
