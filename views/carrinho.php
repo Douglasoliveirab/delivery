@@ -58,7 +58,7 @@ include "cabecalho.php";
             $total = $subtotal + $taxaEntrega;
             $qtd += $quantidade;
             $id_cliente = $_SESSION['id_cliente'];
-            $numero_pedido  = $_SESSION['id_cliente'] ." ".date('YmdHis');
+            $numero_pedido  = $_SESSION['id_cliente'] ."_".date('YmdHis');
             $status_pedido = 'pendente';
             $status_pagamento = 'pendente';
 

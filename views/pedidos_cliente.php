@@ -30,6 +30,10 @@ include "login/verifica_login.php";
                 $select->execute();
                 $pedidos = $select->fetchAll(PDO::FETCH_ASSOC);
 
+                usort($pedidos, function($a, $b) {
+                  return $b['id_pedido'] - $a['id_pedido'];
+                });
+
                 // Loop para imprimir os dados de cada pedido
                echo  '<div class="pedidos-container">';
   
@@ -38,7 +42,7 @@ include "login/verifica_login.php";
               <div class="pedido-card">
                 <div class="pedido-info">
                   <div class="pedido-numero">Pedido #' . $pedido['numero_pedido'] . '</div>
-                  <div class="pedido-datahora">' . $pedido['datahora_pedido'] . '</div>
+                  <div class="pedido-datahora">Horario: ' . $pedido['datahora_pedido'] . '</div>
                   <div class="pedido-pagamento">Pagamento:  ' . $pedido['status_pagamento'] . '</div>
                   <div class="pedido-status">' . $pedido['status_pedido'] . '</div>
                   
