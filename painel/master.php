@@ -132,7 +132,7 @@
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="#"><i class="fa fa-users"></i> <span>Pedidos Recusados</span></a>
+                        <a href="pedidos_recusados.php"><i class="fa fa-users"></i> <span>Pedidos Recusados</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
