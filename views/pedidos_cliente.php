@@ -29,7 +29,8 @@ include "login/verifica_login.php";
                 $select->bindValue(':idCliente', $_SESSION['id_cliente'], PDO::PARAM_INT);
                 $select->execute();
                 $pedidos = $select->fetchAll(PDO::FETCH_ASSOC);
-
+                
+              //ordean da ordem decrescente pelo id
                 usort($pedidos, function($a, $b) {
                   return $b['id_pedido'] - $a['id_pedido'];
                 });
