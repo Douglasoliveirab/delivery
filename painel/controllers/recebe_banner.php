@@ -3,7 +3,7 @@ require_once('../../.env/conexao.php');
 
 // Verifica se é uma imagem válida
 $tipo = $_FILES['banner']['type'];
-if($tipo == 'image/jpeg' || $tipo == 'image/png') {
+if($tipo == 'image/jpeg' || $tipo == 'image/png' && $tipo !== '') {
 
   // Verifica se a pasta "banners" existe, se não existir, cria a pasta
   if (!file_exists("banners")) {

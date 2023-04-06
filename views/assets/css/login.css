@@ -39,10 +39,15 @@ body {
 }
 
 .container_form form {
-  width: 60%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
   border: 2px solid lightgray;
   padding: 20px;
-  min-width: 300px;
+  border-radius: 5px;
 }
 
 .titulo_form {
@@ -53,6 +58,7 @@ body {
 }
 
 .campos {
+ 
   margin: 10px;
   width: 80%;
   border-radius: 5px;
@@ -75,6 +81,7 @@ body {
   border: none;
   border-bottom: 1px solid lightgrey;
   width: 79%;
+  
 }
 
 .campos::placeholder {
@@ -133,6 +140,7 @@ label {
 }
 
 .alinha-botao {
+  margin-top: 20px;
   display: flex;
   margin-left: 10%;
   margin-right: 10%;

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "verifica_adm.php";
 include "../.env/conexao.php";
 ?>
 <!DOCTYPE html>

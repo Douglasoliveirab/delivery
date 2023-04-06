@@ -85,9 +85,14 @@ CREATE TABLE itens_pedido (
 
 CREATE TABLE administrador (
   id_administrador INT(11) NOT NULL AUTO_INCREMENT,
-  nome_usuario VARCHAR(50) NOT NULL,
-  senha_usuario VARCHAR(50) NOT NULL,
-  privilegios VARCHAR(50) NOT NULL,
+  nome_usuario VARCHAR(30) NOT NULL,
+  sobrenome VARCHAR(40) NOT NULL,
+  senha VARCHAR(255) NOT NULL,
+  cpf VARCHAR(14) NOT NULL,
+  email VARCHAR(35) NOT NULL,
+  endereco VARCHAR(50) NOT NULL,
+  telefone VARCHAR(15) NOT NULL,
+  previlegios VARCHAR(50) NOT NULL,
   criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   atualizado_em TIMESTAMP DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id_administrador)

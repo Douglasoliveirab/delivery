@@ -24,8 +24,8 @@ if($tipo == 'image/jpeg' || $tipo == 'image/png') {
   $custo_produto = $_POST['custo_produto'];
   $preco = $_POST['preco'];
   $id_categoria = $_POST['id_categoria'];
-
-  $sql = "INSERT INTO produtos (nome_produto, img_produto, descricao, custo_produto, preco, id_categoria) VALUES (?, ?, ?, ?, ?, ?)";
+  $status_produto = $_POST['status_produto'];
+  $sql = "INSERT INTO produtos (nome_produto, img_produto, descricao, custo_produto, preco, id_categoria,status_produto) VALUES (?, ?, ?, ?, ?, ?,?)";
   $stmt = $conexao->prepare($sql);
   $stmt->bindParam(1, $nome_produto);
   $stmt->bindParam(2, $img_produto);
@@ -33,6 +33,7 @@ if($tipo == 'image/jpeg' || $tipo == 'image/png') {
   $stmt->bindParam(4, $custo_produto);
   $stmt->bindParam(5, $preco);
   $stmt->bindParam(6, $id_categoria);
+  $stmt->bindParam(7, $status_produto);
   $stmt->execute();
 
   

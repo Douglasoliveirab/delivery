@@ -1,3 +1,9 @@
+<?php
+session_start();
+include "verifica_adm.php";
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +17,10 @@
     <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css" />
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css" />
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="pianelcss/form_banner.css">
+    <script src="js/newbanner.js"></script>
+    <script src="js/newproduto.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -41,7 +51,7 @@
                                 <!-- The user image in the navbar-->
                                 <img src="dist/img/avatar5.png" class="user-image" alt="User Image" />
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">Nome do administrador</span>
+                                <span class="hidden-xs"><?php echo $_SESSION['adm']?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
@@ -74,7 +84,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sair</a>
+                                        <a href="../views/login/logout_adm.php" class="btn btn-default btn-flat">logout</a>
                                     </div>
                                 </li>
                             </ul>
@@ -93,7 +103,7 @@
                         <img src="dist/img/avatar5.png" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
-                        <p>Nome do administrador</p>
+                        <p><?php echo $_SESSION['adm']?></p>
                         <!-- Status -->
                     </div>
                 </div>
@@ -128,17 +138,13 @@
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="pedidos_aceitos.php"><i class="fa fa-users"></i> <span>Pedidos Aceitos</span></a>
+                        <a href="pedidos_aceitos.php"><i class="fa fa-users"></i> <span>Pedidos em preparação</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
                         <a href="pedidos_recusados.php"><i class="fa fa-users"></i> <span>Pedidos Recusados</span></a>
                     </li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li class="active">
-                        <a href="#"><i class="fa fa-users"></i>
-                            <span>Pedidos em Preparação</span></a>
-                    </li>
+                
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
                         <a href="pedidos_acaminho.php"><i class="fa fa-users"></i> <span>Pedidos Acaminho</span></a>
@@ -150,7 +156,7 @@
                     </li>
                      <!-- Optionally, you can add icons to the links -->
                      <li class="active">
-                        <a href="#"><i class="fa fa-users"></i> <span>Sair</span></a>
+                        <a href="../views/login/logout_adm.php"><i class="fa fa-users"></i> <span>Sair</span></a>
                     </li>
                 </ul>
                 <!-- /.sidebar-menu -->

@@ -125,7 +125,7 @@ session_start();
                     <ul>
                         <li><a href="#">Cadastre seu Comércio</a></li>
                         <li><a href="#">Como funciona</a></li>
-                        <li><a href="#">Painel para parceiros</a></li>
+                        <li><a href="../painel/">Painel para parceiros</a></li>
                         <li><a href="#">Trabalhe conosco</a></li>
                     </ul>
                 </div>
