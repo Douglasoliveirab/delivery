@@ -6,6 +6,15 @@ CREATE TABLE categorias_app (
   PRIMARY KEY (id_categoria_app)
 );
 
+CREATE TABLE banners_app (
+  id_banner_app INT(11) NOT NULL AUTO_INCREMENT,
+  img_banner_app VARCHAR(50) NOT NULL,
+  caminho_banner_app VARCHAR(100) NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  atualizado_em TIMESTAMP DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id_banner_app)
+);
+
 CREATE TABLE admin (
    id_admin INT(11) NOT NULL AUTO_INCREMENT,
    nome_admin VARCHAR(50) NOT NULL,
