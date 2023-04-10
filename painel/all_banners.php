@@ -10,9 +10,14 @@ $banners = $select->fetchAll();
 
 <ol class="breadcrumb">
 
-    <li>
-        <button id="btn-cadastrar-banner">Cadastrar novo banner</button>
-    </li>
+<?php 
+if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
+  echo '<li>
+  <button id="btn-cadastrar-banner">Cadastrar banner</button>
+</li>
+';
+}
+?>
 
 </ol>
 </section>

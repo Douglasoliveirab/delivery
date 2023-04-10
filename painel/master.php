@@ -21,6 +21,7 @@ include "verifica_adm.php";
     <link rel="stylesheet" href="pianelcss/form_banner.css">
     <script src="js/newbanner.js"></script>
     <script src="js/newproduto.js"></script>
+    <script src="js/newadm.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -51,7 +52,7 @@ include "verifica_adm.php";
                                 <!-- The user image in the navbar-->
                                 <img src="dist/img/avatar5.png" class="user-image" alt="User Image" />
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs"><?php echo $_SESSION['adm']?></span>
+                                <span class="hidden-xs"><?php echo $_SESSION['previlegios']?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
@@ -118,7 +119,7 @@ include "verifica_adm.php";
 
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="#"><i class="fa fa-users"></i> <span>Administradores</span></a>
+                        <a href="adm.php"><i class="fa fa-users"></i> <span>Administradores</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">

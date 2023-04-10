@@ -29,10 +29,13 @@ include "master.php";
 
 
 <ol class="breadcrumb">
-
-    <li>
-        <button id="btn-cadastrar-banner">Cadastrar novo Produto</button>
-    </li>
+<?php
+if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
+  echo  '<li>
+        <button id="btn-cadastrar-banner">Cadastrar Produto</button>
+    </li>';
+}
+    ?>
     <li>
         <a href="?todos" class="btn btn-default">Mostrar Todos os Produtos</a>
     </li>
