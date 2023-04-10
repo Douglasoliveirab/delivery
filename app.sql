@@ -10,11 +10,11 @@ CREATE TABLE admin (
    id_admin INT(11) NOT NULL AUTO_INCREMENT,
    nome_admin VARCHAR(50) NOT NULL,
    sobrenome_admin VARCHAR(50) NOT NULL,
-   CPF INT(14) NOT NULL,
-   ENDERECO_ADMIN VARCHAR(80) NOT NULL,
-   TELEFONE VARCHAR(20) NOT NULL,
-   EMAIL VARCHAR(70) NOT NULL,
-   SENHA VARCHAR(20) NOT NULL,
+   cpf_admin VARCHAR(14) NOT NULL,
+   endereco_admin VARCHAR(80) NOT NULL,
+   telefone VARCHAR(20) NOT NULL,
+   email VARCHAR(70) NOT NULL,
+   senha VARCHAR(20) NOT NULL,
    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    PRIMARY KEY (id_admin)
@@ -24,7 +24,7 @@ CREATE TABLE clientes (
   id_cliente INT(11) NOT NULL AUTO_INCREMENT,
   nome_cliente VARCHAR(50) NOT NULL,
   sobrenome_cliente VARCHAR(50) NOT NULL,
-  cpf_cliente CHAR(14) NOT NULL,
+  cpf_cliente VARCHAR(14) NOT NULL,
   email VARCHAR(50) NOT NULL,
   telefone VARCHAR(20) NOT NULL,
   endereco VARCHAR(100) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE clientes (
 
 CREATE TABLE formas_pagamento (
   id_forma_pagamento INT(11) NOT NULL AUTO_INCREMENT,
-  forma_pagamento VARCHAR(50) NOT NULL,
+  forma_pagamento VARCHAR(20) NOT NULL,
   data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id_forma_pagamento)
@@ -47,11 +47,10 @@ CREATE TABLE lojas (
   id_loja INT(11) NOT NULL AUTO_INCREMENT,
   nome_loja VARCHAR(50) NOT NULL,
   endereco_loja VARCHAR(100) NOT NULL,
-  descricao VARCHAR(100) NOT NULL,
+  descricao TEXT NOT NULL,
   foto_perfil VARCHAR(100) NOT NULL,
   longitude DECIMAL(10,8) NOT NULL,
   latitude DECIMAL(10,8) NOT NULL,
-  horario_funcionamento VARCHAR(50) NOT NULL,
   status_loja VARCHAR(10) NOT NULL,
   aberta_fechada VARCHAR(10) NOT NULL,
   data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -66,14 +65,14 @@ CREATE TABLE lojas (
 
 CREATE TABLE horario_funcionamento (
   id_horario INT PRIMARY KEY  AUTO_INCREMENT,
-  id_loja INT,
+  id_loja INT(11),
   dia_inicio VARCHAR(20),
   dia_final VARCHAR(20),
   horario_abertura TIME,
   horario_fechamento TIME,
-  observacoes TEXT,
-   data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-   data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  observacoes varchar(70),
+  data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (id_loja) REFERENCES lojas(id_loja)
 );
 
@@ -93,11 +92,11 @@ CREATE TABLE motoboys (
 
 CREATE TABLE enderecos (
   id_endereco INT(11) NOT NULL AUTO_INCREMENT,
-  CEP VARCHAR (10) NOT NULL,
-  CIDADE VARCHAR(20) NOT NULL,
-  BAIRRO VARCHAR (20) NOT NULL,
-  ENDERECO VARCHAR (35) NOT NULL,
-  COMPLEMENTO VARCHAR (20),
+  cep VARCHAR (10) NOT NULL,
+  cidade VARCHAR(20) NOT NULL,
+  bairro VARCHAR (20) NOT NULL,
+  endereco VARCHAR (35) NOT NULL,
+  complemento VARCHAR (20),
   data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (id_endereco),
@@ -138,7 +137,7 @@ CREATE TABLE lojas_formas_pagamento (
   id_forma_pagamento INT(11) NOT NULL,
   data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id),
+  PRIMARY KEY (id_lojas_forma_pagamento),
   FOREIGN KEY (id_loja) REFERENCES lojas(id_loja),
   FOREIGN KEY (id_forma_pagamento) REFERENCES formas_pagamento(id_forma_pagamento)
 );
