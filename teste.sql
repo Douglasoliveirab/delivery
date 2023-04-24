@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 04/04/2023 às 22:59
+-- Tempo de geração: 24/04/2023 às 13:14
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -29,10 +29,28 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `administrador` (
   `id_administrador` int(11) NOT NULL,
-  `nome_usuario` varchar(50) NOT NULL,
-  `senha_usuario` varchar(50) NOT NULL,
-  `privilegios` varchar(50) NOT NULL
+  `nome_usuario` varchar(30) NOT NULL,
+  `sobrenome` varchar(40) NOT NULL,
+  `senha` varchar(255) DEFAULT NULL,
+  `cpf` varchar(14) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `endereco` varchar(50) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `previlegios` varchar(255) DEFAULT NULL,
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
+  `atualizado_em` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `administrador`
+--
+
+INSERT INTO `administrador` (`id_administrador`, `nome_usuario`, `sobrenome`, `senha`, `cpf`, `email`, `endereco`, `telefone`, `previlegios`, `criado_em`, `atualizado_em`) VALUES
+(1, 'dono', 'desta loja', '$2y$10$/lbIxGTEAju30ocLSjZrjuYWRUWnxZCMG2q2EustvZHz.qOMdKlWC', '438.288.558-20', 'dono@gmail.com', 'rua das hostencias 153 jd rosas', '(11) 99342-6890', 'admin', '2023-04-06 18:54:12', '0000-00-00 00:00:00'),
+(2, 'dono2', 'teste', '$2y$10$tfX06/VkNReTA8cAh.wqNOd2tEW3YskxIeQvpNGsab4SOEM8MRC5e', '438.288.558-20', 'teste@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-04-06 19:04:10', '0000-00-00 00:00:00'),
+(3, 'dono2', 'teste', '$2y$10$sdsHVTH9cmrx5FodCuovGewMmURY0XJwFkR/won.2mA7deICg5wG.', '438.288.558-20', 'teste2@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-04-06 19:05:14', '0000-00-00 00:00:00'),
+(22, 'teste', 'oliveira', '$2y$10$hP0fC3wOmhmpcDHxkkqaQ.YGr4kuDu1v9CQKxf2ePgaF3iZ6e1xNe', '438.288.558-21', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'usuario', '2023-04-10 00:51:02', '0000-00-00 00:00:00'),
+(23, 'teste', 'ajax', '$2y$10$yf6hJ7VRpBPuYz5FgRL63eJmIdbQYsXgH1ARNllDpPdhB88HbzzlW', '438.288.558-22', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'admin', '2023-04-10 00:55:57', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,7 +121,8 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`id_cliente`, `nome`, `sobrenome`, `cpf`, `email`, `telefone`, `endereco`, `senha`) VALUES
 (1, 'douglas', 'oliveira', '438.288.558-20', 'dgsoliverfamilia@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$29SPcE9j71B9Nxb3AsfpbeqO4hZyY/IkxTdTBUpKjukGGGuB5KFYm'),
 (2, 'cliente t', 'este', '564.444.444-44', 'dgs@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$SS9jQlmL3.YkAxdcR7bfv.BMHmIREpbO8MJy2Wxf6ZlyKz25/amNu'),
-(3, 'reinaldo', 'ribeiro', '564.444.444-44', 'reinaldo@gmail.com', '(11) 11111-1111', '140 Centro Francisco morato', '$2y$10$SoPbtogWb91YDYY2ypdHNuypjzOP3n9ITtGv99yj8xfNmPzIHQrWa');
+(3, 'reinaldo', 'ribeiro', '564.444.444-44', 'reinaldo@gmail.com', '(11) 11111-1111', '140 Centro Francisco morato', '$2y$10$SoPbtogWb91YDYY2ypdHNuypjzOP3n9ITtGv99yj8xfNmPzIHQrWa'),
+(4, 'dono2', 'da silva', '438.288.558-20', 'teste@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$Qy50fKlGEfbSBq9T5B7Uj.JZFpRfJ9TjZF6miXFqXd3cBjrUoB0sy');
 
 -- --------------------------------------------------------
 
@@ -350,7 +369,13 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (229, 149, 2, 3),
 (230, 149, 5, 5),
 (231, 150, 5, 153),
-(232, 151, 5, 2);
+(232, 151, 5, 2),
+(233, 152, 5, 1),
+(234, 152, 2, 1),
+(235, 152, 3, 2),
+(236, 153, 2, 1),
+(237, 153, 5, 1),
+(238, 153, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -489,7 +514,9 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_ped
 (148, 3, '2023-04-03 17:03:41', '3 20230403170341', '27.99', '5.00', '32.99', 'pendente', 'pendente'),
 (149, 1, '2023-04-03 17:18:32', '1 20230403171832', '57.50', '5.00', '62.50', 'pendente', 'pendente'),
 (150, 1, '2023-04-04 15:56:57', '1 20230404155657', '1071.00', '5.00', '1076.00', 'pendente', 'pendente'),
-(151, 1, '2023-04-04 17:52:15', '1_20230404175215', '14.00', '5.00', '19.00', 'pendente', 'pendente');
+(151, 1, '2023-04-04 17:52:15', '1_20230404175215', '14.00', '5.00', '19.00', 'pendente', 'pendente'),
+(152, 1, '2023-04-06 17:48:18', '1_20230406174818', '44.48', '5.00', '49.48', 'pendente', 'approved'),
+(153, 1, '2023-04-06 17:50:17', '1_20230406175017', '16.50', '5.00', '21.50', 'A caminho', 'pendente');
 
 -- --------------------------------------------------------
 
@@ -513,14 +540,18 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`, `status_produto`) VALUES
-(1, 1, 'Refrigerante', 'produtos/refrigerante.png\r\n', 'coca cola, 2l', '2.50', '6.00', 'ativo'),
+(1, 1, 'Refrigerante', 'produtos/refrigerante.png\r\n', 'coca cola, 2l', '2.50', '6.00', 'inativo'),
 (2, 1, 'Refrigerante', '\r\nprodutos/guarana.png', 'guarana kuat, 350ml', '3.50', '5.50', 'ativo'),
 (3, 2, 'DOG ESPECIAL', 'produtos/Dog.png', 'muto bom', '3.50', '15.99', 'ativo'),
 (4, 2, 'DOG top', 'produtos/Dog.png', 'alface,batat palha,2 salsichas', '3.50', '9.99', 'ativo'),
 (5, 1, 'Cerveja corona', 'produtos/corona.png', '330ml', '4.00', '7.00', 'ativo'),
 (6, 1, 'Budweiser', 'produtos/bud.png', 'Long Neck 330ml', '4.00', '0.50', 'ativo'),
 (8, 1, 'Coca-Cola ', 'produtos/refrigerante.jpg', '2lTS', '1.00', '11.00', 'inativo'),
-(9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'inativo');
+(9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'inativo'),
+(10, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '350 ml', '3.50', '4.00', 'ativo'),
+(11, 1, 'Coca-Cola lata', 'produtos/coca-lata.png', '350 ml ', '3.50', '5.00', 'ativo'),
+(12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '230 ml', '3.00', '5.50', 'inativo'),
+(13, 1, 'coca cola', 'produtos/coca-lata.png', '150ml', '2.00', '4.90', 'ativo');
 
 --
 -- Índices para tabelas despejadas
@@ -580,13 +611,13 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
@@ -598,25 +629,25 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restrições para tabelas despejadas
