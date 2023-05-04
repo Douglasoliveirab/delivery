@@ -17,8 +17,12 @@ include "verifica_adm.php";
     <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css" />
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css" />
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="pianelcss/form_banner.css">
+    <link rel="stylesheet" href="./pianelcss/toggle.css">
     <script src="js/newbanner.js"></script>
     <script src="js/newproduto.js"></script>
     <script src="js/newadm.js"></script>
@@ -49,6 +53,8 @@ include "verifica_adm.php";
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                           
+
                                 <!-- The user image in the navbar-->
                                 <img src="dist/img/avatar5.png" class="user-image" alt="User Image" />
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
@@ -119,45 +125,49 @@ include "verifica_adm.php";
 
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="adm.php"><i class="fa fa-users"></i> <span>Administradores</span></a>
+                        <a href="adm.php"><i class="fa fa-user-circle"></i> <span>Administradores</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="all_produtos.php"><i class="fa fa-users"></i> <span>Produtos</span></a>
+                        <a href="all_produtos.php"><i class="fa fa-shopping-bag"></i> <span>Produtos</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="all_categorias.php"><i class="fa fa-users"></i> <span>Categorias</span></a>
+                        <a href="all_categorias.php"><i class="fa fa-list"></i> <span>Categorias</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="all_banners.php"><i class="fa fa-users"></i> <span>Banners</span></a>
+                        <a href="all_banners.php"><i class="fa fa-image"></i> <span>Banners</span></a>
                     </li>
                      <!-- Optionally, you can add icons to the links -->
                      <li class="active">
-                        <a href="pedidos.php"><i class="fa fa-users"></i> <span>Pedidos</span></a>
+                        <a href="pedidos.php"><i class="fa fa-shopping-cart"></i> <span>Pedidos</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="pedidos_aceitos.php"><i class="fa fa-users"></i> <span>Pedidos em preparação</span></a>
+                        <a href="pedidos_aceitos.php"><i class="fa fa-clock-o"></i> <span>Pedidos em preparação</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="pedidos_recusados.php"><i class="fa fa-users"></i> <span>Pedidos Recusados</span></a>
+                        <a href="pedidos_recusados.php"><i class="fa fa-ban"></i> <span>Pedidos Recusados</span></a>
                     </li>
                 
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="pedidos_acaminho.php"><i class="fa fa-users"></i> <span>Pedidos Acaminho</span></a>
+                        <a href="pedidos_acaminho.php"><i class="fa fa-motorcycle"></i> <span>Pedidos Acaminho</span></a>
                     </li>
 
                      <!-- Optionally, you can add icons to the links -->
                      <li class="active">
-                        <a href="pedidos_finalizados.php"><i class="fa fa-users"></i> <span>Pedidos Finalizados</span></a>
+                        <a href="pedidos_finalizados.php"><i class="fa fa-check"></i> <span>Pedidos Finalizados</span></a>
                     </li>
                      <!-- Optionally, you can add icons to the links -->
                      <li class="active">
-                        <a href="../views/login/logout_adm.php"><i class="fa fa-users"></i> <span>Sair</span></a>
+                        <a href="../views/login/logout_adm.php"><i class="fa fa-arrow-left"></i><span>Sair</span></a>
+                    </li>
+
+                    <li class="active" style="padding:5px;color:white;font-size:15px;">
+                    <span>Status da Loja</span> <button type="button" style="height:30px;width:110px; align-items:center"class="btn btn-danger" id="toggle-btn">Loja Fechada</button>
                     </li>
                 </ul>
                 <!-- /.sidebar-menu -->
@@ -174,4 +184,10 @@ include "verifica_adm.php";
                     <small>Gerenciamento do sistema</small>
                 </h1>
 
-
+                <script>
+  $('#toggle-btn').click(function() {
+    $(this).toggleClass('btn-danger btn-success').text(function(i, text) {
+      return text === "Loja Fechada" ? "Loja Aberta" : "Loja Fechada";
+    });
+  });
+</script>
