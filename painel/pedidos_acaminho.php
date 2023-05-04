@@ -38,40 +38,54 @@ include "../.env/conexao.php";
   usort($pedidos, function($a, $b) {
     return $b['id_pedido'] - $a['id_pedido'];
   });
-  
+  echo  '<div class="pedidos-container">';
   foreach ($pedidos as  $pedido) {
     # code...
     // Imprime os dados do pedido e do cliente
-    echo "ID do Pedido: " . $pedido['id_pedido'] . "<br>
-    Data/Hora do Pedido: " . $pedido['datahora_pedido'] . "<br>
-    Número do Pedido: " . $pedido['numero_pedido'] . "<br>
-    itens do pedido " . $pedido['produtos_e_quantidades'] . "<br>
-     Subtotal: R$ " . $pedido['subtotal'] . "<br>
-    Frete: R$ " . $pedido['frete'] . "<br>
-    Valor Total: R$ " . $pedido['valor_total'] . "<br>
-    Status Pedido: " . $pedido['status_pedido'] . "<br>
-    Status Pagamento: " . $pedido['status_pagamento'] . "<br>
-    <br>
+    // Imprime os dados do pedido e do cliente
+echo '<div class="pedido-wrapper">
+<div class="pedido-card">
+  <div class="pedido-info">
+    <div class="pedido-numero">Pedido #' . $pedido['numero_pedido'] . '</div>
+    <div class="pedido-datahora">Horario: ' . $pedido['datahora_pedido'] . '</div>
+    <div class="pedido-pagamento">Pagamento:  ' . $pedido['status_pagamento'] . '</div>
+    <div class="pedido-status">' . $pedido['status_pedido'] . '</div>
+  </div>
+  <div class="pedido-detalhes">
+    <div class="pedido-produtos">';
+      $produtos = explode(', ', $pedido['produtos_e_quantidades']);
+      foreach ($produtos as $produto) {
+        echo $produto . '<br>';
+      }
+    echo '</div>
+    <div class="pedido-valor">Valor Total: R$ ' . $pedido['valor_total'] . '</div>
+   
+    <div class="dados-cliente">
     Dados do Cliente:<br>
-    Nome: " . $pedido['nome'] . " " . $pedido['sobrenome'] . "<br>
-    E-mail: " . $pedido['email'] . "<br>
-    Telefone: " . $pedido['telefone'] . "<br>
-    Endereço: " . $pedido['endereco'] . "<br>";
+    <div>Nome: ' . $pedido['nome'] . ' ' . $pedido['sobrenome'] . '</div>
+    <div>E-mail: ' . $pedido['email'] . '</div>
+    <div>Telefone: ' . $pedido['telefone'] . '</div>
+    <div>Endereço: ' . $pedido['endereco'] . '</div>
+   </div>
+    </div>';
 
     // Cria um botão para alterar o status do pedido para "Em preparação"
     echo "<br>";
-    echo "<form method='POST' action='atualiza_status.php'>";
+    echo "<form method='POST' action='atualiza_status.php' style='display: flex;'>";
     echo "<input type='hidden' name='id_pedido' value='" . $pedido['id_pedido'] . "'>";
     if ($pedido['status_pedido'] === "A caminho") {
         echo "<button type='submit' name='alterar_status'class='btn btn-recusado' value='recusado'>Recusar Pedido</button>";
         echo "<button type='submit' name='alterar_status' class='btn btn-finalizado' value='finalizado'>Finalizado</button>";
       }
 
-    echo "</form>";
+      echo "</form>";
+      echo '</div>
+    </div>';
   }
 
  
   ?>
+  </div>
 </body>
 
 </html>
