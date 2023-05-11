@@ -63,9 +63,8 @@ body {
   .button-cart {
     display: inline-block;
     padding: 10px;
-    background-color: #333;
-    color: #fff;
-    font-weight: bold;
+    color: red;
+    
     text-decoration: none;
     border-radius: 5px;
     margin-right: 5px;
@@ -74,13 +73,14 @@ body {
 
 .button-continuar{
     display: inline-block;
+    width: 150px;
     padding: 10px;
     background-color: green;
     color: #fff;
+    border: none;
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
-    margin-left: 5px;
     margin-bottom: 10px;
     border:bone;
 }
@@ -88,9 +88,7 @@ body {
 .button-limpar{
     display: inline-block;
     padding: 10px;
-    background-color: red;
-    color: #fff;
-    font-weight: bold;
+    color: red;
     text-decoration: none;
     border-radius: 5px;
     margin-left: 5px;
@@ -102,5 +100,96 @@ body {
   color: red;
   
 }
+.botao {
+  border: 1px solid red;
+	display: inline-block;
+	border-radius: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
 
-  
+.botao label:hover{
+  color: #fff;
+}
+
+.botao input[type="radio"] {
+	display: none;
+}
+
+.botao label {
+	font-size: 18px;
+	font-weight: bold;
+	color: red;
+	display: inline-block;
+  border-radius: 10px;
+	padding: 10px 10px;
+}
+
+.botao:hover {
+	background-color: red;
+	color: #fff;
+  cursor: pointer;
+}
+
+#botao1:checked + label {
+	background-color: red;
+	color: #fff;
+}
+
+#botao2:checked + label {
+	background-color: red;
+	color: #fff;
+}
+
+.payment-options {
+  display: flex;
+  margin-bottom: 5px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+}
+
+.option-input {
+  display: none;
+}
+
+.option-label {
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  color: #333;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.option-input:checked + .option-label {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+#payment{
+  display: none;
+}
+
+.pagamento-entrega{
+  display: none;
+  padding: 10px;
+}
+.option-label:hover {
+  background-color: #e0e0e0;
+}
+.btn-payment{
+  display: none;
+  border:none;
+  color:red;
+ font-weight: bold;
+ font-size: 15px;
+}

@@ -10,6 +10,8 @@ include "cabecalho.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="assets/css/carrinho.css">
     <title>Document</title>
 </head>
@@ -18,8 +20,8 @@ include "cabecalho.php";
 
     <?php
 
-    
-   
+
+
     date_default_timezone_set('America/Sao_Paulo');
     $date = new DateTime();
     $date_time = $date->format('Y-m-d H:i:s');
@@ -58,9 +60,10 @@ include "cabecalho.php";
             $total = $subtotal + $taxaEntrega;
             $qtd += $quantidade;
             $id_cliente = $_SESSION['id_cliente'];
-            $numero_pedido  = $_SESSION['id_cliente'] ."_".date('YmdHis');
+            $numero_pedido  = $_SESSION['id_cliente'] . "_" . date('YmdHis');
             $status_pedido = 'pendente';
             $status_pagamento = 'pendente';
+            
 
 
             echo "<tr>
@@ -89,28 +92,98 @@ include "cabecalho.php";
                 'frete' => $taxaEntrega,
                 'valor_total' => $total,
                 'status_pedido' => $status_pedido,
-                'status_pagamento' => $status_pagamento
+                'status_pagamento' => $status_pagamento,
+
 
             )
         );
 
+        echo "<div class='botao'>
+        <input type='radio' id='botao1' name='tipo_entrega' value='entrega'>
+        <label for='botao1'>Entrega</label>
+      </div>
       
-
-        echo "<p>Subtotal: R$ " . number_format($subtotal, 2, ",", ".") . "</p>
+      <div class='botao'>
+        <input type='radio' id='botao2' name='tipo_entrega' value='retirada'>
+        <label for='botao2'>Retirada</label>
+      </div>
+        <p>Subtotal: R$ " . number_format($subtotal, 2, ",", ".") . "</p>
                     <p>Taxa de entrega: R$ " . number_format($taxaEntrega, 2, ",", ".") . "</p>
                     <p>Total: R$ " . number_format($total, 2, ",", ".") . "</p>
                 <div class='container-btn'>
                     
-                    <button type='submit' class='button-continuar'>Finalizar Pedido</button>
-                    <a href='index.php' class='button-cart'>Continuar comprando</a>
+                    
+                    <a href='index.php' class='button-cart'>Adicionar mais itens</a>
                 </div>
                 </table>
                 <a href='../controllers/limpar_carrinho.php' class='button-limpar'>Limpar carrinho</a>
+                
                 </div>
-                </form>";
+                
+                ";
     }
     ?>
+<div class="container" id="payment" display="none !important">
+    <div class="modal">
+        <div class="modal-content">
+            <div class="payment-options">
+                <div class="payment-option">
+                    <input type="radio" name="pagamento" value="entrega" id="pagamento-entrega" class="option-input radio">
+                    <label for="pagamento-entrega" class="option-label">Pagar na Entrega</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="pagamento" value="online" id="pagamento-online" class="option-input radio">
+                    <label for="pagamento-online" class="option-label">Pagamento Online</label>
+                </div>
+            </div>
+            <div class="pagamento-entrega" style="display:none;">
+        <label for="select-pagamento-online">Escolha um método:</label>
+        <select id="select-pagamento-online">
+            <option value="cartao-credito"> Cartão de Crédito </option>
+            <option value="cartao-debito"> Cartão de Débito </option>
+            <option value="dinheiro"> dinheiro </option>
+            <option value="pix"> Pix </option>
+        </select>
+    </div>
+            <button type="submit" id="confirmar-btn" class="btn-payment">Comfirmar pedido</button>
+        </div>
+    </div>
 
+    
+</div>
+</form>
+<script>
+$(document).ready(function() {
+    $("#modal-btn").click(function() {
+        $(".modal").css("display", "block");
+    });
+
+    // Adiciona evento change para os inputs radio
+    $("input[name='pagamento']").change(function() {
+        var pagamento = $("input[name='pagamento']:checked").val();
+
+        if (pagamento === "entrega") {
+            $(".pagamento-entrega").show();
+            $(".btn-payment").show();
+
+        }
+    });
+
+    $("#pagamento-online").click(function() {
+        $(".btn-payment").show();
+         $(".pagamento-entrega").hide();
+    });
+
+    $("#botao1").click(function() {
+        $("#payment").show();
+        
+    });
+    $("#botao2").click(function() {
+        $("#payment").show();
+        
+    });
+});
+</script>
 </body>
 
 </html>
