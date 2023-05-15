@@ -2,6 +2,18 @@
 session_start();
 include "../controllers/add_carrinho.php";
 include "cabecalho.php";
+
+if (isset($_SESSION['frete']) ) {
+    include 'check_taxa_entrega.php';
+    $taxaEntrega = $_SESSION['frete'];
+    $metodoEntrega = $_SESSION['tipo_entrega'];
+}else{
+    $taxaEntrega = 5.00;
+    $metodoEntrega = 'entrega';
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +41,7 @@ include "cabecalho.php";
     // Exibir a data e hora de Brasília
     $subtotal = 0;
     $total = 0;
-    $taxaEntrega = 5.00;
+
     $qtd = 0;
 
     if (count($_SESSION['carrinho']) == 0) {
@@ -40,6 +52,20 @@ include "cabecalho.php";
     } else {
 
         echo "<div class='container'>
+        <div style='display: flex; gap: 10px;'> 
+          <form method='post'>
+            <div class='botao'>
+              <input type='submit' id='botao1' name='tipo_entrega' value='entrega'>
+              <label for='botao1'>Entrega</label>
+            </div>
+          </form>  
+          <form method='post'>
+            <div class='botao'>
+              <input type='submit' id='botao2' name='tipo_entrega' value='retirada'>
+              <label for='botao2'>Retirada</label>
+            </div>
+          </form>
+        </div>
         <form method='post' action='finalizar_pedido.php'>
                 <table>
                  <tr>
@@ -63,7 +89,7 @@ include "cabecalho.php";
             $numero_pedido  = $_SESSION['id_cliente'] . "_" . date('YmdHis');
             $status_pedido = 'pendente';
             $status_pagamento = 'pendente';
-            
+
 
 
             echo "<tr>
@@ -90,6 +116,7 @@ include "cabecalho.php";
                 'numero_pedido' => $numero_pedido,
                 'subtotal' => $subtotal,
                 'frete' => $taxaEntrega,
+                'tipo_entrega' => $metodoEntrega,
                 'valor_total' => $total,
                 'status_pedido' => $status_pedido,
                 'status_pagamento' => $status_pagamento,
@@ -98,18 +125,12 @@ include "cabecalho.php";
             )
         );
 
-        echo "<div class='botao'>
-        <input type='radio' id='botao1' name='tipo_entrega' value='entrega'>
-        <label for='botao1'>Entrega</label>
-      </div>
-      
-      <div class='botao'>
-        <input type='radio' id='botao2' name='tipo_entrega' value='retirada'>
-        <label for='botao2'>Retirada</label>
-      </div>
-        <p>Subtotal: R$ " . number_format($subtotal, 2, ",", ".") . "</p>
-                    <p>Taxa de entrega: R$ " . number_format($taxaEntrega, 2, ",", ".") . "</p>
-                    <p>Total: R$ " . number_format($total, 2, ",", ".") . "</p>
+        echo " <p>Método de entrega: " . $metodoEntrega . "</p>";
+        if (isset($taxaEntrega) && $taxaEntrega != 0) {
+            echo "<p>Subtotal: R$ " . number_format($subtotal, 2, ",", ".") . "</p>";
+            echo " <p>Taxa de entrega: R$ " . number_format($taxaEntrega, 2, ",", ".") . "</p>";
+        }
+        echo "     <p>Total: R$ " . number_format($total, 2, ",", ".") . "</p>
                 <div class='container-btn'>
                     
                     
@@ -119,71 +140,88 @@ include "cabecalho.php";
                 <a href='../controllers/limpar_carrinho.php' class='button-limpar'>Limpar carrinho</a>
                 
                 </div>
-                
+                <div class='container'>
+        <div class='modal'>
+            <div class='modal-content'>
+                <div class='payment-options'>
+                    <div class='payment-option'>
+                        <input type='radio' name='pagamento' value='entrega' id='pagamento-entrega' class='option-input radio'>
+                        <label for='pagamento-entrega' class='option-label'>Pagar na Entrega</label>
+                    </div>
+                    <div class='payment-option'>
+                        <input type='radio' name='pagamento' value='online' id='pagamento-online' class='option-input radio'>
+                        <label for='pagamento-online' class='option-label'>Pagamento Online</label>
+                    </div>
+                </div>
+                <div class='pagamento-entrega' style='display:none;'>
+                    <label for='select-pagamento-online'>Escolha um método:</label>
+                    <select id='select-pagamento-online'>
+                        <option value='cartao-credito'> Cartão de Crédito </option>
+                        <option value='cartao-debito'> Cartão de Débito </option>
+                        <option value='dinheiro'> dinheiro </option>
+                        <option value='pix'> Pix </option>
+                    </select>
+                </div>
+                <button type='submit' id='confirmar-btn' class='btn-payment'>Comfirmar pedido</button>
+            </div>
+        </div>
+    </div>
+    </form>
+
                 ";
     }
     ?>
-<div class="container" id="payment" display="none !important">
-    <div class="modal">
-        <div class="modal-content">
-            <div class="payment-options">
-                <div class="payment-option">
-                    <input type="radio" name="pagamento" value="entrega" id="pagamento-entrega" class="option-input radio">
-                    <label for="pagamento-entrega" class="option-label">Pagar na Entrega</label>
-                </div>
-                <div class="payment-option">
-                    <input type="radio" name="pagamento" value="online" id="pagamento-online" class="option-input radio">
-                    <label for="pagamento-online" class="option-label">Pagamento Online</label>
-                </div>
-            </div>
-            <div class="pagamento-entrega" style="display:none;">
-        <label for="select-pagamento-online">Escolha um método:</label>
-        <select id="select-pagamento-online">
-            <option value="cartao-credito"> Cartão de Crédito </option>
-            <option value="cartao-debito"> Cartão de Débito </option>
-            <option value="dinheiro"> dinheiro </option>
-            <option value="pix"> Pix </option>
-        </select>
-    </div>
-            <button type="submit" id="confirmar-btn" class="btn-payment">Comfirmar pedido</button>
-        </div>
-    </div>
 
-    
-</div>
-</form>
-<script>
-$(document).ready(function() {
-    $("#modal-btn").click(function() {
-        $(".modal").css("display", "block");
-    });
 
-    // Adiciona evento change para os inputs radio
-    $("input[name='pagamento']").change(function() {
-        var pagamento = $("input[name='pagamento']:checked").val();
-
-        if (pagamento === "entrega") {
-            $(".pagamento-entrega").show();
-            $(".btn-payment").show();
-
-        }
-    });
-
-    $("#pagamento-online").click(function() {
-        $(".btn-payment").show();
-         $(".pagamento-entrega").hide();
-    });
-
-    $("#botao1").click(function() {
-        $("#payment").show();
+    <script>
+        $(document).ready(function() {
         
-    });
-    $("#botao2").click(function() {
-        $("#payment").show();
-        
-    });
-});
-</script>
+
+            // Adiciona evento change para os inputs radio
+            $("input[name='pagamento']").change(function() {
+                var pagamento = $("input[name='pagamento']:checked").val();
+
+                if (pagamento === "entrega") {
+                    $(".pagamento-entrega").show();
+                    $(".btn-payment").show();
+
+                }
+            });
+
+            $("#pagamento-online").click(function() {
+                $(".btn-payment").show();
+                $(".pagamento-entrega").hide();
+            });
+
+            $("#botao1").click(function() {
+
+                var $tipo_entrega = 'entrega';
+                $.ajax({
+                    type: "POST",
+                    url: 'check_taxa_entrega.php',
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+
+
+            });
+            $("#botao2").click(function() {
+                var $tipo_entrega = 'retirada';
+                $.ajax({
+                    type: "POST",
+                    url: 'check_taxa_entrega.php',
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+
+            });
+
+
+
+        });
+    </script>
 </body>
 
 </html>

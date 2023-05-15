@@ -115,7 +115,7 @@ body {
   color: #fff;
 }
 
-.botao input[type="radio"] {
+.botao input[type="submit"] {
 	display: none;
 }
 

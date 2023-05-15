@@ -4,11 +4,12 @@ session_start();
 // Faz conexão com o banco de dados aqui
 include "../.env/conexao.php";
 require  '../vendor/autoload.php';
+include './login/verifica_login.php';
 $accessToken = "TEST-1472282048459445-032409-8723148853628c0116c89b140f329544-1337839420";
 MercadoPago\SDK::setAccessToken($accessToken);
 
 
-$tipoEntrega = $_POST['tipo_entrega'];
+
 
 // Prepara a consulta SQL para inserir os pedidos
 $sql_pedidos = "INSERT INTO pedidos (id_pedido, id_cliente, datahora_pedido, numero_pedido, subtotal, frete, valor_total, status_pedido, status_pagamento,tipo_entrega) 
@@ -39,7 +40,7 @@ try {
         $stmt_pedidos->bindParam(':valor_total', $pedido['valor_total'], PDO::PARAM_STR);
         $stmt_pedidos->bindParam(':status_pedido', $pedido['status_pedido'], PDO::PARAM_STR);
         $stmt_pedidos->bindParam(':status_pagamento', $pedido['status_pagamento'], PDO::PARAM_STR);
-        $stmt_pedidos->bindValue(':tipo_entrega', $tipoEntrega);
+        $stmt_pedidos->bindValue(':tipo_entrega', $pedido['tipo_entrega'], PDO::PARAM_STR);
         // Executar a consulta SQL para os pedidos
         if ($stmt_pedidos->execute()) {
             echo "Pedido inserido com sucesso!\n";
