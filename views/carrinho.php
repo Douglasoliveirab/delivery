@@ -53,7 +53,7 @@ if (isset($_SESSION['frete']) ) {
     } else {
        
             echo '<div class="localizacao">
-                <i class="bi bi-geo-alt endereco">Endereço de entrega</i><br>
+                <i class="bi bi-geo-alt">Endereço de entrega</i><br>
                 <span class="endereco">' . $endereco . '</span>
                 <i class="bi bi-pencil editar" style="color:red" id="btn-editar">editar</i>
             </div>';
