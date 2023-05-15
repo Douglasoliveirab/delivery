@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 11/05/2023 às 23:26
+-- Tempo de geração: 15/05/2023 às 20:51
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -384,7 +384,17 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (244, 156, 6, 1),
 (245, 156, 2, 1),
 (246, 156, 10, 1),
-(247, 156, 11, 1);
+(247, 156, 11, 1),
+(248, 157, 5, 1),
+(249, 158, 2, 1),
+(250, 158, 4, 1),
+(251, 158, 10, 1),
+(252, 159, 5, 1),
+(253, 160, 5, 2),
+(254, 160, 2, 1),
+(255, 161, 5, 3),
+(256, 162, 6, 4),
+(257, 162, 10, 12);
 
 -- --------------------------------------------------------
 
@@ -529,7 +539,13 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_ped
 (153, 1, '2023-04-06 17:50:17', '1_20230406175017', '16.50', '5.00', '21.50', 'Finalizado', 'pendente', ''),
 (154, 1, '2023-05-10 22:16:14', '1_20230510221614', '36.99', '5.00', '41.99', 'pendente', 'pendente', 'entrega'),
 (155, 1, '2023-05-10 22:36:07', '1_20230510223607', '21.49', '5.00', '26.49', 'pendente', 'pendente', 'retirada'),
-(156, 1, '2023-05-11 01:22:51', '1_20230511012251', '22.00', '5.00', '27.00', 'pendente', 'pendente', 'entrega');
+(156, 1, '2023-05-11 01:22:51', '1_20230511012251', '22.00', '5.00', '27.00', 'pendente', 'pendente', 'entrega'),
+(157, 1, '2023-05-15 13:15:41', '1_20230515131541', '7.00', '5.00', '12.00', 'pendente', 'pendente', 'entrega'),
+(158, 1, '2023-05-15 13:16:31', '1_20230515131631', '19.49', '0.00', '19.49', 'pendente', 'pendente', 'retirada'),
+(159, 1, '2023-05-15 13:26:48', '1_20230515132648', '7.00', '5.00', '12.00', 'pendente', 'approved', 'entrega'),
+(160, 1, '2023-05-15 13:45:51', '1_20230515134551', '19.50', '5.00', '24.50', 'pendente', 'pendente', 'entrega'),
+(161, 1, '2023-05-15 15:44:52', '1_20230515154452', '21.00', '5.00', '26.00', 'pendente', 'approved', 'entrega'),
+(162, 1, '2023-05-15 15:47:21', '1_20230515154721', '50.00', '0.00', '50.00', 'pendente', 'approved', 'retirada');
 
 -- --------------------------------------------------------
 
@@ -648,13 +664,13 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
