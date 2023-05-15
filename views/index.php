@@ -13,11 +13,14 @@ session_start();
 <body>
 
     <?php
-    if (isset($_SESSION['endereco']) && $_SESSION['endereco'] != "") {
-        echo ' <div class="localizacao">
-                         <i class="bi bi-geo-alt" id="btn-busca"></i>' . $endereco . '
-                      </div>';
-    }
+  if (isset($_SESSION['endereco']) && $_SESSION['endereco'] != "") {
+    echo '<div class="localizacao">
+        <i class="bi bi-geo-alt endereco">Endereço de entrega</i><br>
+        <span class="endereco">' . $endereco . '</span>
+        <i class="bi bi-pencil editar" style="color:red">editar</i>
+    </div>';
+}
+
 
     $select = $conexao->prepare("SELECT * FROM banner");
     $select->execute();

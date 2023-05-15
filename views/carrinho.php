@@ -9,7 +9,8 @@ if (isset($_SESSION['frete']) ) {
     $metodoEntrega = $_SESSION['tipo_entrega'];
 }else{
     $taxaEntrega = 5.00;
-    $metodoEntrega = 'entrega';
+    $_SESSION['tipo_entrega'] = 'entrega';
+    $metodoEntrega = $_SESSION['tipo_entrega'];
 }
 
 
@@ -50,7 +51,13 @@ if (isset($_SESSION['frete']) ) {
                     <a href='index.php' class='button-cart'>Continuar comprando</a>
               </div>";
     } else {
-
+       
+            echo '<div class="localizacao">
+                <i class="bi bi-geo-alt endereco">Endereço de entrega</i><br>
+                <span class="endereco">' . $endereco . '</span>
+                <i class="bi bi-pencil editar" style="color:red" id="btn-editar">editar</i>
+            </div>';
+        
         echo "<div class='container'>
         <div style='display: flex; gap: 10px;'> 
           <form method='post'>
@@ -171,7 +178,16 @@ if (isset($_SESSION['frete']) ) {
                 ";
     }
     ?>
-
+<!-- Modal HTML -->
+<form method="post" action="">
+<div class="custom-modal">
+  <div class="custom-modal-content">
+    <h3 class="custom-modal-title">Editar Endereço</h3>
+    <input type="text" class="custom-modal-input" id="novo-endereco" placeholder="Digite o novo endereço">
+    <button class="custom-modal-btn" id="btn-salvar">Salvar</button>
+  </div>
+</div>
+</form>
 
     <script>
         $(document).ready(function() {
@@ -218,7 +234,34 @@ if (isset($_SESSION['frete']) ) {
 
             });
 
+           // Exibir o modal e preencher o campo com o valor atual do endereço
+  $('#btn-editar').click(function() {
+    var enderecoAtual = $('.endereco').text();
+    $('#novo-endereco').val(enderecoAtual);
+    $('.custom-modal').fadeIn();
+  });
 
+  // Fechar o modal ao clicar no botão de atualizar
+  $('#btn-atualizar').click(function() {
+    var novoEndereco = $('#novo-endereco').val();
+    
+    // Executar a requisição AJAX para atualizar o endereço no banco de dados
+    $.ajax({
+      url: 'atualizar_endereco.php',
+      method: 'POST',
+      data: { endereco: novoEndereco },
+      success: function(response) {
+        // Atualizar o valor exibido do endereço na página
+        $('.endereco').text(novoEndereco);
+        
+        // Fechar o modal
+        $('.custom-modal').fadeOut();
+      },
+      error: function(xhr, status, error) {
+        console.log(error); // Exibir o erro no console (opcional)
+      }
+    });
+  });
 
         });
     </script>
