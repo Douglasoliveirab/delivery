@@ -3,11 +3,11 @@ session_start();
 include "../controllers/add_carrinho.php";
 include "cabecalho.php";
 
-if (isset($_SESSION['frete']) ) {
+if (isset($_SESSION['frete'])) {
     include 'check_taxa_entrega.php';
     $taxaEntrega = $_SESSION['frete'];
     $metodoEntrega = $_SESSION['tipo_entrega'];
-}else{
+} else {
     $taxaEntrega = 5.00;
     $_SESSION['tipo_entrega'] = 'entrega';
     $metodoEntrega = $_SESSION['tipo_entrega'];
@@ -51,13 +51,31 @@ if (isset($_SESSION['frete']) ) {
                     <a href='index.php' class='button-cart'>Continuar comprando</a>
               </div>";
     } else {
-       
-            echo '<div class="localizacao">
-                <i class="bi bi-geo-alt">Endereço de entrega</i><br>
-                <span class="endereco">' . $endereco . '</span>
-                <i class="bi bi-pencil editar" style="color:red" id="btn-editar">editar</i>
-            </div>';
+    // Verificar se o usuário está logado e possui um ID de cliente
+if (isset($_SESSION['id_cliente'])) {
+    $id_cliente = $_SESSION['id_cliente'];
+
+    // Consultar o endereço do cliente na tabela clientes
+    $stmt = $conexao->prepare("SELECT endereco FROM clientes WHERE id_cliente = :id_cliente");
+    $stmt->bindParam(':id_cliente', $id_cliente);
+    $stmt->execute();
+
+    // Verificar se a consulta retornou algum resultado
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['endereco'] = $row['endereco'];
+        $endereco = $_SESSION['endereco'];
+
+        // Usar o valor do endereço como desejar
+        echo '<div class="localizacao">
+        <i class="bi bi-geo-alt">Endereço de entrega</i><br>
+        <span class="endereco">' . $endereco . '</span>
+        <i class="bi bi-pencil editar" style="color:red" id="btn-editar">editar</i>
+    </div>';
+    } 
+}
         
+
         echo "<div class='container'>
         <div style='display: flex; gap: 10px;'> 
           <form method='post'>
@@ -178,20 +196,21 @@ if (isset($_SESSION['frete']) ) {
                 ";
     }
     ?>
-<!-- Modal HTML -->
-<form method="post" action="">
-<div class="custom-modal">
-  <div class="custom-modal-content">
-    <h3 class="custom-modal-title">Editar Endereço</h3>
-    <input type="text" class="custom-modal-input" id="novo-endereco" placeholder="Digite o novo endereço">
-    <button class="custom-modal-btn" id="btn-salvar">Salvar</button>
-  </div>
-</div>
-</form>
+    <!-- Modal HTML -->
+    <form method="post" action="atualiza_endereco.php">
+        <div class="custom-modal">
+            <div class="custom-modal-content">
+                <h3 class="custom-modal-title">Editar Endereço</h3>
+                <input type="hidden" name="id_cliente" value="<?= $id_cliente ?>" />
+                <input type="text" class="custom-modal-input" id="novo_endereco" name="novo_endereco" placeholder="Digite o novo endereço" value="<?=$endereco?>">
+                <button type="submit" class="custom-modal-btn"> Atualizar </button>
+            </div>
+        </div>
+    </form>
 
     <script>
         $(document).ready(function() {
-        
+
 
             // Adiciona evento change para os inputs radio
             $("input[name='pagamento']").change(function() {
@@ -234,37 +253,21 @@ if (isset($_SESSION['frete']) ) {
 
             });
 
-           // Exibir o modal e preencher o campo com o valor atual do endereço
-  $('#btn-editar').click(function() {
-    var enderecoAtual = $('.endereco').text();
-    $('#novo-endereco').val(enderecoAtual);
-    $('.custom-modal').fadeIn();
-  });
+            // Exibir o modal e preencher o campo com o valor atual do endereço
+            $('#btn-editar').click(function() {
+            
+            $('.custom-modal').show();
+        });
 
-  // Fechar o modal ao clicar no botão de atualizar
-  $('#btn-atualizar').click(function() {
-    var novoEndereco = $('#novo-endereco').val();
-    
-    // Executar a requisição AJAX para atualizar o endereço no banco de dados
-    $.ajax({
-      url: 'atualizar_endereco.php',
-      method: 'POST',
-      data: { endereco: novoEndereco },
-      success: function(response) {
-        // Atualizar o valor exibido do endereço na página
-        $('.endereco').text(novoEndereco);
-        
-        // Fechar o modal
-        $('.custom-modal').fadeOut();
-      },
-      error: function(xhr, status, error) {
-        console.log(error); // Exibir o erro no console (opcional)
-      }
-    });
-  });
+
+        // Fechar o modal ao clicar no botão de atualizar
+        $('#btn-atualizar').click(function() {
+            
 
         });
-    </script>
+
+    });
+</script>
 </body>
 
 </html>

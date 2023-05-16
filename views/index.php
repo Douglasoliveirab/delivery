@@ -13,12 +13,28 @@ session_start();
 <body>
 
     <?php
-  if (isset($_SESSION['endereco']) && $_SESSION['endereco'] != "") {
-    echo '<div class="localizacao">
-        <i class="bi bi-geo-alt endereco">Endereço de entrega</i><br>
+     // Verificar se o usuário está logado e possui um ID de cliente
+if (isset($_SESSION['id_cliente'])) {
+    $id_cliente = $_SESSION['id_cliente'];
+
+    // Consultar o endereço do cliente na tabela clientes
+    $stmt = $conexao->prepare("SELECT endereco FROM clientes WHERE id_cliente = :id_cliente");
+    $stmt->bindParam(':id_cliente', $id_cliente);
+    $stmt->execute();
+
+    // Verificar se a consulta retornou algum resultado
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['endereco'] = $row['endereco'];
+        $endereco = $_SESSION['endereco'];
+
+        // Usar o valor do endereço como desejar
+        echo '<div class="localizacao">
+        <i class="bi bi-geo-alt">Endereço de entrega</i><br>
         <span class="endereco">' . $endereco . '</span>
-        <i class="bi bi-pencil editar" style="color:red">editar</i>
+        <i class="bi bi-pencil editar" style="color:red" id="btn-editar">editar</i>
     </div>';
+    } 
 }
 
 
@@ -100,6 +116,16 @@ session_start();
     echo '</div>';
 
     ?>
+     <form method="post" action="atualiza_endereco.php">
+        <div class="custom-modal">
+            <div class="custom-modal-content">
+                <h3 class="custom-modal-title">Editar Endereço</h3>
+                <input type="hidden" name="id_cliente" value="<?= $id_cliente ?>" />
+                <input type="text" class="custom-modal-input" id="novo_endereco" name="novo_endereco" placeholder="Digite o novo endereço" value="<?=$endereco?>">
+                <button type="submit" class="custom-modal-btn"> Atualizar </button>
+            </div>
+        </div>
+    </form>
 
     <footer class="rodape">
         <div class="container">
@@ -151,6 +177,20 @@ session_start();
     </footer>
 
     <script src="./assets/js/index.js"></script>
+    <script>
+          // Exibir o modal e preencher o campo com o valor atual do endereço
+          $('#btn-editar').click(function() {
+            
+            $('.custom-modal').show();
+        });
+
+
+        // Fechar o modal ao clicar no botão de atualizar
+        $('#btn-atualizar').click(function() {
+            
+
+        });
+    </script>
 </body>
 
 </html>

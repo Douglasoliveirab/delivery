@@ -18,7 +18,6 @@ $user = $stmt->fetch();
 if ($user && password_verify($senha, $user['senha'])) {
 	$_SESSION['usuario'] = $user['nome'];
 	$_SESSION['id_cliente'] = $user['id_cliente'];
-	$_SESSION['endereco'] = $user['endereco'];
 
 	 header('Location: ../index.php');
 	exit();

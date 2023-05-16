@@ -24,6 +24,22 @@ if (isset($_SESSION['carrinho'])) {
 
         <div class="itens">
             <?php
+
+if (isset($_SESSION['id_cliente'])) {
+    $id_cliente = $_SESSION['id_cliente'];
+
+    // Consultar o endereço do cliente na tabela clientes
+    $stmt = $conexao->prepare("SELECT endereco FROM clientes WHERE id_cliente = :id_cliente");
+    $stmt->bindParam(':id_cliente', $id_cliente);
+    $stmt->execute();
+
+    // Verificar se a consulta retornou algum resultado
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['endereco'] = $row['endereco'];
+        $endereco = $_SESSION['endereco'];
+    } 
+}
             if (
                 isset($_SESSION['usuario']) && $_SESSION['usuario'] != "" &&
                 $_SESSION['id_cliente'] != "" && $_SESSION['endereco'] != ""
