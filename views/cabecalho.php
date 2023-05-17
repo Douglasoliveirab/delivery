@@ -24,7 +24,7 @@ if (isset($_SESSION['carrinho'])) {
 
         <div class="itens">
             <?php
-
+//verifica se existe o usuario logado para buscar o endereço no banco
 if (isset($_SESSION['id_cliente'])) {
     $id_cliente = $_SESSION['id_cliente'];
 
@@ -53,7 +53,8 @@ if (isset($_SESSION['id_cliente'])) {
                 echo '<a href="index.php">Inicio</a>';
                 echo ' <a href="pedidos_cliente.php?id_cliente=' . $id_cliente . '" class="footer-link" id="btn-busca">Pedidos</a>';
                 echo '<a href="login_cliente.html">' . $usuario . '</a>';
-                echo ' <a href="#"><i class="bi bi-geo-alt" id="btn-busca"></i>' . $endereco . '</a>';
+                echo '   <a href="#" id="edit-address">'.$endereco.' <i class="bi bi-pencil" style="color:red">Editar</i></a>
+                ';
             } else {
                 echo "<div class='itens'>
                             <a href='cadastre-se.html'>CADASTRE-SE</a>
@@ -61,6 +62,18 @@ if (isset($_SESSION['id_cliente'])) {
                             </div>";
             }
             ?>
+        </div>
+    </div>
+     <!-- Modal de Edição de Endereço -->
+     <div id="address-modal" class="modal-endereco">
+        <div class="modal-content-desk">
+            <span class="modal-close">&times;</span>
+            <h2 class="custom-modal-title">Editar Endereço</h2>
+            <form id="address-form" method="POST" action="atualiza_endereco.php">
+                <input type="hidden" name="id_cliente" value="<?= $id_cliente ?>" />
+                <input type="text" class="custom-modal-input" id="novo_endereco" name="novo_endereco" placeholder="Digite o novo endereço" value="<?= $endereco ?>">
+                <button class="custom-modal-btn" type="submit"> Atualizar </button>
+            </form>
         </div>
     </div>
 

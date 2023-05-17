@@ -200,6 +200,7 @@ if (isset($_SESSION['id_cliente'])) {
     <form method="post" action="atualiza_endereco.php">
         <div class="custom-modal">
             <div class="custom-modal-content">
+            <span class="modal-close-mob">&times;</span>
                 <h3 class="custom-modal-title">Editar Endereço</h3>
                 <input type="hidden" name="id_cliente" value="<?= $id_cliente ?>" />
                 <input type="text" class="custom-modal-input" id="novo_endereco" name="novo_endereco" placeholder="Digite o novo endereço" value="<?=$endereco?>">
@@ -260,11 +261,25 @@ if (isset($_SESSION['id_cliente'])) {
         });
 
 
-        // Fechar o modal ao clicar no botão de atualizar
-        $('#btn-atualizar').click(function() {
-            
+        $('.modal-close-mob').click(function() {
+                $('.custom-modal').css('display', 'none');
+            });
 
-        });
+         // Abrir o modal ao clicar no botão "Editar"
+         $('#edit-address').click(function(e) {
+                e.preventDefault();
+                $('#address-modal').css('display', 'block');
+            });
+
+            // Fechar o modal ao clicar no botão de fechar ou fora do modal
+            $('.modal-close').click(function() {
+                $('#address-modal').css('display', 'none');
+            });
+            $(window).click(function(event) {
+                if (event.target == document.getElementById('address-modal')) {
+                    $('#address-modal').css('display', 'none');
+                }
+            });
 
     });
 </script>
