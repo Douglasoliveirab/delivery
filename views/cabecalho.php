@@ -21,7 +21,7 @@ if (isset($_SESSION['carrinho'])) {
 <!--INICIO HEAD DESKTOP-->
 <div class="controle-itens2">
     <div class="itens-head2">
-
+<img src="./assets/imagens/div_red-removebg-preview.png">
         <div class="itens">
             <?php
 //verifica se existe o usuario logado para buscar o endereço no banco

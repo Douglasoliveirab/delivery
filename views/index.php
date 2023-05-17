@@ -131,12 +131,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <!-- <h3>Cidades atendidas</h3>
+                    <h3>Cidades atendidas</h3>
                             <ul>
-                                <li><a href="#">São Paulo</a></li>
+                                <li><a href="#">Francisco Morato</a></li>
 
                             </ul>
-                        </div> -->
+                        </div>
                     <div class="col-md-6">
                         <h3>Div Delivery</h3>
                         <ul>

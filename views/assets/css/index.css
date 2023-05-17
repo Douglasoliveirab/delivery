@@ -33,10 +33,15 @@ body{
 }
 
 .itens-head2 {
+  align-items: center;
   display: flex;
   margin-top: 30px;
   color: white;
-  
+}
+
+.itens-head2 img{
+  width: 60px;
+  height: 60px;
 }
 
 .item-carrinho {
@@ -401,9 +406,9 @@ body{
 }
 
 .container_loja{
+  align-items: center;
   gap: 20px;
-  width: 60%;
-  margin-left: 20%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -414,14 +419,14 @@ body{
 .loja{
   justify-content: space-between;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   font-family: Arial, Helvetica, sans-serif;
   align-items: center;
   background-color: white;
-  padding: 15px;
+  padding: 10px;
   border-radius: 5px;
-  width: 500px;
-  height: 140px;
+  width: 350px;
+  height: 160px;
 }
 
 .loja img{
