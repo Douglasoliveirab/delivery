@@ -80,19 +80,9 @@
                     </div>";
     }
     echo "</div>";
-
-    //seleciona os 6 mais vendidos de todas as categorias 
-    $select = $conexao->prepare("SELECT p.id_produto, p.nome_produto, p.img_produto, p.descricao, p.preco, SUM(ip.quantidade) as total_vendido
-            FROM produtos p
-            INNER JOIN itens_pedido ip ON p.id_produto = ip.id_produto
-            INNER JOIN pedidos pe ON pe.id_pedido = ip.id_pedido
-            WHERE p.status_produto = 'ativo'
-            GROUP BY p.id_produto
-            ORDER BY total_vendido DESC
-            LIMIT 9;
-            ");
-    $select->execute();
-    $produtos = $select->fetchAll();
+    
+    // mais vendidos
+    include "queries/maisVendidos.php";
 
     echo "<p class='title-categoria'> Produtos mais vendidos</p>";
     echo '<div class="container_loja">';
@@ -136,9 +126,7 @@
                     </div>
                     <div class="col-md-6">
                         <h3>Sobre nós</h3>
-                        <ul>
-                            <li><a href="../painel/">Painel para parceiros</a></li>
-                        </ul>
+                       
                     </div>
                     <div class="col-md-6">
                         <ul>
@@ -154,41 +142,7 @@
                 </div>
             </div>
     </footer>
-
     <script src="./assets/js/index.js"></script>
-    <script>
-        // Exibir o modal e preencher o campo com o valor atual do endereço
-        $('#btn-editar').click(function() {
-
-            $('.custom-modal').show();
-        });
-
-        // Fechar o modal ao clicar no botão de atualizar
-        $('#btn-atualizar').click(function() {
-
-        });
-        $('.modal-close-mob').click(function() {
-                $('.custom-modal').css('display', 'none');
-            });
-
-       
-            // Abrir o modal ao clicar no botão "Editar"
-            $('#edit-address').click(function(e) {
-                e.preventDefault();
-                $('#address-modal').css('display', 'block');
-            });
-
-            // Fechar o modal ao clicar no botão de fechar ou fora do modal
-            $('.modal-close').click(function() {
-                $('#address-modal').css('display', 'none');
-            });
-            $(window).click(function(event) {
-                if (event.target == document.getElementById('address-modal')) {
-                    $('#address-modal').css('display', 'none');
-                }
-            });
-       
-    </script>
 </body>
 
 </html>
