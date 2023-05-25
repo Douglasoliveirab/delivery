@@ -89,7 +89,7 @@
             WHERE p.status_produto = 'ativo'
             GROUP BY p.id_produto
             ORDER BY total_vendido DESC
-            LIMIT 6;
+            LIMIT 9;
             ");
     $select->execute();
     $produtos = $select->fetchAll();
@@ -130,42 +130,22 @@
     <footer class="rodape">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h3>Cidades atendidas</h3>
-                            <ul>
-                                <li><a href="#">Francisco Morato</a></li>
-
-                            </ul>
-                        </div>
                     <div class="col-md-6">
-                        <h3>Div Delivery</h3>
-                        <ul>
-                            <li><a href="#">Termos de Uso</a></li>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Política de Reembolso</a></li>
-                            <li><a href="#">Cookies</a></li>
-                            <li><a href="#">Ajuda</a></li>
-
-                        </ul>
+                        <h3> Politicas Div </h3>
+                     
                     </div>
                     <div class="col-md-6">
-                        <h3>Descubra</h3>
+                        <h3>Sobre nós</h3>
                         <ul>
-                            <li><a href="#">Cadastre seu Comércio</a></li>
-                            <li><a href="#">Como funciona</a></li>
                             <li><a href="../painel/">Painel para parceiros</a></li>
-                            <li><a href="#">Trabalhe conosco</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h3>Social</h3>
                         <ul>
                             <div class="icon-sociais">
                                 <li><i class="bi bi-facebook"></i></li>
                                 <li><i class="bi bi-instagram"></i></li>
                                 <li><i class="bi bi-linkedin"></i></li>
-                                <li><i class="bi bi-twitter"></i></li>
-                                <li><i class="bi bi-youtube"></i></li>
                                 <li><i class="bi bi-whatsapp"></i></li>
                             </div>
 

@@ -52,7 +52,7 @@ if (isset($_SESSION['id_cliente'])) {
                 echo '<a href="login/logout.php">  Sair </a>';
                 echo '<a href="index.php">Inicio</a>';
                 echo ' <a href="pedidos_cliente.php?id_cliente=' . $id_cliente . '" class="footer-link" id="btn-busca">Pedidos</a>';
-                echo '<a href="login_cliente.html">' . $usuario . '</a>';
+                echo '<a href="#">' . $usuario . '</a>';
                 echo '   <a href="#" id="edit-address">'.$endereco.' <i class="bi bi-pencil" style="color:red">Editar</i></a>
                 ';
             } else {
