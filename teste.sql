@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 15/05/2023 às 20:51
+-- Tempo de geração: 25/05/2023 às 22:10
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -50,7 +50,8 @@ INSERT INTO `administrador` (`id_administrador`, `nome_usuario`, `sobrenome`, `s
 (2, 'dono2', 'teste', '$2y$10$tfX06/VkNReTA8cAh.wqNOd2tEW3YskxIeQvpNGsab4SOEM8MRC5e', '438.288.558-20', 'teste@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-04-06 19:04:10', '0000-00-00 00:00:00'),
 (3, 'dono2', 'teste', '$2y$10$sdsHVTH9cmrx5FodCuovGewMmURY0XJwFkR/won.2mA7deICg5wG.', '438.288.558-20', 'teste2@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-04-06 19:05:14', '0000-00-00 00:00:00'),
 (22, 'teste', 'oliveira', '$2y$10$hP0fC3wOmhmpcDHxkkqaQ.YGr4kuDu1v9CQKxf2ePgaF3iZ6e1xNe', '438.288.558-21', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'usuario', '2023-04-10 00:51:02', '0000-00-00 00:00:00'),
-(23, 'teste', 'ajax', '$2y$10$yf6hJ7VRpBPuYz5FgRL63eJmIdbQYsXgH1ARNllDpPdhB88HbzzlW', '438.288.558-22', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'admin', '2023-04-10 00:55:57', '0000-00-00 00:00:00');
+(23, 'teste', 'ajax', '$2y$10$yf6hJ7VRpBPuYz5FgRL63eJmIdbQYsXgH1ARNllDpPdhB88HbzzlW', '438.288.558-22', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'admin', '2023-04-10 00:55:57', '0000-00-00 00:00:00'),
+(24, 'Daniela', 'da silva', '$2y$10$RH5l.gQ4qvYjpQ.w.fYlceO/V4MmDavtuyOns4/ozJQAllIBxQ8yq', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-05-19 20:48:18', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nome`, `sobrenome`, `cpf`, `email`, `telefone`, `endereco`, `senha`) VALUES
-(1, 'douglas', 'oliveira', '438.288.558-20', 'dgsoliverfamilia@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$29SPcE9j71B9Nxb3AsfpbeqO4hZyY/IkxTdTBUpKjukGGGuB5KFYm'),
+(1, 'douglas', 'oliveira', '438.288.558-20', 'dgsoliverfamilia@gmail.com', '(11) 99342-6890', '1319 Rua maria aurora passini', '$2y$10$29SPcE9j71B9Nxb3AsfpbeqO4hZyY/IkxTdTBUpKjukGGGuB5KFYm'),
 (2, 'cliente t', 'este', '564.444.444-44', 'dgs@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$SS9jQlmL3.YkAxdcR7bfv.BMHmIREpbO8MJy2Wxf6ZlyKz25/amNu'),
 (3, 'reinaldo', 'ribeiro', '564.444.444-44', 'reinaldo@gmail.com', '(11) 11111-1111', '140 Centro Francisco morato', '$2y$10$SoPbtogWb91YDYY2ypdHNuypjzOP3n9ITtGv99yj8xfNmPzIHQrWa'),
 (4, 'dono2', 'da silva', '438.288.558-20', 'teste@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$Qy50fKlGEfbSBq9T5B7Uj.JZFpRfJ9TjZF6miXFqXd3cBjrUoB0sy');
@@ -394,7 +395,12 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (254, 160, 2, 1),
 (255, 161, 5, 3),
 (256, 162, 6, 4),
-(257, 162, 10, 12);
+(257, 162, 10, 12),
+(258, 163, 5, 3),
+(259, 163, 10, 2),
+(260, 163, 4, 1),
+(261, 164, 5, 1),
+(262, 165, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -545,7 +551,10 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_ped
 (159, 1, '2023-05-15 13:26:48', '1_20230515132648', '7.00', '5.00', '12.00', 'pendente', 'approved', 'entrega'),
 (160, 1, '2023-05-15 13:45:51', '1_20230515134551', '19.50', '5.00', '24.50', 'pendente', 'pendente', 'entrega'),
 (161, 1, '2023-05-15 15:44:52', '1_20230515154452', '21.00', '5.00', '26.00', 'pendente', 'approved', 'entrega'),
-(162, 1, '2023-05-15 15:47:21', '1_20230515154721', '50.00', '0.00', '50.00', 'pendente', 'approved', 'retirada');
+(162, 1, '2023-05-15 15:47:21', '1_20230515154721', '50.00', '0.00', '50.00', 'pendente', 'approved', 'retirada'),
+(163, 1, '2023-05-16 11:30:58', '1_20230516113058', '38.99', '5.00', '43.99', 'pendente', 'approved', 'entrega'),
+(164, 1, '2023-05-19 17:44:09', '1_20230519174409', '7.00', '5.00', '12.00', 'pendente', 'pendente', 'entrega'),
+(165, 1, '2023-05-19 17:45:54', '1_20230519174554', '7.00', '5.00', '12.00', 'Finalizado', 'approved', 'entrega');
 
 -- --------------------------------------------------------
 
@@ -640,7 +649,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `banner`
@@ -664,13 +673,13 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
