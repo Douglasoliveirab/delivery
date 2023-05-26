@@ -11,4 +11,24 @@
             ");
     $select->execute();
     $produtos = $select->fetchAll();
+
+    echo "<p class='title-categoria'> Produtos mais vendidos</p>";
+    echo '<div class="container_loja">';
+    foreach ($produtos as $produto) {
+        echo '<div class="loja">
+                <div class="conteudo" style="display:flex;align-items:center">
+                <img src="../painel/' . $produto["img_produto"] . '">
+                    <div>
+                    <h3>' . $produto["nome_produto"] . '</h3>
+                    <p class="descricao">' . $produto["descricao"] . '</p>
+                    <p>R$  ' . number_format($produto['preco'], 2, ",", ".") . '</p>
+                    </div>
+                </div>
+                <div class="botao">
+                        <a href="../controllers/add_carrinho.php?add=carrinho&id=' . $produto["id_produto"] . '" class="btn-adicionar"><i class="bi bi-basket"></i></a>
+                    </div>
+                </div>
+                <hr/>';
+    }
+    echo '</div>';
 ?>
