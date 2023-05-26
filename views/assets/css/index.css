@@ -190,6 +190,7 @@ body{
 
 .controle-img-topo img {
   height: 180px;
+  border-radius: 15px;
 }
 
 .slogan {
