@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -15,9 +15,9 @@
     <?php
     // Verificar se o usuário está logado e possui um ID de cliente
     //mostra o enderço
-   include "queries/checkLogado.php";
-   //banners 
-   include "queries/banners.php";
+    include "search/checkLogado.php";
+    //banners 
+    include "search/banners.php";
     echo '</div>';
     ?>
 
@@ -39,16 +39,16 @@
     <p class="title-categoria"> Categorias</p>
     <?php
     //puxa todas as categorias do banco
-    include "queries/categorias.php";
-    
+    include "search/categorias.php";
+
     // mais vendidos
-    include "queries/maisVendidos.php";
+    include "search/maisVendidos.php";
 
     ?>
     <form method="post" action="atualiza_endereco.php">
         <div class="custom-modal">
             <div class="custom-modal-content">
-            <span class="modal-close-mob">&times;</span>
+                <span class="modal-close-mob">&times;</span>
                 <h3 class="custom-modal-title">Editar Endereço</h3>
                 <input type="hidden" name="id_cliente" value="<?= $id_cliente ?>" />
                 <input type="text" class="custom-modal-input" id="novo_endereco" name="novo_endereco" placeholder="Digite o novo endereço" value="<?= $endereco ?>">
@@ -60,27 +60,27 @@
     <footer class="rodape">
         <div class="container">
             <div class="row">
-                    <div class="col-md-6">
-                        <h3> Politicas Div </h3>
-                     
-                    </div>
-                    <div class="col-md-6">
-                        <h3>Sobre nós</h3>
-                       
-                    </div>
-                    <div class="col-md-6">
-                        <ul>
-                            <div class="icon-sociais">
-                                <li><i class="bi bi-facebook"></i></li>
-                                <li><i class="bi bi-instagram"></i></li>
-                                <li><i class="bi bi-linkedin"></i></li>
-                                <li><i class="bi bi-whatsapp"></i></li>
-                            </div>
+                <div class="col-md-6">
+                    <h3> Politicas Div </h3>
 
-                        </ul>
-                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Sobre nós</h3>
+
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <div class="icon-sociais">
+                            <li><i class="bi bi-facebook"></i></li>
+                            <li><i class="bi bi-instagram"></i></li>
+                            <li><i class="bi bi-linkedin"></i></li>
+                            <li><i class="bi bi-whatsapp"></i></li>
+                        </div>
+
+                    </ul>
                 </div>
             </div>
+        </div>
     </footer>
     <script src="./assets/js/index.js"></script>
 </body>
