@@ -77,9 +77,9 @@ try {
     $preference->items = array($item);
 
     $preference->back_urls = array(
-        "success" => "localhost/delivery/views/notification.php", // URL de sucesso
-        "failure" => "localhost/delivery/views/notification.php", // URL de falha
-        "pending" => "localhost/delivery/views/notification.php" // URL pendente
+        "success" => "localhost:8080/delivery/views/notification.php", // URL de sucesso
+        "failure" => "localhost:8080/delivery/views/notification.php", // URL de falha
+        "pending" => "localhost:8080/delivery/views/notification.php" // URL pendente
     );
 
     $preference->payment_methods = array(
