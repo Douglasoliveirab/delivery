@@ -23,7 +23,7 @@ if ($user && password_verify($senha, $user['senha'])) {
 	exit();
 } else {
 	$_SESSION['nao_autenticado'] = true;
-	header('Location: ../login_cliente.html');
+	header('Location: ../login_cliente.php');
 	
 	exit();
 }

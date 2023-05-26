@@ -57,8 +57,8 @@ if (isset($_SESSION['id_cliente'])) {
                 ';
             } else {
                 echo "<div class='itens'>
-                            <a href='cadastre-se.html'>CADASTRE-SE</a>
-                            <a href='login_cliente.html'>LOGIN</a>
+                            <a href='cadastre-se.php'>CADASTRE-SE</a>
+                            <a href='login_cliente.php'>LOGIN</a>
                             </div>";
             }
             ?>

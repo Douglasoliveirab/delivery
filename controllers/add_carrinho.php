@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 //verifica se existe usuario logado se não existir redireciona
 //para faser login e nao adiciona ao carrinho
 if(!isset($_SESSION['usuario'])){
-    header('Location: ../views/login_cliente.html');
+    header('Location: ../views/login_cliente.php');
 exit();
 }
 //se nao existir ainda a sessao carrinho prepara a sessao 
