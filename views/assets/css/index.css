@@ -400,14 +400,11 @@ body{
   }
   }
 
-  .container_loja{
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 70px;
-}
+ 
 
 .container_loja{
   align-items: center;
+  margin: 0 auto;
   gap: 20px;
   width: 80%;
   display: flex;
