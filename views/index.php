@@ -28,7 +28,7 @@ session_start();
     <div class="slogan2">
         <p>Humm, hoje eu vou querer...</p>
     </div>
-
+    <!-- formulario para a pesquisa de produtos-->
     <form action="busca.php" method="POST">
         <div class="container-busca" id="busca">
             <div class="iten-search">
@@ -48,6 +48,7 @@ session_start();
     include "search/maisVendidos.php";
 
     ?>
+     <!-- formulario para atualizar endereço-->
     <form method="post" action="atualiza_endereco.php">
         <div class="custom-modal">
             <div class="custom-modal-content">

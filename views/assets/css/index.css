@@ -341,7 +341,7 @@ body{
 }
 
 .rodape .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -349,6 +349,8 @@ body{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }
 
 .rodape .col-md-6 {
@@ -383,7 +385,7 @@ body{
 
 .icon-sociais{
   display: flex;
-  margin-left: 15%;
+  margin-left: 25%;
 }
 
 
@@ -405,8 +407,8 @@ body{
 .container_loja{
   align-items: center;
   margin: 0 auto;
-  gap: 20px;
-  width: 80%;
+  gap: 10px;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -450,38 +452,45 @@ body{
 
 }
 @media (max-width: 767px) {
-  .container_loja{
+  .container_loja {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
+    overflow-x: auto;
+  }
+
+  .container_loja::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
   }
   
-  .loja{
+  .loja {
     justify-content: space-between;
     display: flex;
-    gap: 15px;
     align-items: center;
     background-color: white;
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
-    width: 90%;
+    max-width: 90%;
+    min-width: 90%;
     margin: 0 auto;
     flex-direction: row;
   }
   
-
-  .loja img{
+  .loja img {
     margin-right: 15px;
   }
 
-  .loja .descricao{
+  .loja .descricao {
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family:helvetica,sans-serif
-
+    font-family: helvetica, sans-serif;
   }
 
-  .loja .botao{
+  .loja .botao {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -502,9 +511,8 @@ body{
   }
 
   .loja .conteudo img {
-    margin-left:0;
+    margin-left: 0;
   }
-
 }
 
 /* Estilos do modal */

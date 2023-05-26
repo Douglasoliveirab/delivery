@@ -101,8 +101,8 @@ if (isset($_SESSION['id_cliente'])) {
         echo '<a href="#" class="footer-link"><i class="bi bi-person"></i>' . $usuario . '</a>';
     } else {
         echo '<a href="index.php" class="footer-link"><i class="bi bi-house"></i>Inicio</a>';
-        echo ' <a href="login_cliente.html" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>';
-        echo '<a href="login_cliente.html" class="footer-link"><i class="bi bi-person"></i>Perfil</a>';
+        echo ' <a href="login_cliente.php" class="footer-link" id="btn-busca"><i class="bi bi-receipt"></i>Pedidos</a>';
+        echo '<a href="login_cliente.php" class="footer-link"><i class="bi bi-person"></i>Perfil</a>';
     }
     ?>
 
