@@ -29,12 +29,15 @@ session_start();
         <p>Humm, hoje eu vou querer...</p>
     </div>
 
-    <div class="container-busca" id="busca">
-        <div class="iten-search">
-            <p> <input type="text" name="search-produto" class="input-search"> </p>
-            <p> <input type="submit" class="btn-search" value="Buscar"> </p>
+    <form action="busca.php" method="POST">
+        <div class="container-busca" id="busca">
+            <div class="iten-search">
+                <p> <input type="text" name="search-produto" class="input-search"> </p>
+                <p> <input type="submit" class="btn-search" value="Buscar" id="btn_pesquisa"> </p>
+            </div>
         </div>
-    </div>
+    </form>
+
 
     <p class="title-categoria"> Categorias</p>
     <?php

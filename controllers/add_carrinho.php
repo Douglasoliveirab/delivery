@@ -28,6 +28,7 @@ if (isset($_GET['add']) && $_GET['add'] == 'carrinho') {
     }
     //redirecio para a pagina anterior
     echo "<script>javascript:history.go(-1)</script>";
+    exit();
 }
 ?>
     
