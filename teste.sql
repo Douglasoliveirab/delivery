@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 25/05/2023 às 22:10
+-- Tempo de geração: 26/05/2023 às 23:13
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -96,7 +96,10 @@ INSERT INTO `categoria` (`id_categoria`, `img_categoria`, `nome_categoria`) VALU
 (3, 'categorias/pizzas.png', 'Pizzas'),
 (4, 'categorias/lanche.png', 'Lanches'),
 (6, 'categorias/comida.png', 'Comida'),
-(9, 'categorias/salgados.png', 'Salgados');
+(9, 'categorias/salgados.png', 'Salgados'),
+(10, 'categorias/acai.png', 'Gelados'),
+(11, 'categorias/combo.jpg', 'Combos'),
+(12, 'categorias/Doces.jpg', 'Doces');
 
 -- --------------------------------------------------------
 
@@ -400,7 +403,8 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (259, 163, 10, 2),
 (260, 163, 4, 1),
 (261, 164, 5, 1),
-(262, 165, 5, 1);
+(262, 165, 5, 1),
+(263, 166, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -554,7 +558,8 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_ped
 (162, 1, '2023-05-15 15:47:21', '1_20230515154721', '50.00', '0.00', '50.00', 'pendente', 'approved', 'retirada'),
 (163, 1, '2023-05-16 11:30:58', '1_20230516113058', '38.99', '5.00', '43.99', 'pendente', 'approved', 'entrega'),
 (164, 1, '2023-05-19 17:44:09', '1_20230519174409', '7.00', '5.00', '12.00', 'pendente', 'pendente', 'entrega'),
-(165, 1, '2023-05-19 17:45:54', '1_20230519174554', '7.00', '5.00', '12.00', 'Finalizado', 'approved', 'entrega');
+(165, 1, '2023-05-19 17:45:54', '1_20230519174554', '7.00', '5.00', '12.00', 'Finalizado', 'approved', 'entrega'),
+(166, 1, '2023-05-26 15:09:58', '1_20230526150958', '5.50', '0.00', '5.50', 'pendente', 'approved', 'retirada');
 
 -- --------------------------------------------------------
 
@@ -578,17 +583,17 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`, `status_produto`) VALUES
-(1, 1, 'Refrigerante', 'produtos/refrigerante.png\r\n', 'coca cola, 2l', '2.50', '6.00', 'inativo'),
+(1, 1, 'Refrigerante', 'produtos/refrigerante.png\r\n', 'coca cola, 2l', '2.50', '6.00', 'ativo'),
 (2, 1, 'Refrigerante', '\r\nprodutos/guarana.png', 'guarana kuat, 350ml', '3.50', '5.50', 'ativo'),
 (3, 2, 'DOG ESPECIAL', 'produtos/Dog.png', 'muto bom', '3.50', '15.99', 'ativo'),
 (4, 2, 'DOG top', 'produtos/Dog.png', 'alface,batat palha,2 salsichas', '3.50', '9.99', 'ativo'),
 (5, 1, 'Cerveja corona', 'produtos/corona.png', '330ml', '4.00', '7.00', 'ativo'),
 (6, 1, 'Budweiser', 'produtos/bud.png', 'Long Neck 330ml', '4.00', '0.50', 'ativo'),
-(8, 1, 'Coca-Cola ', 'produtos/refrigerante.jpg', '2lTS', '1.00', '11.00', 'inativo'),
-(9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'inativo'),
+(8, 1, 'Coca-Cola ', 'produtos/refrigerante.jpg', '2lTS', '1.00', '11.00', 'ativo'),
+(9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'ativo'),
 (10, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '350 ml', '3.50', '4.00', 'ativo'),
 (11, 1, 'Coca-Cola lata', 'produtos/coca-lata.png', '350 ml ', '3.50', '5.00', 'ativo'),
-(12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '230 ml', '3.00', '5.50', 'inativo'),
+(12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '230 ml', '3.00', '5.50', 'ativo'),
 (13, 1, 'coca cola', 'produtos/coca-lata.png', '150ml', '2.00', '4.90', 'ativo');
 
 --
@@ -661,7 +666,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
@@ -673,13 +678,13 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
