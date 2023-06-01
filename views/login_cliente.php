@@ -26,8 +26,8 @@
       <input type="email" name="email" class="campos" placeholder="Digite o seu Email" maxlength="50" required />
       <br />
 
-      <input type="password" id="senha" name="senha" class="campos" placeholder="Digite a sua Senha" maxlength="15" required />
-      <span class="senha-toggle"><i class="bi bi-eye-fill"></i></span>
+      <input type="password" id="senha-login" name="senha" class="campos" placeholder="Digite a sua Senha" maxlength="15" required />
+      <span class="senha-toggle-login"><i class="bi bi-eye-fill"></i></span>
       <div class="alinha-botao">
         <button type="submit" class="btn_envia">
           <strong>Entrar</strong>

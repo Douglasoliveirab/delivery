@@ -158,9 +158,8 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
                                              <td>' . $produto['preco'] . '</td>
                                              <td>' . $produto['status_produto'] . '</td>
                                              <td>
-                                                 <button type="button" class="btn btn-primary btn-xs btn-flat">
-                                                     Editar
-                                                 </button>
+                                             <a href="atualizar_produto.php?id=' . $produto['id_produto'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+
                                                  <a href="?delete=' . $produto['id_produto'] . '" class="btn btn-danger btn-xs btn-flat">
                                                      Excluir
                                                  </a>
