@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 26/05/2023 às 23:13
+-- Tempo de geração: 13/06/2023 às 22:58
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -71,8 +71,8 @@ CREATE TABLE `banner` (
 
 INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`) VALUES
 (1, 'pede1leva2.png', 'banners/pede1leva2.png'),
-(2, 'itenspor499.png', 'banners/itenspor499.png'),
-(3, 'salgadinhos.png', 'banners/salgadinhos.png');
+(2, 'salgadinhos.png', 'banners/salgadinhos.png'),
+(3, 'promocao1.png', 'banners/promocao1.png');
 
 -- --------------------------------------------------------
 
@@ -583,18 +583,19 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`, `status_produto`) VALUES
-(1, 1, 'Refrigerante', 'produtos/refrigerante.png\r\n', 'coca cola, 2l', '2.50', '6.00', 'ativo'),
+(1, 1, 'Refrigerante', 'produtos/refrigerante.png', 'coca cola, 4l', '2.50', '6.00', 'ativo'),
 (2, 1, 'Refrigerante', '\r\nprodutos/guarana.png', 'guarana kuat, 350ml', '3.50', '5.50', 'ativo'),
 (3, 2, 'DOG ESPECIAL', 'produtos/Dog.png', 'muto bom', '3.50', '15.99', 'ativo'),
 (4, 2, 'DOG top', 'produtos/Dog.png', 'alface,batat palha,2 salsichas', '3.50', '9.99', 'ativo'),
 (5, 1, 'Cerveja corona', 'produtos/corona.png', '330ml', '4.00', '7.00', 'ativo'),
 (6, 1, 'Budweiser', 'produtos/bud.png', 'Long Neck 330ml', '4.00', '0.50', 'ativo'),
-(8, 1, 'Coca-Cola ', 'produtos/refrigerante.jpg', '2lTS', '1.00', '11.00', 'ativo'),
+(8, 1, 'Coca-Cola ', 'produtos/refr.coca_cola_2l.jpg', '2 LTS', '1.00', '11.00', 'ativo'),
 (9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'ativo'),
 (10, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '350 ml', '3.50', '4.00', 'ativo'),
 (11, 1, 'Coca-Cola lata', 'produtos/coca-lata.png', '350 ml ', '3.50', '5.00', 'ativo'),
-(12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '230 ml', '3.00', '5.50', 'ativo'),
-(13, 1, 'coca cola', 'produtos/coca-lata.png', '150ml', '2.00', '4.90', 'ativo');
+(12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '150 ml', '3.00', '5.50', 'ativo'),
+(13, 1, 'coca cola', 'produtos/coca-lata.png', '150ml', '2.00', '2.90', 'ativo'),
+(28, 1, 'Fanta 2 lts', 'produtos/fanta2lts.jpg', 'teste fanta', '3.50', '2.90', 'ativo');
 
 --
 -- Índices para tabelas despejadas
@@ -690,7 +691,7 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restrições para tabelas despejadas
