@@ -42,7 +42,8 @@ if (isset($_GET['id']) && $_GET['id'] != "") {
     
                         <div class="form-group">
                             <label for="img_produto">Imagem do Produto:</label>
-                            <input type="file" id="img_produto" name="img_produto" value="'.$imgProduto.'" required class="form-control-file">
+                            <img src="'.$imgProduto.'" alt="Imagem do Produto">
+                            <input type="file" id="img_produto" name="img_produto" accept="image/jpeg, image/png" class="form-control-file">
                         </div>
     
                         <div class="form-group">

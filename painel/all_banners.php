@@ -80,9 +80,7 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
                                             <td>' . $banner['id_banner'] . '</td>
                     
                                              <td>
-                                                 <button type="button" class="btn btn-primary btn-xs btn-flat">
-                                                     Editar
-                                                 </button>
+                                             <a href="atualizar_banner.php?id=' . $banner['id_banner'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
                                                  <button type="button" class="btn btn-danger btn-xs btn-flat">
                                                      Excluir
                                                  </button>
