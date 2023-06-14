@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 13/06/2023 às 22:58
+-- Tempo de geração: 15/06/2023 às 00:14
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -595,7 +595,7 @@ INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produ
 (11, 1, 'Coca-Cola lata', 'produtos/coca-lata.png', '350 ml ', '3.50', '5.00', 'ativo'),
 (12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '150 ml', '3.00', '5.50', 'ativo'),
 (13, 1, 'coca cola', 'produtos/coca-lata.png', '150ml', '2.00', '2.90', 'ativo'),
-(28, 1, 'Fanta 2 lts', 'produtos/fanta2lts.jpg', 'teste fanta', '3.50', '2.90', 'ativo');
+(28, 1, 'Fanta 2 lts', 'produtos/fanta-fanta.jpg', 'teste fanta', '3.50', '2.90', 'ativo');
 
 --
 -- Índices para tabelas despejadas
