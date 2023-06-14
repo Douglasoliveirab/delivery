@@ -137,9 +137,9 @@ if (isset($_SESSION['frete'])) {
                 R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "
             </td>
         </tr>";
-        
-        
-        
+
+
+
             array_push(
                 $_SESSION['itens'],
                 array(
