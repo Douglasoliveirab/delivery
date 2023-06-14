@@ -55,9 +55,7 @@ $categorias = $select->fetchAll();
                                             <td>' . $categoria['id_categoria'] . '</td> 
                                             <td>' . $categoria['nome_categoria'] . '</td>
                                              <td>
-                                                 <button type="button" class="btn btn-primary btn-xs btn-flat">
-                                                     Editar
-                                                 </button>
+                                             <a href="atualizar_categoria.php?id=' . $categoria['id_categoria'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
                                                  <button type="button" class="btn btn-danger btn-xs btn-flat">
                                                      Excluir
                                                  </button>

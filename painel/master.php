@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include "verifica_adm.php";
 
 
@@ -129,6 +131,10 @@ include "verifica_adm.php";
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
+                        <a href="loja.php"><i class="fa fa-image"></i> <span>Detalhes da Loja</span></a>
+                    </li>
+                    <!-- Optionally, you can add icons to the links -->
+                    <li class="active">
                         <a href="all_produtos.php"><i class="fa fa-shopping-bag"></i> <span>Produtos</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
@@ -166,9 +172,7 @@ include "verifica_adm.php";
                         <a href="../views/login/logout_adm.php"><i class="fa fa-arrow-left"></i><span>Sair</span></a>
                     </li>
 
-                    <li class="active" style="padding:5px;color:white;font-size:15px;">
-                    <span>Status da Loja</span> <button type="button" style="height:30px;width:110px; align-items:center"class="btn btn-danger" id="toggle-btn">Loja Fechada</button>
-                    </li>
+                   
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
@@ -184,10 +188,4 @@ include "verifica_adm.php";
                     <small>Gerenciamento do sistema</small>
                 </h1>
 
-                <script>
-  $('#toggle-btn').click(function() {
-    $(this).toggleClass('btn-danger btn-success').text(function(i, text) {
-      return text === "Loja Fechada" ? "Loja Aberta" : "Loja Fechada";
-    });
-  });
-</script>
+        

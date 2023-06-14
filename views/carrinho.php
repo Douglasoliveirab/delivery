@@ -120,13 +120,26 @@ if (isset($_SESSION['frete'])) {
 
 
             echo "<tr>
-                    <td>" . $produtos[0]['nome_produto'] . "  <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "' class='remover'><i class='bi bi-trash'></i></a></br>
-                    " . $produtos[0]['descricao'] . "</td>
-                    <td>" . $quantidade . "</td>
-                    <td>R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "</td>
-                    </tr>
-                    ";
-
+            <td>
+                " . $produtos[0]['nome_produto'] . "
+                <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "' class='remover'><i class='bi bi-trash'></i></a>
+                <br>
+                " . $produtos[0]['descricao'] . "
+            </td>
+            <td>
+                <div class='quantidade'>
+                    <a href='../controllers/atualizar_quantidade.php?acao=menos&id=" . $idProduto . "'><i class='bi bi-dash' style='color: black;border:1px solid gray;border:radius:2px;font-weight: bold;'></i></a>
+                    <span>" . $quantidade . "</span>
+                    <a href='../controllers/atualizar_quantidade.php?acao=mais&id=" . $idProduto . "'><i class='bi bi-plus' style='color: black;border:1px solid gray;border:radius:2px;font-weight: bold;'></i></a>
+                </div>
+            </td>
+            <td>
+                R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "
+            </td>
+        </tr>";
+        
+        
+        
             array_push(
                 $_SESSION['itens'],
                 array(

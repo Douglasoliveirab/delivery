@@ -21,25 +21,41 @@ if (isset($_SESSION['carrinho'])) {
 <!--INICIO HEAD DESKTOP-->
 <div class="controle-itens2">
     <div class="itens-head2">
-<img src="./assets/imagens/div_red-removebg-preview.png">
+        <img src="./assets/imagens/div_red-removebg-preview.png">
         <div class="itens">
             <?php
-//verifica se existe o usuario logado para buscar o endereço no banco
-if (isset($_SESSION['id_cliente'])) {
-    $id_cliente = $_SESSION['id_cliente'];
+            // Consultar a tabela "loja"
+            $stmt = $conexao->prepare("SELECT nome_loja, status_loja FROM loja");
+            $stmt->execute();
 
-    // Consultar o endereço do cliente na tabela clientes
-    $stmt = $conexao->prepare("SELECT endereco FROM clientes WHERE id_cliente = :id_cliente");
-    $stmt->bindParam(':id_cliente', $id_cliente);
-    $stmt->execute();
+            // Verificar se a consulta retornou algum resultado
+            if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $nomeLoja = $row['nome_loja'];
+                $statusLoja = $row['status_loja'];
+            } else {
+                // Se não houver registros na tabela "loja", defina valores padrão
+                $nomeLoja = "Nome da Loja";
+                $statusLoja = "Status da Loja";
+            }
+            //verifica se existe o usuario logado para buscar o endereço no banco
+            if (isset($_SESSION['id_cliente'])) {
+                $id_cliente = $_SESSION['id_cliente'];
 
-    // Verificar se a consulta retornou algum resultado
-    if ($stmt->rowCount() > 0) {
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['endereco'] = $row['endereco'];
-        $endereco = $_SESSION['endereco'];
-    } 
-}
+                // Consultar o endereço do cliente na tabela clientes
+                $stmt = $conexao->prepare("SELECT endereco FROM clientes WHERE id_cliente = :id_cliente");
+                $stmt->bindParam(':id_cliente', $id_cliente);
+                $stmt->execute();
+
+
+
+                // Verificar se a consulta retornou algum resultado
+                if ($stmt->rowCount() > 0) {
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $_SESSION['endereco'] = $row['endereco'];
+                    $endereco = $_SESSION['endereco'];
+                }
+            }
             if (
                 isset($_SESSION['usuario']) && $_SESSION['usuario'] != "" &&
                 $_SESSION['id_cliente'] != "" && $_SESSION['endereco'] != ""
@@ -48,24 +64,23 @@ if (isset($_SESSION['id_cliente'])) {
                 $usuario = ucfirst($usuario);
                 $id_cliente = $_SESSION['id_cliente'];
                 $endereco = $_SESSION['endereco'];
-                
-                echo '<a href="login/logout.php">  Sair </a>';
                 echo '<a href="index.php">Inicio</a>';
                 echo ' <a href="pedidos_cliente.php?id_cliente=' . $id_cliente . '" class="footer-link" id="btn-busca">Pedidos</a>';
                 echo '<a href="#">' . $usuario . '</a>';
-                echo '   <a href="#" id="edit-address">'.$endereco.' <i class="bi bi-pencil" style="color:red">Editar</i></a>
-                ';
+                echo '   <a href="#" id="edit-address">' . $endereco . ' <i class="bi bi-pencil" style="color:red">Editar</i></a>';
+                echo '<a href="login/logout.php">  Sair </a>';
             } else {
                 echo "<div class='itens'>
                             <a href='cadastre-se.php'>CADASTRE-SE</a>
                             <a href='login_cliente.php'>LOGIN</a>
+                            <i class='bi bi-shop'></i> ' . $statusLoja . '</a>'
                             </div>";
             }
             ?>
         </div>
     </div>
-     <!-- Modal de Edição de Endereço -->
-     <div id="address-modal" class="modal-endereco">
+    <!-- Modal de Edição de Endereço -->
+    <div id="address-modal" class="modal-endereco">
         <div class="modal-content-desk">
             <span class="modal-close">&times;</span>
             <h2 class="custom-modal-title">Editar Endereço</h2>
@@ -76,14 +91,18 @@ if (isset($_SESSION['id_cliente'])) {
             </form>
         </div>
     </div>
-
+    <div class="align" style="display:flex;align-items: center;">
+    <div class="status_loja"><i class="bi bi-shop" ></i> <?=$statusLoja?></div>
     <div class="item-carrinho">
+      
         <div class="itens_bag"><?= $itens ?></div>
         <div>
             <a href="carrinho.php"><i class="bi bi-basket"></i></a>
         </div>
     </div>
 </div>
+    </div>
+    
 <!-- FIM HEAD DESKTOP-->
 <!--INICIO HEAD MOBILE-->
 <div class="mob">
