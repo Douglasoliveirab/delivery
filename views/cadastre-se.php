@@ -23,7 +23,7 @@
 
     <div class="container_form">
         <a href="index.html"> <img src="assets/imagens/div_red-removebg-preview.png" alt="" class="imagem-topo"></a>
-        <div class="titulo_form"><strong>Olá, seja bem-vindo</strong></div>
+        
         <br>
         <p>
       
@@ -33,6 +33,11 @@
             <input type="text" name="nome" class="campos" placeholder="Digite o seu Nome" maxlength="20" minlength="2" required>
             <input type="text" name="sobrenome" class="campos" placeholder="Digite o seu Sobrenome" maxlength="20" minlength="2" required>
             <input type="tel" name="cpf" class="campos" placeholder="Digite o seu CPF" maxlength="14" minlength="14" required>
+            <?php
+                if (isset($_GET['error']) && $_GET['error'] == 'invalid_cpf') {
+                    echo '<div style="color: red; margin-left: 10%; text-align: left;">CPF inválido. Digite um CPF válido.</div>';
+                }
+                ?>
             <input type="email" name="email" class="campos" placeholder="Digite o seu melhor Email" required>
             <input type="tel" name="telefone" class="campos" placeholder="Digite o seu telefone" maxlength="16" minlength="9" required>
             <input type="text" name="endereco" class="campos" placeholder="Digite o seu endereço completo" maxlength="60" minlength="15" required>

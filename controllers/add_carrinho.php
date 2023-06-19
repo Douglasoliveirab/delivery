@@ -3,6 +3,16 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+if($_SESSION['status_loja'] != 'Aberta'){
+    echo "<script>
+        setTimeout(function() {
+            if (confirm('A loja está fechada. Clique em OK')) {
+                window.location.href = '../views/index.php';
+            }
+        });
+    </script>";
+    exit();
+}
 //verifica se existe usuario logado se não existir redireciona
 //para faser login e nao adiciona ao carrinho
 if(!isset($_SESSION['usuario'])){
@@ -10,10 +20,7 @@ if(!isset($_SESSION['usuario'])){
 exit();
 }
 
-if($_SESSION['status_loja'] != 'Aberta'){
-    header('Location: ../views/index.php');
-    exit();
-}
+
 //se nao existir ainda a sessao carrinho prepara a sessao 
 //criando um array vazio
 if (!isset($_SESSION['carrinho'])) {
