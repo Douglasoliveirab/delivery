@@ -1,5 +1,5 @@
 <?php
-   $select = $conexao->prepare("SELECT * FROM categoria");
+   $select = $conexao->prepare("SELECT * FROM categoria WHERE status_categoria = 'ativo'");
    $select->execute();
    $categorias = $select->fetchAll();
 

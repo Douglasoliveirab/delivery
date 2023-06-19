@@ -28,6 +28,7 @@ include "verifica_adm.php";
     <script src="js/newbanner.js"></script>
     <script src="js/newproduto.js"></script>
     <script src="js/newadm.js"></script>
+    <script src="js/newcategoria.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">

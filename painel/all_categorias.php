@@ -1,10 +1,31 @@
 <?php
+include "../.env/conexao.php";
+
+if (isset($_GET['delete'])) {
+    $id = (int) $_GET['delete'];
+
+    $update_categoria = $conexao->prepare("UPDATE categoria SET status_categoria = 'inativo' WHERE id_categoria = ?");
+    $update_categoria->bindParam(1, $id, PDO::PARAM_INT);
+    $update_categoria->execute();
+    header("Location: all_categorias.php");
+    exit();
+}
+
+if (isset($_GET['todos'])) {
+    $select = $conexao->prepare("SELECT * FROM categoria");
+    $select->execute();
+    $categorias = $select->fetchAll();
+} elseif (isset($_GET['ativos'])) {
+    $select = $conexao->prepare("SELECT * FROM categoria WHERE status_categoria = 'ativo'");
+    $select->execute();
+    $categorias = $select->fetchAll();
+} else {
+    $select = $conexao->prepare("SELECT * FROM categoria WHERE status_categoria = 'ativo'");
+    $select->execute();
+    $categorias = $select->fetchAll();
+}
 
 include "master.php";
-include "../.env/conexao.php";
-$select = $conexao->prepare("SELECT * FROM categoria ");
-$select->execute();
-$categorias = $select->fetchAll();
 
 ?>
 
@@ -17,7 +38,7 @@ $categorias = $select->fetchAll();
     }
     ?>
     <li>
-        <a href="?todos" class="btn btn-default">Mostrar Todos categorias</a>
+        <a href="?todos" class="btn btn-default">Mostrar Todas Categorias</a>
     </li>
     <li>
         <a href="?ativos" class="btn btn-default">Mostrar Categorias Ativas</a>
@@ -25,6 +46,38 @@ $categorias = $select->fetchAll();
 
 </ol>
 </section>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="card">
+            <form id="form-categoria" action="controllers/recebe_categoria.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="banner">Selecione uma imagem:</label>
+                    <input type="file" name="img_categoria" id="img_categoria" required>
+                </div>
+                <div class="form-group">
+                    <label for="banner">Nome da categoria</label>
+                    <input type="text" name="nome_categoria" id="nome_categoria" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="success-modal" class="modal">
+    <div class="modal-content">
+        <div class="card">
+            <div class="success-message">
+                <i class="fa fa-check-circle"></i>
+                <p>Categoria criada com sucesso!</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Main content -->
 <section class="content container-fluid">
@@ -39,37 +92,33 @@ $categorias = $select->fetchAll();
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>imagem da categoria</th>
-                                <th>codigo</th>
-                                <th>Nome da categoria </th>
+                                <th>Imagem da categoria</th>
+                                <th>Código</th>
+                                <th>Nome da categoria</th>
+                                <th>Status da categoria</th>
                                 <th>Ações</th>
-
                             </tr>
                         </thead>
                         <tbody>
-
                             <?php foreach ($categorias as $categoria) {
-
                                 echo '<tr style="align-items:center;">
                                             <td><img src="' . $categoria['img_categoria'] . '" style="width:60px;height:60px;"></td>
                                             <td>' . $categoria['id_categoria'] . '</td> 
                                             <td>' . $categoria['nome_categoria'] . '</td>
-                                             <td>
-                                             <a href="atualizar_categoria.php?id=' . $categoria['id_categoria'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
-                                                 <button type="button" class="btn btn-danger btn-xs btn-flat">
-                                                     Excluir
-                                                 </button>
-                                             </td>
-                                             </tr>';
-                            }
-                            ?>
-
+                                            <td>' . $categoria['status_categoria'] . '</td>
+                                            <td>
+                                                <a href="atualizar_categoria.php?id=' . $categoria['id_categoria'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+                                                <a href="?delete=' . $categoria['id_categoria'] . '" class="btn btn-danger btn-xs btn-flat">Excluir</a>
+                                            </td>
+                                        </tr>';
+                            } ?>
                         </tbody>
                     </table>
                 </div>
                 <!-- /.box-body -->
             </div>
         </div>
-        </body>
-
-        </html>
+    </div>
+</section>
+</body>
+</html>
