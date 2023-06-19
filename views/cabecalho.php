@@ -33,10 +33,12 @@ if (isset($_SESSION['carrinho'])) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $nomeLoja = $row['nome_loja'];
                 $statusLoja = $row['status_loja'];
+                $_SESSION["status_loja"] = $statusLoja;
             } else {
                 // Se não houver registros na tabela "loja", defina valores padrão
                 $nomeLoja = "Nome da Loja";
                 $statusLoja = "Status da Loja";
+                
             }
             //verifica se existe o usuario logado para buscar o endereço no banco
             if (isset($_SESSION['id_cliente'])) {

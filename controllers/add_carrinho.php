@@ -9,6 +9,11 @@ if(!isset($_SESSION['usuario'])){
     header('Location: ../views/login_cliente.php');
 exit();
 }
+
+if($_SESSION['status_loja'] != 'Aberta'){
+    header('Location: ../views/index.php');
+    exit();
+}
 //se nao existir ainda a sessao carrinho prepara a sessao 
 //criando um array vazio
 if (!isset($_SESSION['carrinho'])) {
