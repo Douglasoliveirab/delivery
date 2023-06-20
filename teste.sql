@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 19/06/2023 às 21:36
+-- Tempo de geração: 20/06/2023 às 21:15
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -62,17 +62,18 @@ INSERT INTO `administrador` (`id_administrador`, `nome_usuario`, `sobrenome`, `s
 CREATE TABLE `banner` (
   `id_banner` int(11) NOT NULL,
   `img_banner` varchar(50) NOT NULL,
-  `caminho_banner` varchar(100) NOT NULL
+  `caminho_banner` varchar(100) NOT NULL,
+  `status_banner` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `banner`
 --
 
-INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`) VALUES
-(1, 'pede1leva2.png', 'banners/pede1leva2.png'),
-(2, 'salgadinhos.png', 'banners/salgadinhos.png'),
-(3, 'promocao1.png', 'banners/promocao1.png');
+INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`, `status_banner`) VALUES
+(1, 'pede1leva2.png', 'banners/pede1leva2.png', 'ativo'),
+(2, 'salgadinhos.png', 'banners/salgadinhos.png', 'ativo'),
+(3, 'promocao1.png', 'banners/promocao1.png', 'ativo');
 
 -- --------------------------------------------------------
 

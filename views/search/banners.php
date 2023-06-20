@@ -1,5 +1,5 @@
 <?php
-$select = $conexao->prepare("SELECT * FROM banner");
+$select = $conexao->prepare("SELECT * FROM banner WHERE status_banner = 'ativo'");
 $select->execute();
 $banners = $select->fetchAll();
 echo ' <div class="controle-img-topo">';

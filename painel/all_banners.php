@@ -1,11 +1,45 @@
 <?php
 
-include "master.php";
-include "../.env/conexao.php";
-$select = $conexao->prepare("SELECT * FROM banner ");
-$select->execute();
-$banners = $select->fetchAll();
 
+include "../.env/conexao.php";
+if (isset($_GET['delete'])) {
+  $id = (int) $_GET['delete'];
+
+  $update_banner = $conexao->prepare("UPDATE banner SET status_banner = 'inativo' WHERE id_banner = ?");
+  $update_banner->bindParam(1, $id, PDO::PARAM_INT);
+  $update_banner->execute();
+  header("Location: all_banners.php");
+  exit();
+}
+
+if (isset($_GET['habilitar'])) {
+  $id = (int) $_GET['habilitar'];
+
+  $update_banner = $conexao->prepare("UPDATE banner SET status_banner = 'ativo' WHERE id_banner = ?");
+  $update_banner->bindParam(1, $id, PDO::PARAM_INT);
+  $update_banner->execute();
+  header("Location: all_banners.php");
+  exit();
+}
+
+if (isset($_GET['todos'])) {
+  $select = $conexao->prepare("SELECT * FROM banner");
+  $select->execute();
+  $banners = $select->fetchAll();
+} elseif (isset($_GET['ativos'])) {
+  $select = $conexao->prepare("SELECT * FROM banner WHERE status_banner = 'ativo'");
+  $select->execute();
+  $banners = $select->fetchAll();
+} elseif (isset($_GET['inativos'])) {
+  $select = $conexao->prepare("SELECT * FROM banner WHERE  status_banner = 'inativo'");
+  $select->execute();
+  $banners = $select->fetchAll();
+} else {
+  $select = $conexao->prepare("SELECT * FROM banner WHERE status_banner = 'ativo'");
+  $select->execute();
+  $banners = $select->fetchAll();
+}
+include "master.php";
 ?>
 
 <ol class="breadcrumb">
@@ -13,12 +47,20 @@ $banners = $select->fetchAll();
 <?php 
 if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
   echo '<li>
-  <button id="btn-cadastrar-banner">Cadastrar banner</button>
+  <button id="btn-cadastrar-banner" class="btn btn-default">Cadastrar banner</button>
 </li>
 ';
 }
 ?>
-
+ <li>
+        <a href="?todos" class="btn btn-default">Mostrar Todos Banners</a>
+    </li>
+    <li>
+        <a href="?ativos" class="btn btn-default">Mostrar Banners Ativos</a>
+    </li>
+    <li>
+        <a href="?inativos" class="btn btn-default">Mostrar Banners Desabilitados</a>
+    </li>
 </ol>
 </section>
 
@@ -65,29 +107,48 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
                         <thead>
                             <tr>
 
-                                <th>imagem</th>
-                                <th>codigo do banner</th>
+                                <th>Imagem</th>
+                                <th>Codigo do banner</th>
+                                <th>Status do banner</th>
                                 <th>Ações</th>
 
                             </tr>
                         </thead>
                         <tbody>
 
-                            <?php foreach ($banners as $banner) {
+                        <?php
+foreach ($banners as $banner) {
+    echo '<tr style="align-items:center;">
+            <td><img src="' . $banner['caminho_banner'] . '" style="width:120px;height:60px;"></td>
+            <td>' . $banner['id_banner'] . '</td>
+            <td>' . $banner['status_banner'] . '</td>
+            <td>';
 
-                                echo '<tr style="align-items:center;">
-                                            <td><img src="' . $banner['caminho_banner'] . '" style="width:120px;height:60px;"></td> 
-                                            <td>' . $banner['id_banner'] . '</td>
-                    
-                                             <td>
-                                             <a href="atualizar_banner.php?id=' . $banner['id_banner'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
-                                                 <button type="button" class="btn btn-danger btn-xs btn-flat">
-                                                     Excluir
-                                                 </button>
-                                             </td>
-                                             </tr>';
-                            }
-                            ?>
+    // Verifica se o parâmetro "?todos" está presente na URL
+    if (isset($_GET['todos'])) {
+        if ($banner['status_banner'] == 'inativo') {
+            echo '<a href="atualizar_banner.php?id=' . $banner['id_banner'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+                 <a href="?habilitar=' . $banner['id_banner'] . '" class="btn btn-success btn-xs btn-flat">Habilitar</a>';
+        } elseif ($banner['status_banner'] == 'ativo') {
+            echo '<a href="atualizar_banner.php?id=' . $banner['id_banner'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+                  <a href="?delete=' . $banner['id_banner'] . '" class="btn btn-danger btn-xs btn-flat">Excluir</a>';
+        }
+    } else {
+        // Verifica se existe o parâmetro "?inativos" na URL
+        if (!isset($_GET['inativos'])) {
+            echo '<a href="atualizar_banner.php?id=' . $banner['id_banner'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+                  <a href="?delete=' . $banner['id_banner'] . '" class="btn btn-danger btn-xs btn-flat">Excluir</a>';
+        } // Verifica se existe o parâmetro "?ativos" na URL
+        elseif (isset($_GET['inativos'])) {
+            echo '<a href="atualizar_banner.php?id=' . $banner['id_banner'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+                  <a href="?habilitar=' . $banner['id_banner'] . '" class="btn btn-success btn-xs btn-flat">Habilitar</a>';
+        }
+    }
+
+    echo '</td></tr>';
+}
+?>
+
 
                         </tbody>
                     </table>
