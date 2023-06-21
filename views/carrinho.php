@@ -53,30 +53,30 @@ if (isset($_SESSION['frete'])) {
                     <a href='index.php' class='button-cart'>Continuar comprando</a>
               </div>";
     } else {
-    // Verificar se o usuário está logado e possui um ID de cliente
-if (isset($_SESSION['id_cliente'])) {
-    $id_cliente = $_SESSION['id_cliente'];
+        // Verificar se o usuário está logado e possui um ID de cliente
+        if (isset($_SESSION['id_cliente'])) {
+            $id_cliente = $_SESSION['id_cliente'];
 
-    // Consultar o endereço do cliente na tabela clientes
-    $stmt = $conexao->prepare("SELECT endereco FROM clientes WHERE id_cliente = :id_cliente");
-    $stmt->bindParam(':id_cliente', $id_cliente);
-    $stmt->execute();
+            // Consultar o endereço do cliente na tabela clientes
+            $stmt = $conexao->prepare("SELECT endereco FROM clientes WHERE id_cliente = :id_cliente");
+            $stmt->bindParam(':id_cliente', $id_cliente);
+            $stmt->execute();
 
-    // Verificar se a consulta retornou algum resultado
-    if ($stmt->rowCount() > 0) {
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['endereco'] = $row['endereco'];
-        $endereco = $_SESSION['endereco'];
+            // Verificar se a consulta retornou algum resultado
+            if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $_SESSION['endereco'] = $row['endereco'];
+                $endereco = $_SESSION['endereco'];
 
-        // Usar o valor do endereço como desejar
-        echo '<div class="localizacao">
+                // Usar o valor do endereço como desejar
+                echo '<div class="localizacao">
         <i class="bi bi-geo-alt">Endereço de entrega</i><br>
         <span class="endereco">' . $endereco . '</span>
         <i class="bi bi-pencil editar" style="color:red" id="btn-editar">editar</i>
     </div>';
-    } 
-}
-        
+            }
+        }
+
 
         echo "<div class='container'>
         <div style='display: flex; gap: 10px;'> 
@@ -120,12 +120,25 @@ if (isset($_SESSION['id_cliente'])) {
 
 
             echo "<tr>
-                    <td>" . $produtos[0]['nome_produto'] . "  <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "' class='remover'><i class='bi bi-trash'></i></a></br>
-                    " . $produtos[0]['descricao'] . "</td>
-                    <td>" . $quantidade . "</td>
-                    <td>R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "</td>
-                    </tr>
-                    ";
+            <td>
+                " . $produtos[0]['nome_produto'] . "
+                <a href='../controllers/remover.php?remover=carrinho&id=" . $idProduto . "' class='remover'><i class='bi bi-trash'></i></a>
+                <br>
+                " . $produtos[0]['descricao'] . "
+            </td>
+            <td>
+                <div class='quantidade'>
+                    <a href='../controllers/atualizar_quantidade.php?acao=menos&id=" . $idProduto . "'><i class='bi bi-dash' style='color: black;border:1px solid gray;border:radius:2px;font-weight: bold;'></i></a>
+                    <span>" . $quantidade . "</span>
+                    <a href='../controllers/atualizar_quantidade.php?acao=mais&id=" . $idProduto . "'><i class='bi bi-plus' style='color: black;border:1px solid gray;border:radius:2px;font-weight: bold;'></i></a>
+                </div>
+            </td>
+            <td>
+                R$ " . number_format($produtos[0]['preco'], 2, ",", ".") . "
+            </td>
+        </tr>";
+
+
 
             array_push(
                 $_SESSION['itens'],
@@ -202,15 +215,15 @@ if (isset($_SESSION['id_cliente'])) {
     <form method="post" action="atualiza_endereco.php">
         <div class="custom-modal">
             <div class="custom-modal-content">
-            <span class="modal-close-mob">&times;</span>
+                <span class="modal-close-mob">&times;</span>
                 <h3 class="custom-modal-title">Editar Endereço</h3>
                 <input type="hidden" name="id_cliente" value="<?= $id_cliente ?>" />
-                <input type="text" class="custom-modal-input" id="novo_endereco" name="novo_endereco" placeholder="Digite o novo endereço" value="<?=$endereco?>">
+                <input type="text" class="custom-modal-input" id="novo_endereco" name="novo_endereco" placeholder="Digite o novo endereço" value="<?= $endereco ?>">
                 <button type="submit" class="custom-modal-btn"> Atualizar </button>
             </div>
         </div>
     </form>
-<script src="./assets/js/carrinho.js"></script>
+    <script src="./assets/js/carrinho.js"></script>
     <script>
         $(document).ready(function() {
 
@@ -236,10 +249,10 @@ if (isset($_SESSION['id_cliente'])) {
                     }
                 });
 
-            }); 
+            });
 
-    });
-</script>
+        });
+    </script>
 </body>
 
 </html>

@@ -53,6 +53,7 @@ $(document).ready(function(){
             $("#senha-mensagem").text("As senhas não coincidem");
           }
         });
+
     });
     
     

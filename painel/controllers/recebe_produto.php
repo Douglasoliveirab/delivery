@@ -2,21 +2,20 @@
 session_start();
 include "../../.env/conexao.php";
 
-
-
 // Verifica se é uma imagem válida
 $tipo = $_FILES['img_produto']['type'];
 if($tipo == 'image/jpeg' || $tipo == 'image/png') {
 
   // Verifica se a pasta "produtos" existe, se não existir, cria a pasta
-  if (!file_exists("produtos")) {
-      mkdir("produtos");
+  if (!file_exists("../produtos")) {
+    mkdir("../produtos");
   }
 
   // Move o arquivo para o diretório de uploads
-  $caminho_img_produto = $_FILES['img_produto']['name'];
-  $img_produto = 'produtos/' . $caminho_img_produto;
-  move_uploaded_file($_FILES['img_produto']['tmp_name'], $img_produto);
+  $nome_img_produto = $_FILES['img_produto']['name'];
+  $caminho_img_produto = 'produtos/' . $nome_img_produto;
+  $img_produto = $caminho_img_produto;
+  move_uploaded_file($_FILES['img_produto']['tmp_name'], $caminho_img_produto);
   
   // Insere as informações do produto na tabela produtos
   $nome_produto = $_POST['nome_produto'];
@@ -36,14 +35,15 @@ if($tipo == 'image/jpeg' || $tipo == 'image/png') {
   $stmt->bindParam(7, $status_produto);
   $stmt->execute();
 
-  
 } else {
   echo 'Apenas imagens JPEG e PNG são permitidas.';
 }
+
 // Espera 5 segundos antes de redirecionar para a página destino
 header('Refresh: 4; URL=../produtos.php');
 
 // Exibe uma mensagem para o usuário informando sobre o redirecionamento
-echo "produto cadstrado você sera redirecionado em 4 segundos...";
+echo "Produto cadastrado. Você será redirecionado em 4 segundos...";
+
 
 ?>

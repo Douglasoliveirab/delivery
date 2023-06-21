@@ -16,6 +16,18 @@ CREATE TABLE clientes (
   PRIMARY KEY (id_cliente)
 );
 
+CREATE TABLE loja (
+  id_loja INT(11) NOT NULL AUTO_INCREMENT,
+  nome_loja VARCHAR(255),
+  status_loja VARCHAR(50),
+  telefone VARCHAR(20),
+  logo VARCHAR(255),
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  atualizado_em TIMESTAMP DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(id_loja)
+);
+
+
 CREATE TABLE enderecos (
   id_endereco INT(11) NOT NULL AUTO_INCREMENT,
   CEP VARCHAR (10) NOT NULL,

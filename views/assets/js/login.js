@@ -17,6 +17,18 @@ $("#newUser").click(function(e){
     $('input[name="telefone"]').mask('(00) 00000-0000');
 
     // mostra e oculta a senha e compara se as senhas sao iguais 
+    $(".senha-toggle-login").click(function() {
+      var senhaInput = $("#senha-login");
+      var senhaToggle = $(".senha-toggle-login");
+      if (senhaInput.attr("type") === "password") {
+        senhaInput.attr("type", "text");
+        senhaToggle.html('<i class="bi bi-eye-slash-fill"></i>');
+      } else {
+        senhaInput.attr("type", "password");
+        senhaToggle.html('<i class="bi bi-eye-fill"></i>');
+      }
+    });
+    // mostra e oculta a senha e compara se as senhas sao iguais 
     $(".senha-toggle").click(function() {
       var senhaInput = $("#senha");
       var senhaToggle = $(".senha-toggle");

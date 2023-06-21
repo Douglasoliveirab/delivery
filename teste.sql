@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 25/05/2023 às 22:10
+-- Tempo de geração: 20/06/2023 às 21:15
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -62,17 +62,18 @@ INSERT INTO `administrador` (`id_administrador`, `nome_usuario`, `sobrenome`, `s
 CREATE TABLE `banner` (
   `id_banner` int(11) NOT NULL,
   `img_banner` varchar(50) NOT NULL,
-  `caminho_banner` varchar(100) NOT NULL
+  `caminho_banner` varchar(100) NOT NULL,
+  `status_banner` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `banner`
 --
 
-INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`) VALUES
-(1, 'pede1leva2.png', 'banners/pede1leva2.png'),
-(2, 'itenspor499.png', 'banners/itenspor499.png'),
-(3, 'salgadinhos.png', 'banners/salgadinhos.png');
+INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`, `status_banner`) VALUES
+(1, 'pede1leva2.png', 'banners/pede1leva2.png', 'ativo'),
+(2, 'salgadinhos.png', 'banners/salgadinhos.png', 'ativo'),
+(3, 'promocao1.png', 'banners/promocao1.png', 'ativo');
 
 -- --------------------------------------------------------
 
@@ -83,20 +84,24 @@ INSERT INTO `banner` (`id_banner`, `img_banner`, `caminho_banner`) VALUES
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
   `img_categoria` varchar(100) NOT NULL,
-  `nome_categoria` varchar(50) NOT NULL
+  `nome_categoria` varchar(50) NOT NULL,
+  `status_categoria` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `img_categoria`, `nome_categoria`) VALUES
-(1, 'categorias/bebidas.png', 'Bebidas'),
-(2, 'categorias/hot-dog.png', 'Hotdog'),
-(3, 'categorias/pizzas.png', 'Pizzas'),
-(4, 'categorias/lanche.png', 'Lanches'),
-(6, 'categorias/comida.png', 'Comida'),
-(9, 'categorias/salgados.png', 'Salgados');
+INSERT INTO `categoria` (`id_categoria`, `img_categoria`, `nome_categoria`, `status_categoria`) VALUES
+(1, 'categorias/bebidas.png', 'Bebidas', 'ativo'),
+(2, 'categorias/hot-dog.png', 'Hotdog', 'ativo'),
+(3, 'categorias/pizzas.png', 'Pizzas', 'ativo'),
+(4, 'categorias/lanche.png', 'Lanches', 'ativo'),
+(6, 'categorias/comida.png', 'Comida', 'ativo'),
+(9, 'categorias/salgados.png', 'Salgados', 'ativo'),
+(10, 'categorias/acai.png', 'Gelados', 'ativo'),
+(11, 'categorias/combo.jpg', 'Combos', 'ativo'),
+(12, 'categorias/Doces.jpg', 'Doces', 'ativo');
 
 -- --------------------------------------------------------
 
@@ -123,7 +128,59 @@ INSERT INTO `clientes` (`id_cliente`, `nome`, `sobrenome`, `cpf`, `email`, `tele
 (1, 'douglas', 'oliveira', '438.288.558-20', 'dgsoliverfamilia@gmail.com', '(11) 99342-6890', '1319 Rua maria aurora passini', '$2y$10$29SPcE9j71B9Nxb3AsfpbeqO4hZyY/IkxTdTBUpKjukGGGuB5KFYm'),
 (2, 'cliente t', 'este', '564.444.444-44', 'dgs@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$SS9jQlmL3.YkAxdcR7bfv.BMHmIREpbO8MJy2Wxf6ZlyKz25/amNu'),
 (3, 'reinaldo', 'ribeiro', '564.444.444-44', 'reinaldo@gmail.com', '(11) 11111-1111', '140 Centro Francisco morato', '$2y$10$SoPbtogWb91YDYY2ypdHNuypjzOP3n9ITtGv99yj8xfNmPzIHQrWa'),
-(4, 'dono2', 'da silva', '438.288.558-20', 'teste@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$Qy50fKlGEfbSBq9T5B7Uj.JZFpRfJ9TjZF6miXFqXd3cBjrUoB0sy');
+(4, 'dono2', 'da silva', '438.288.558-20', 'teste@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$Qy50fKlGEfbSBq9T5B7Uj.JZFpRfJ9TjZF6miXFqXd3cBjrUoB0sy'),
+(5, 'aytfty', 'ajhyu', '564.444.444-44', 'danny.silva221998@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$HziTiz9vQqRGVB3WDG9pmOESDQP60QgVu277Z0DvZ/j4NUcz1pMWS'),
+(6, 'Daniela', 'da silva', '438.288.558-22', 'danny.silva221998@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$8k273gAIF6bDlf9ECCsARur74UQscihcVyrE7XeJbeJsrrqH.zmjC'),
+(7, 'douglas', 'da silva', '438.288.558-22', 'danny.silva221998@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$tpjhipLvXVioNUFx9dJ.0.oLHKZ9oNL9qlVZu6kT7y4vZu/A0C/d.');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `enderecos`
+--
+
+CREATE TABLE `enderecos` (
+  `id_endereco` int(11) NOT NULL,
+  `CEP` varchar(10) NOT NULL,
+  `CIDADE` varchar(20) NOT NULL,
+  `BAIRRO` varchar(20) NOT NULL,
+  `ENDERECO` varchar(35) NOT NULL,
+  `COMPLEMENTO` varchar(20) DEFAULT NULL,
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
+  `atualizado_em` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
+  `id_cliente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `enderecos`
+--
+
+INSERT INTO `enderecos` (`id_endereco`, `CEP`, `CIDADE`, `BAIRRO`, `ENDERECO`, `COMPLEMENTO`, `criado_em`, `atualizado_em`, `id_cliente`) VALUES
+(1, '07991140', 'francisco morato', 'JD rosas', 'rua maria aurora passini 137', 'casa', '2023-04-09 18:18:52', '2023-04-09 18:16:36', 1),
+(2, '07991142', 'francisco morato', 'JD rosas', 'rua joao joaquina 139', 'ap', '2023-04-09 18:58:06', '2023-04-09 19:00:36', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `endereco_lojas`
+--
+
+CREATE TABLE `endereco_lojas` (
+  `id_endereco` int(11) NOT NULL,
+  `rua` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `bairro` varchar(255) DEFAULT NULL,
+  `cidade` varchar(255) DEFAULT NULL,
+  `estado` varchar(255) DEFAULT NULL,
+  `id_loja` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `endereco_lojas`
+--
+
+INSERT INTO `endereco_lojas` (`id_endereco`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `id_loja`) VALUES
+(1, 'Rua Tupinanbas', '506', 'Belem capela', 'FRancisco morato', 'SP', 1);
 
 -- --------------------------------------------------------
 
@@ -400,7 +457,28 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (259, 163, 10, 2),
 (260, 163, 4, 1),
 (261, 164, 5, 1),
-(262, 165, 5, 1);
+(262, 165, 5, 1),
+(263, 166, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `loja`
+--
+
+CREATE TABLE `loja` (
+  `id_loja` int(11) NOT NULL,
+  `nome_loja` varchar(255) DEFAULT NULL,
+  `status_loja` varchar(10) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `loja`
+--
+
+INSERT INTO `loja` (`id_loja`, `nome_loja`, `status_loja`, `telefone`) VALUES
+(1, 'Div Lanches', 'Fechada', '(11) 7070-7070');
 
 -- --------------------------------------------------------
 
@@ -554,7 +632,8 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_ped
 (162, 1, '2023-05-15 15:47:21', '1_20230515154721', '50.00', '0.00', '50.00', 'pendente', 'approved', 'retirada'),
 (163, 1, '2023-05-16 11:30:58', '1_20230516113058', '38.99', '5.00', '43.99', 'pendente', 'approved', 'entrega'),
 (164, 1, '2023-05-19 17:44:09', '1_20230519174409', '7.00', '5.00', '12.00', 'pendente', 'pendente', 'entrega'),
-(165, 1, '2023-05-19 17:45:54', '1_20230519174554', '7.00', '5.00', '12.00', 'Finalizado', 'approved', 'entrega');
+(165, 1, '2023-05-19 17:45:54', '1_20230519174554', '7.00', '5.00', '12.00', 'Finalizado', 'approved', 'entrega'),
+(166, 1, '2023-05-26 15:09:58', '1_20230526150958', '5.50', '0.00', '5.50', 'pendente', 'approved', 'retirada');
 
 -- --------------------------------------------------------
 
@@ -578,18 +657,19 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id_produto`, `id_categoria`, `nome_produto`, `img_produto`, `descricao`, `custo_produto`, `preco`, `status_produto`) VALUES
-(1, 1, 'Refrigerante', 'produtos/refrigerante.png\r\n', 'coca cola, 2l', '2.50', '6.00', 'inativo'),
+(1, 1, 'Refrigerante', 'produtos/refrigerante.png', 'coca cola, 4l', '2.50', '6.00', 'ativo'),
 (2, 1, 'Refrigerante', '\r\nprodutos/guarana.png', 'guarana kuat, 350ml', '3.50', '5.50', 'ativo'),
 (3, 2, 'DOG ESPECIAL', 'produtos/Dog.png', 'muto bom', '3.50', '15.99', 'ativo'),
 (4, 2, 'DOG top', 'produtos/Dog.png', 'alface,batat palha,2 salsichas', '3.50', '9.99', 'ativo'),
 (5, 1, 'Cerveja corona', 'produtos/corona.png', '330ml', '4.00', '7.00', 'ativo'),
 (6, 1, 'Budweiser', 'produtos/bud.png', 'Long Neck 330ml', '4.00', '0.50', 'ativo'),
-(8, 1, 'Coca-Cola ', 'produtos/refrigerante.jpg', '2lTS', '1.00', '11.00', 'inativo'),
-(9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'inativo'),
+(8, 1, 'Coca-Cola ', 'produtos/refr.coca_cola_2l.jpg', '2 LTS', '1.00', '11.00', 'ativo'),
+(9, 9, 'Coxinha', 'produtos/coxinha.png', 'Sabor frango com salsa e creme de ctupiry', '1.00', '2.50', 'ativo'),
 (10, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '350 ml', '3.50', '4.00', 'ativo'),
 (11, 1, 'Coca-Cola lata', 'produtos/coca-lata.png', '350 ml ', '3.50', '5.00', 'ativo'),
-(12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '230 ml', '3.00', '5.50', 'inativo'),
-(13, 1, 'coca cola', 'produtos/coca-lata.png', '150ml', '2.00', '4.90', 'ativo');
+(12, 1, 'Fanta lata ', 'produtos/fanta-lata.png', '150 ml', '3.00', '5.50', 'ativo'),
+(13, 1, 'coca cola', 'produtos/coca-lata.png', '150ml', '2.00', '2.90', 'ativo'),
+(28, 1, 'Fanta 2 lts', 'produtos/fanta-fanta.jpg', 'teste fanta', '3.50', '2.90', 'ativo');
 
 --
 -- Índices para tabelas despejadas
@@ -620,12 +700,32 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
+-- Índices de tabela `enderecos`
+--
+ALTER TABLE `enderecos`
+  ADD PRIMARY KEY (`id_endereco`),
+  ADD KEY `id_cliente` (`id_cliente`);
+
+--
+-- Índices de tabela `endereco_lojas`
+--
+ALTER TABLE `endereco_lojas`
+  ADD PRIMARY KEY (`id_endereco`),
+  ADD KEY `id_loja` (`id_loja`);
+
+--
 -- Índices de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
   ADD PRIMARY KEY (`id_itens_pedido`),
   ADD KEY `id_pedido` (`id_pedido`),
   ADD KEY `id_produto` (`id_produto`);
+
+--
+-- Índices de tabela `loja`
+--
+ALTER TABLE `loja`
+  ADD PRIMARY KEY (`id_loja`);
 
 --
 -- Índices de tabela `pedidos`
@@ -661,35 +761,53 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `enderecos`
+--
+ALTER TABLE `enderecos`
+  MODIFY `id_endereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `enderecos`
+--
+ALTER TABLE `enderecos`
+  ADD CONSTRAINT `enderecos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`);
+
+--
+-- Restrições para tabelas `endereco_lojas`
+--
+ALTER TABLE `endereco_lojas`
+  ADD CONSTRAINT `endereco_lojas_ibfk_1` FOREIGN KEY (`id_loja`) REFERENCES `loja` (`id_loja`);
 
 --
 -- Restrições para tabelas `itens_pedido`

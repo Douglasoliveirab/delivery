@@ -51,6 +51,7 @@ body {
 }
 
 .titulo_form {
+  margin-bottom: 10px;
   color: red;
   text-align: center;
   font-size: 15px;

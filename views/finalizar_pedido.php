@@ -8,9 +8,6 @@ include './login/verifica_login.php';
 $accessToken = "TEST-1472282048459445-032409-8723148853628c0116c89b140f329544-1337839420";
 MercadoPago\SDK::setAccessToken($accessToken);
 
-
-
-
 // Prepara a consulta SQL para inserir os pedidos
 $sql_pedidos = "INSERT INTO pedidos (id_pedido, id_cliente, datahora_pedido, numero_pedido, subtotal, frete, valor_total, status_pedido, status_pagamento,tipo_entrega) 
         VALUES (:id_pedido, :id_cliente, :datahora_pedido, :numero_pedido, :subtotal, :frete, :valor_total, :status_pedido, :status_pagamento,:tipo_entrega)";
@@ -29,7 +26,7 @@ try {
     $conexao->beginTransaction();
 
     // Loop para inserir os pedidos
-    foreach($_SESSION['dados'] as $pedido) {
+    foreach ($_SESSION['dados'] as $pedido) {
         // Vincular os valores aos placeholders dos pedidos
         $stmt_pedidos->bindParam(':id_pedido', $pedido['id_pedido'], PDO::PARAM_INT);
         $stmt_pedidos->bindParam(':id_cliente', $pedido['id_cliente'], PDO::PARAM_INT);
@@ -49,9 +46,9 @@ try {
             $id_pedido = $conexao->lastInsertId();
 
             // Loop para inserir os itens do pedido
-            foreach($_SESSION['itens'] as $item) {
+            foreach ($_SESSION['itens'] as $item) {
                 // Vincular os valores aos placeholders dos itens do pedido
-                
+
                 $stmt_itens->bindParam(':id_pedido', $id_pedido, PDO::PARAM_INT);
                 $stmt_itens->bindParam(':id_produto', $item['id_produto'], PDO::PARAM_INT);
                 $stmt_itens->bindParam(':quantidade', $item['quantidade'], PDO::PARAM_INT);
@@ -70,21 +67,21 @@ try {
 
     $conexao->commit();
 
-  
+
     $preference = new MercadoPago\Preference();
 
     $item = new MercadoPago\Item();
     $item->title = 'pedido delivery'; // Nome do produto
     $item->quantity = 1; // Quantidade do produto
-    $item->unit_price = (double)$pedido['valor_total']; // Preço unitário do produto
+    $item->unit_price = (float)$pedido['valor_total']; // Preço unitário do produto
     $preference->items = array($item);
-    
+
     $preference->back_urls = array(
-        "success" => "localhost/delivery/views/notification.php", // URL de sucesso
-        "failure" => "localhost/delivery/views/notification.php", // URL de falha
-        "pending" => "localhost/delivery/views/notification.php" // URL pendente
+        "success" => "localhost:8080/delivery/views/notification.php", // URL de sucesso
+        "failure" => "localhost:8080/delivery/views/notification.php", // URL de falha
+        "pending" => "localhost:8080/delivery/views/notification.php" // URL pendente
     );
-    
+
     $preference->payment_methods = array(
         "excluded_payment_methods" => array(
             array("id" => "amex")
@@ -95,23 +92,21 @@ try {
         ),
         "installments" => 6
     );
-    
+
     $preference->notification_url = 'https://seusite.com.br/notification.php'; // URL de notificação de pagamento
     $preference->external_reference = $pedido['numero_pedido']; // Referência externa para a ordem de pagamento
-    
+
     $preference->save();
-    
+
     $link = $preference->init_point;
-    
+
     // redireciona para a pagina de checkout  Mercado Pago 
-    header("Location: {$link}"); 
+    header("Location: {$link}");
     // Limpar a sessão 'dados' e também a carrinho
     unset($_SESSION['carrinho']);
 
-   
-     exit;
-    
 
+    exit;
 } catch (Exception $e) {
     $conexao->rollBack();
     echo "Erro na transação: " . $e->getMessage();

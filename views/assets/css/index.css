@@ -43,7 +43,14 @@ body{
   width: 60px;
   height: 60px;
 }
-
+.status_loja {
+  font-size: 17px;
+  margin-top: 25px;
+  margin-right: 10px;
+  color: gray;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
 .item-carrinho {
   margin-top: 5px;
   display: flex;
@@ -126,12 +133,13 @@ body{
 @media screen and (min-width: 767px) {
   .localizacao{
     display: none;
+    margin: 10px;
   }
 }
 /*exibe  a localizacao para celular*/
 .localizacao{
   color: gray;
-  font-size: 17px ;
+  font-size: 15px ;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   margin:15px;
@@ -331,37 +339,38 @@ body{
   font-size: 16px;
   color: grey;
   margin-bottom: 10px;
+  text-align: center; /* Alinhar o conteúdo ao centro */
 }
 
-.rodape a{
+.rodape a {
   color: grey;
   text-decoration: none;
-  font-family:helvetica,sans-serif;
-  margin-left: 15%;
+  font-family: helvetica, sans-serif;
 }
 
 .rodape .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
 .rodape .row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center; /* Centralizar os itens horizontalmente */
+  align-items: center;
+  text-align: center;
 }
 
 .rodape .col-md-6 {
-  width: 30%;
+  width: 100%; /* Alterar a largura para 100% em dispositivos móveis */
   margin-bottom: 30px;
 }
 
 .rodape h3 {
   font-size: 18px;
   margin-bottom: 20px;
-  color:black;
-  font-family: helvetica,sans-serif;
-  margin-left: 15%;
+  color: black;
+  font-family: helvetica, sans-serif;
 }
 
 .rodape ul {
@@ -381,11 +390,10 @@ body{
   font-size: 20px;
 }
 
-.icon-sociais{
+.icon-sociais {
   display: flex;
-  margin-left: 15%;
+  justify-content: center;
 }
-
 
 @media screen and (max-width: 768px) {
   .rodape .col-md-6 {
@@ -397,19 +405,54 @@ body{
     font-size: 16px;
     color: grey;
     margin-bottom: 90px;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .container_loja{
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 70px;
+  .rodape h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color:black;
+    font-family: helvetica,sans-serif;
+    text-align: center;
+    align-items: center;
+   
+  }
+  
+  .rodape ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .rodape ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .rodape ul li i {
+    margin-right: 10px;
+    font-size: 20px;
+    align-items: center;
+    margin-left: 20px;
+  }
+  
+  .icon-sociais{
+    display: flex;
+    align-items: center;
+  }
 }
+
+
+ 
 
 .container_loja{
   align-items: center;
-  gap: 20px;
-  width: 80%;
+  margin: 0 auto;
+  gap: 10px;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -453,38 +496,45 @@ body{
 
 }
 @media (max-width: 767px) {
-  .container_loja{
+  .container_loja {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 70px;
+    margin-bottom: 60px;
+    overflow-x: auto;
+  }
+
+  .container_loja::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
   }
   
-  .loja{
+  .loja {
     justify-content: space-between;
     display: flex;
-    gap: 15px;
     align-items: center;
     background-color: white;
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
-    width: 90%;
+    max-width: 90%;
+    min-width: 90%;
     margin: 0 auto;
     flex-direction: row;
   }
   
-
-  .loja img{
+  .loja img {
     margin-right: 15px;
   }
 
-  .loja .descricao{
+  .loja .descricao {
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family:helvetica,sans-serif
-
+    font-family: helvetica, sans-serif;
   }
 
-  .loja .botao{
+  .loja .botao {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -505,9 +555,8 @@ body{
   }
 
   .loja .conteudo img {
-    margin-left:0;
+    margin-left: 0;
   }
-
 }
 
 /* Estilos do modal */
