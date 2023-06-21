@@ -75,7 +75,6 @@ if (isset($_SESSION['carrinho'])) {
                 echo "<div class='itens'>
                             <a href='cadastre-se.php'>CADASTRE-SE</a>
                             <a href='login_cliente.php'>LOGIN</a>
-                            <i class='bi bi-shop'></i> ' . $statusLoja . '</a>'
                             </div>";
             }
             ?>
