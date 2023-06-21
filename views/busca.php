@@ -17,7 +17,7 @@ if (isset($_POST['search-produto']) && !empty($_POST['search-produto'])) {
         exit();
     } else {
         // Exibir mensagem de nenhum produto encontrado
-        echo '<!DOCTYPE html>
+        echo ' <!DOCTYPE html>
         <html>
         <head>
             <meta charset="UTF-8">
@@ -34,7 +34,7 @@ if (isset($_POST['search-produto']) && !empty($_POST['search-produto'])) {
                 }
                 
                 .container {
-                    width: 400px;
+                   width:300px;
                     padding: 20px;
                     background-color: #fff;
                     text-align: center;
@@ -44,12 +44,20 @@ if (isset($_POST['search-produto']) && !empty($_POST['search-produto'])) {
                     font-size: 100px;
                     color: gray;
                 }
+                
+                .container img {
+                    width: 200px;
+                }
+                
+                .container a {
+                    display: block;
+                    margin-top: 20px;
+                }
             </style>
         </head>
         <body>
             <div class="container">
-                <i class="fas fa-shopping-basket"></i>
-                <p>Nenhum produto encontrado.</p>
+                <img src="./assets/imagens/nenhumproduto.png">
                 <a href="../views/">Voltar à página inicial</a>
             </div>
         
