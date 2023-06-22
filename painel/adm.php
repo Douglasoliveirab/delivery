@@ -1,23 +1,71 @@
 <?php
 
-include "master.php";
+session_start();
 include "../.env/conexao.php";
-$select = $conexao->prepare("SELECT * FROM administrador");
-$select->execute();
-$adms = $select->fetchAll();
 
-?>
+if (isset($_GET['delete'])) {
+    $id = (int) $_GET['delete'];
+
+    $update_admin = $conexao->prepare("UPDATE administrador SET status_adm = 'inativo' WHERE id_administrador = ?");
+    $update_admin->bindParam(1, $id, PDO::PARAM_INT);
+    $update_admin->execute();
+    header("Location: adm.php");
+    exit();
+}
+
+if (isset($_GET['habilitar'])) {
+    $id = (int) $_GET['habilitar'];
+
+    $update_admin = $conexao->prepare("UPDATE administrador SET status_adm = 'ativo' WHERE id_administrador = ?");
+    $update_admin->bindParam(1, $id, PDO::PARAM_INT);
+    $update_admin->execute();
+    header("Location: adm.php");
+    exit();
+}
+
+if (isset($_GET['todos'])) {
+    $select = $conexao->prepare("SELECT * FROM administrador");
+    $select->execute();
+    $adms = $select->fetchAll();
+} elseif (isset($_GET['ativos'])) {
+    $select = $conexao->prepare("SELECT * FROM administrador WHERE status_adm = 'ativo'");
+    $select->execute();
+    $adms = $select->fetchAll();
+} elseif (isset($_GET['inativos'])) {
+    $select = $conexao->prepare("SELECT * FROM administrador WHERE status_adm = 'inativo'");
+    $select->execute();
+    $adms = $select->fetchAll();
+} else {
+    $select = $conexao->prepare("SELECT * FROM administrador WHERE status_adm = 'ativo'");
+    $select->execute();
+    $adms = $select->fetchAll();
+}
+
+// Exiba a página do administrador
+include "master.php";
+
+  ?>
+
+
 
 <ol class="breadcrumb">
 <?php 
 if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
   echo '<li>
-  <button id="btn-cadastrar-adm">Cadastrar administrador</button>
+  <button id="btn-cadastrar-adm" class="btn btn-default">Cadastrar administrador</button>
 </li>
 ';
 }
 ?>
-    
+    <li>
+        <a href="?todos" class="btn btn-default">Mostrar Todos administradores</a>
+    </li>
+    <li>
+        <a href="?ativos" class="btn btn-default">Mostrar administradores Ativos</a>
+    </li>
+    <li>
+        <a href="?inativos" class="btn btn-default">Mostrar administradores Desabilitados</a>
+    </li>
 </ol>
 </section>
 
@@ -28,36 +76,36 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
         <div class="card">
             <form id="form-adm" action="recebe_adm.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="banner">Nome</label>
+                    <label for="adm">Nome</label>
                     <input type="text" name="nome_usuario" id="nome_usuario" required>
                 </div>
                 <div class="form-group">
-                    <label for="banner">Sobrenome</label>
+                    <label for="adm">Sobrenome</label>
                     <input type="text" name="sobrenome" id="" max-length="20" required>
                 </div>
                 <div class="form-group">
-                    <label for="banner">Senha</label>
+                    <label for="adm">Senha</label>
                     <input type="password" name="senha" id="" required>
                 </div>
                 <div class="form-group">
-                    <label for="banner">CPF</label>
+                    <label for="adm">CPF</label>
                     <input type="tel" name="cpf" id="" required>
                 </div>
                 <div class="form-group">
-                    <label for="banner">Email</label>
+                    <label for="adm">Email</label>
                     <input type="email" name="email" id="" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="banner">Endereco completo</label>
+                    <label for="adm">Endereco completo</label>
                     <input type="text" name="endereco" id="" required>
                 </div>
                 <div class="form-group">
-                    <label for="banner">Telefone</label>
+                    <label for="adm">Telefone</label>
                     <input type="tel" name="telefone" id="" required>
                 </div>
                 <div class="form-group">
-                    <label for="banner">Privilégio</label>
+                    <label for="adm">Privilégio</label>
                     <select  name="previlegios">
                         <option value ="admin">Administrador</option>
                         <option value ="usuario">Usuario</option>
@@ -99,7 +147,9 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
                                 <th>Nome</th>
                                 <th>Sobrenome</th>
                                 <th>email</th>
+                                <th>CPF</th>
                                 <th>Telefone</th>
+                                <th>Status</th>
                                 <th>privilégio</th>
                                 <th>Ações</th>
 
@@ -107,26 +157,30 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
                         </thead>
                         <tbody>
 
-                            <?php foreach ($adms as $adm) {
+                        <?php
+foreach ($adms as $adm) {
+    echo '<tr style="align-items:center;">
+              <td>' . $adm['nome_usuario'] . '</td> 
+              <td>' . $adm['sobrenome'] . '</td>
+              <td>' . $adm['email'] . '</td>
+              <td>' . $adm['cpf'] . '</td>
+              <td>' . $adm['telefone'] . '</td>
+              <td>' . $adm['status_adm'] . '</td>
+              <td>' . $adm['previlegios'] . '</td>
+              <td>';
 
-                                echo '<tr style="align-items:center;">
-                                            <td>' . $adm['nome_usuario'] . '</td> 
-                                            <td>' . $adm['sobrenome'] . '</td>
-                                            <td>' . $adm['email'] . '</td>
-                                            <td>' . $adm['telefone'] . '</td>
-                                            <td>' . $adm['previlegios'] . '</td>
-                                            
-                                             <td>
-                                                 <button type="button" class="btn btn-primary btn-xs btn-flat">
-                                                     Editar
-                                                 </button>
-                                                 <button type="button" class="btn btn-danger btn-xs btn-flat">
-                                                     Excluir
-                                                 </button>
-                                             </td>
-                                             </tr>';
-                            }
-                            ?>
+    if ($adm['status_adm'] == 'inativo') {
+        echo '<a href="atualizar_adm.php?id=' . $adm['id_administrador'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+              <a href="?habilitar=' . $adm['id_administrador'] . '" class="btn btn-success btn-xs btn-flat">Habilitar</a>';
+    } elseif ($adm['status_adm'] == 'ativo') {
+        echo '<a href="atualizar_adm.php?id=' . $adm['id_administrador'] . '" class="btn btn-primary btn-xs btn-flat">Editar</a>
+              <a href="?delete=' . $adm['id_administrador'] . '" class="btn btn-danger btn-xs btn-flat">Excluir</a>';
+    }
+
+    echo '</td></tr>';
+}
+?>
+
 
                         </tbody>
                     </table>

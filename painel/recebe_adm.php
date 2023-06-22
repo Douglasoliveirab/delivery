@@ -35,7 +35,7 @@ $stmt->bindParam(':senha', $senha_encriptada);
 $stmt->bindParam(':previlegios', $previlegios);
 $stmt->execute();
 
+header("location:  adm.php");
+exit();
 
-echo "Dados cadastrados com sucesso.";
-header("location:  ../../painel/");
 ?>

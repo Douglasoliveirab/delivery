@@ -10,8 +10,8 @@ $(document).ready(function() {
     });
   
     // Enviar o formulário via AJAX
-    $('#form-categoria').submit(function() {
-     
+    $('#form-categoria').submit(function(e) {
+      e.preventDefault(); // impede o comportamento padrão de envio do formulário
   
       // Verifica se o campo de arquivo está vazio
       if ($('#img_categoria')[0].files.length === 0) {
