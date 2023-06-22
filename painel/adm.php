@@ -26,7 +26,7 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="card">
-            <form id="form-adm" action="controllers/recebe_adm.php" method="post" enctype="multipart/form-data">
+            <form id="form-adm" action="recebe_adm.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="banner">Nome</label>
                     <input type="text" name="nome_usuario" id="nome_usuario" required>

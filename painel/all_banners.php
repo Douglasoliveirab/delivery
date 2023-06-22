@@ -69,7 +69,7 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="card">
-      <form id="form-banner" action="controllers/recebe_banner.php" method="post" enctype="multipart/form-data">
+      <form id="form-banner" action="recebe_banner.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="banner">Selecione uma imagem:</label>
           <input type="file" name="banner" id="banner" required>

@@ -68,7 +68,7 @@ include "master.php";
         <span class="close">&times;</span>
         <div class="card">
 
-            <form method="POST" id="form-produto" enctype="multipart/form-data" action="controllers/recebe_produto.php" class="card">
+            <form method="POST" id="form-produto" enctype="multipart/form-data" action="recebe_produto.php" class="card">
                 <div class="form-group">
                     <label for="nome_produto">Nome do Produto:</label>
                     <input type="text" id="nome_produto" name="nome_produto" required>

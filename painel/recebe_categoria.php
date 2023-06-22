@@ -1,14 +1,14 @@
 <?php
 session_start();
-include "../../.env/conexao.php";
+include "../.env/conexao.php";
 
 
   // Verifique se é uma imagem válida
   $tipo = $_FILES['img_categoria']['type'];
   if ($tipo == 'image/jpeg' || $tipo == 'image/png') {
       // Verifique se a pasta "categorias" existe, se não existir, crie a pasta
-      if (!file_exists("../categorias")) {
-          mkdir("../categorias");
+      if (!file_exists("categorias")) {
+          mkdir("categorias");
       }
 
       // Mova o novo arquivo para o diretório de uploads
@@ -29,13 +29,13 @@ include "../../.env/conexao.php";
   $stmt->execute();
 } else {
   
-  header('Refresh: 4; URL=../all_categorias.php');
+  header('Refresh: 4; URL=all_categorias.php');
 
 // Exibe uma mensagem para o usuário informando sobre o redirecionamento
 echo 'Apenas imagens JPEG e PNG são permitidas.';
 echo "Erro na criação da categoria você sera redirecionado em 4 segundos...";
 }
-header('Refresh: 4; URL=../categorias.php');
+header('Refresh: 4; URL=all_categorias.php');
 
 // Exibe uma mensagem para o usuário informando sobre o redirecionamento
 echo "Categoria criada com sucesso você sera redirecionado em 4 segundos...";

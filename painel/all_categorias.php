@@ -68,7 +68,7 @@ include "master.php";
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="card">
-            <form id="form-categoria" action="controllers/recebe_categoria.php" method="post" enctype="multipart/form-data">
+            <form id="form-categoria" action="recebe_categoria.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="banner">Selecione uma imagem:</label>
                     <input type="file" name="img_categoria" id="img_categoria" required>

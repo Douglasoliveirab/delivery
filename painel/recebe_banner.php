@@ -1,13 +1,13 @@
 <?php
-include "../../.env/conexao.php";
+include "../.env/conexao.php";
 
 // Verifica se é uma imagem válida
 $tipo = $_FILES['banner']['type'];
 if ($tipo == 'image/jpeg' || $tipo == 'image/png' && $tipo !== '') {
 
   // Verifica se a pasta "banners" existe, se não existir, cria a pasta
-  if (!file_exists("../banners")) {
-    mkdir("../banners");
+  if (!file_exists("banners")) {
+    mkdir("banners");
   }
 
   // Move o arquivo para o diretório de uploads
@@ -26,6 +26,6 @@ if ($tipo == 'image/jpeg' || $tipo == 'image/png' && $tipo !== '') {
 } else {
   echo 'Apenas imagens JPEG e PNG são permitidas.';
 }
-echo "<script>window.location.href='../banner.php'</script>";
+echo "<script>window.location.href='all_banners.php'</script>";
 
 ?>

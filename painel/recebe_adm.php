@@ -1,7 +1,7 @@
 <?php
 
 
-require_once('../../.env/conexao.php');
+include "../.env/conexao.php";
 // Recebe os dados do formulário
 $nome_usuario = $_POST['nome_usuario'];
 $sobrenome = $_POST['sobrenome'];
