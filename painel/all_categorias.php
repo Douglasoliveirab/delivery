@@ -78,6 +78,14 @@ include "master.php";
                     <input type="text" name="nome_categoria" id="nome_categoria" required>
                 </div>
                 <div class="form-group">
+                    <label for="status_categoria">Status da categoria:</label>
+                    <select name="status_categoria" id="status_categoria" required>
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <input type="submit" value="Cadastrar">
                 </div>
             </form>
