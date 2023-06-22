@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 20/06/2023 às 21:15
+-- Tempo de geração: 22/06/2023 às 19:26
 -- Versão do servidor: 10.4.27-MariaDB
 -- Versão do PHP: 8.0.25
 
@@ -36,6 +36,7 @@ CREATE TABLE `administrador` (
   `email` varchar(35) NOT NULL,
   `endereco` varchar(50) NOT NULL,
   `telefone` varchar(15) NOT NULL,
+  `status_adm` varchar(15) NOT NULL,
   `previlegios` varchar(255) DEFAULT NULL,
   `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
   `atualizado_em` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
@@ -45,13 +46,25 @@ CREATE TABLE `administrador` (
 -- Despejando dados para a tabela `administrador`
 --
 
-INSERT INTO `administrador` (`id_administrador`, `nome_usuario`, `sobrenome`, `senha`, `cpf`, `email`, `endereco`, `telefone`, `previlegios`, `criado_em`, `atualizado_em`) VALUES
-(1, 'dono', 'desta loja', '$2y$10$/lbIxGTEAju30ocLSjZrjuYWRUWnxZCMG2q2EustvZHz.qOMdKlWC', '438.288.558-20', 'dono@gmail.com', 'rua das hostencias 153 jd rosas', '(11) 99342-6890', 'admin', '2023-04-06 18:54:12', '0000-00-00 00:00:00'),
-(2, 'dono2', 'teste', '$2y$10$tfX06/VkNReTA8cAh.wqNOd2tEW3YskxIeQvpNGsab4SOEM8MRC5e', '438.288.558-20', 'teste@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-04-06 19:04:10', '0000-00-00 00:00:00'),
-(3, 'dono2', 'teste', '$2y$10$sdsHVTH9cmrx5FodCuovGewMmURY0XJwFkR/won.2mA7deICg5wG.', '438.288.558-20', 'teste2@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-04-06 19:05:14', '0000-00-00 00:00:00'),
-(22, 'teste', 'oliveira', '$2y$10$hP0fC3wOmhmpcDHxkkqaQ.YGr4kuDu1v9CQKxf2ePgaF3iZ6e1xNe', '438.288.558-21', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'usuario', '2023-04-10 00:51:02', '0000-00-00 00:00:00'),
-(23, 'teste', 'ajax', '$2y$10$yf6hJ7VRpBPuYz5FgRL63eJmIdbQYsXgH1ARNllDpPdhB88HbzzlW', '438.288.558-22', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'admin', '2023-04-10 00:55:57', '0000-00-00 00:00:00'),
-(24, 'Daniela', 'da silva', '$2y$10$RH5l.gQ4qvYjpQ.w.fYlceO/V4MmDavtuyOns4/ozJQAllIBxQ8yq', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'admin', '2023-05-19 20:48:18', '0000-00-00 00:00:00');
+INSERT INTO `administrador` (`id_administrador`, `nome_usuario`, `sobrenome`, `senha`, `cpf`, `email`, `endereco`, `telefone`, `status_adm`, `previlegios`, `criado_em`, `atualizado_em`) VALUES
+(1, 'dono', 'desta loja', '$2y$10$/lbIxGTEAju30ocLSjZrjuYWRUWnxZCMG2q2EustvZHz.qOMdKlWC', '438.288.558-20', 'dono@gmail.com', 'rua das hostencias 153 jd rosas', '(11) 99342-6890', 'ativo', 'admin', '2023-04-06 18:54:12', '2023-06-22 16:55:46'),
+(2, 'dono2', 'teste', '$2y$10$tfX06/VkNReTA8cAh.wqNOd2tEW3YskxIeQvpNGsab4SOEM8MRC5e', '438.288.558-20', 'teste@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-04-06 19:04:10', '2023-06-22 16:55:46'),
+(3, 'dono2', 'teste', '$2y$10$sdsHVTH9cmrx5FodCuovGewMmURY0XJwFkR/won.2mA7deICg5wG.', '438.288.558-20', 'teste2@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-04-06 19:05:14', '2023-06-22 16:55:46'),
+(22, 'teste', 'oliveira', '$2y$10$hP0fC3wOmhmpcDHxkkqaQ.YGr4kuDu1v9CQKxf2ePgaF3iZ6e1xNe', '438.288.558-21', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'ativo', 'usuario', '2023-04-10 00:51:02', '2023-06-22 16:55:46'),
+(23, 'teste', 'ajax', '$2y$10$yf6hJ7VRpBPuYz5FgRL63eJmIdbQYsXgH1ARNllDpPdhB88HbzzlW', '438.288.558-22', 'teste@ajax', 'rua tupinambas 509 - centro', '11993426992', 'ativo', 'admin', '2023-04-10 00:55:57', '2023-06-22 16:55:46'),
+(24, 'Daniela', 'da silva', '$2y$10$RH5l.gQ4qvYjpQ.w.fYlceO/V4MmDavtuyOns4/ozJQAllIBxQ8yq', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-05-19 20:48:18', '2023-06-22 16:55:46'),
+(25, 'Douglas', 'oliveira', '$2y$10$QJ9KXaok.fE2wY.nOetf0O6Hszg9K1N.G.Hbk5zOJ/vV2bgBvSCHq', '382.443.358-31', 'douglas@gmail.com', 'rua tupinanbas 572 jardim nova belem ', '(11) 97070-7070', 'ativo', 'admin', '2023-06-21 23:37:43', '2023-06-22 16:55:46'),
+(47, 'Daniela', 'da silva', '$2y$10$KztrV2F1NH0GUgyQTZzbsuh1R4OyQvhvNijZU0kG6AjZCw9OlAcge', '564.444.444-44', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:15:31', '2023-06-22 16:55:46'),
+(60, 'Daniela', 'da silva', '$2y$10$73JgPcAmTBosGSm1MIF9su7tngTAeBGpy3he10Xd0DhF3b02JhQUG', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:24:04', '2023-06-22 16:55:46'),
+(61, 'Daniela', 'da silva', '$2y$10$.HDMJX2hgcsEE4/UFlWuoOXT.JIWYlCFd2QEVY9B.EcHNYeJaDqxq', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:28:07', '2023-06-22 16:55:46'),
+(62, 'Daniela', 'da silva', '$2y$10$YSFgcXPJtF4mjFZ1q6ekfOPZc3ycdN0M5bJRedLIdcFCW63qlu8aK', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6892', 'ativo', 'admin', '2023-06-22 15:31:25', '2023-06-22 16:55:46'),
+(63, 'Daniela', 'da silva', '$2y$10$z2/.QU9Yz.AOoG1Y3D1vqODapl7ei.mebS6A0F7IZX7NZIgAaeJvi', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:41:25', '2023-06-22 16:55:46'),
+(64, 'Daniela', 'da silva', '$2y$10$5qt9zfpzwm7e4rbnnnmhduTIlOnQLziGwQk2K02dPBtVkdmuT2DHK', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:44:03', '2023-06-22 16:55:46'),
+(65, 'Daniela', 'da silva', '$2y$10$th1jaWyiqsLyyySthBLktuysd8iYWk3PfSBjM5x.0BH6jytGfKucK', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:45:14', '2023-06-22 16:55:46'),
+(66, 'Daniela', 'da silva', '$2y$10$d6Bw93CDyPGkk2vKZkxc5.GiC8cpHenAPHFRdNYW7MUKoAEgEb3B.', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:45:42', '2023-06-22 16:45:42'),
+(67, 'Daniela', 'da silva', '$2y$10$j7jsZok4nKZbiSU5qgBwH..7qkFoevCy1Q50N7Do.DkHxiBC.EmkK', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:45:42', '2023-06-22 15:45:42'),
+(68, 'douglas', 'da silva', '$2y$10$c6VNrpZKMvFn2TZTxcNj1.BLeLkXeWRJ4w9kzkPvWEzub2UBv28Ua', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:53:23', '2023-06-22 15:45:42'),
+(69, 'Daniela', 'da silva', '$2y$10$ChaMmLFm/rMvU7k7fDHxZeo0WGEn.Tfxm/xQ7oM9g8IYPLbh5TRrW', '438.288.558-20', 'danny.silva221998@gmail.com', '137 Rua Maria Aurora Passini', '(11) 99342-6890', 'ativo', 'admin', '2023-06-22 15:54:25', '2023-06-22 17:22:30');
 
 -- --------------------------------------------------------
 
@@ -131,7 +144,8 @@ INSERT INTO `clientes` (`id_cliente`, `nome`, `sobrenome`, `cpf`, `email`, `tele
 (4, 'dono2', 'da silva', '438.288.558-20', 'teste@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$Qy50fKlGEfbSBq9T5B7Uj.JZFpRfJ9TjZF6miXFqXd3cBjrUoB0sy'),
 (5, 'aytfty', 'ajhyu', '564.444.444-44', 'danny.silva221998@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$HziTiz9vQqRGVB3WDG9pmOESDQP60QgVu277Z0DvZ/j4NUcz1pMWS'),
 (6, 'Daniela', 'da silva', '438.288.558-22', 'danny.silva221998@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$8k273gAIF6bDlf9ECCsARur74UQscihcVyrE7XeJbeJsrrqH.zmjC'),
-(7, 'douglas', 'da silva', '438.288.558-22', 'danny.silva221998@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$tpjhipLvXVioNUFx9dJ.0.oLHKZ9oNL9qlVZu6kT7y4vZu/A0C/d.');
+(7, 'douglas', 'da silva', '438.288.558-22', 'danny.silva221998@gmail.com', '(11) 99342-6890', '137 Rua Maria Aurora Passini', '$2y$10$tpjhipLvXVioNUFx9dJ.0.oLHKZ9oNL9qlVZu6kT7y4vZu/A0C/d.'),
+(8, 'neymar', 'da silva santois', '382.443.358-31', 'neymar@gmail.com', '(11) 97070-7070', 'rua tupinanbas 572 jardim nova belem ', '$2y$10$duXRrZyEKdyRxlcuj2rkhuHuOMdGhIyZ6mFBLryDO1X63By3Oj2fK');
 
 -- --------------------------------------------------------
 
@@ -458,7 +472,9 @@ INSERT INTO `itens_pedido` (`id_itens_pedido`, `id_pedido`, `id_produto`, `quant
 (260, 163, 4, 1),
 (261, 164, 5, 1),
 (262, 165, 5, 1),
-(263, 166, 2, 1);
+(263, 166, 2, 1),
+(264, 167, 5, 2),
+(265, 168, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -478,7 +494,7 @@ CREATE TABLE `loja` (
 --
 
 INSERT INTO `loja` (`id_loja`, `nome_loja`, `status_loja`, `telefone`) VALUES
-(1, 'Div Lanches', 'Fechada', '(11) 7070-7070');
+(1, 'Div Lanches', 'Aberta', '(11) 7070-7070');
 
 -- --------------------------------------------------------
 
@@ -633,7 +649,9 @@ INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `datahora_pedido`, `numero_ped
 (163, 1, '2023-05-16 11:30:58', '1_20230516113058', '38.99', '5.00', '43.99', 'pendente', 'approved', 'entrega'),
 (164, 1, '2023-05-19 17:44:09', '1_20230519174409', '7.00', '5.00', '12.00', 'pendente', 'pendente', 'entrega'),
 (165, 1, '2023-05-19 17:45:54', '1_20230519174554', '7.00', '5.00', '12.00', 'Finalizado', 'approved', 'entrega'),
-(166, 1, '2023-05-26 15:09:58', '1_20230526150958', '5.50', '0.00', '5.50', 'pendente', 'approved', 'retirada');
+(166, 1, '2023-05-26 15:09:58', '1_20230526150958', '5.50', '0.00', '5.50', 'pendente', 'approved', 'retirada'),
+(167, 8, '2023-06-21 21:38:02', '8_20230621213802', '14.00', '5.00', '19.00', 'pendente', 'pendente', 'entrega'),
+(168, 8, '2023-06-21 21:49:25', '8_20230621214925', '7.00', '5.00', '12.00', 'Em Preparação', 'pendente', 'entrega');
 
 -- --------------------------------------------------------
 
@@ -749,25 +767,25 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de tabela `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `enderecos`
@@ -779,19 +797,19 @@ ALTER TABLE `enderecos`
 -- AUTO_INCREMENT de tabela `itens_pedido`
 --
 ALTER TABLE `itens_pedido`
-  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
+  MODIFY `id_itens_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=266;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Restrições para tabelas despejadas
