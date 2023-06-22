@@ -113,8 +113,8 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
                                             <td>' . $adm['nome_usuario'] . '</td> 
                                             <td>' . $adm['sobrenome'] . '</td>
                                             <td>' . $adm['email'] . '</td>
-                                            <td>' . $adm['previlegios'] . '</td>
                                             <td>' . $adm['telefone'] . '</td>
+                                            <td>' . $adm['previlegios'] . '</td>
                                             
                                              <td>
                                                  <button type="button" class="btn btn-primary btn-xs btn-flat">

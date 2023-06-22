@@ -121,10 +121,6 @@ include "verifica_adm.php";
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MENU</li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li class="active">
-                        <a href="usuarios.php"><i class="fa fa-users"></i> <span>Usuários</span></a>
-                    </li>
 
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
@@ -134,18 +130,23 @@ include "verifica_adm.php";
                     <li class="active">
                         <a href="loja.php"><i class="fa fa-image"></i> <span>Detalhes da Loja</span></a>
                     </li>
+                     <!-- Optionally, you can add icons to the links -->
+                     <li class="active">
+                        <a href="all_categorias.php"><i class="fa fa-list"></i> <span>Categorias</span></a>
+                    </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
                         <a href="all_produtos.php"><i class="fa fa-shopping-bag"></i> <span>Produtos</span></a>
                     </li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active">
-                        <a href="all_categorias.php"><i class="fa fa-list"></i> <span>Categorias</span></a>
-                    </li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li class="active">
                         <a href="all_banners.php"><i class="fa fa-image"></i> <span>Banners</span></a>
                     </li>
+                     <!-- Optionally, you can add icons to the links -->
+                    <li class="active">
+                        <a href="usuarios.php"><i class="fa fa-users"></i> <span>Clientes</span></a>
+                    </li>
+                   
                      <!-- Optionally, you can add icons to the links -->
                      <li class="active">
                         <a href="pedidos.php"><i class="fa fa-shopping-cart"></i> <span>Pedidos</span></a>

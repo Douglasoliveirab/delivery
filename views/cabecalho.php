@@ -73,6 +73,7 @@ if (isset($_SESSION['carrinho'])) {
                 echo '<a href="login/logout.php">  Sair </a>';
             } else {
                 echo "<div class='itens'>
+                            <a href='index.php'>INICIO</a>
                             <a href='cadastre-se.php'>CADASTRE-SE</a>
                             <a href='login_cliente.php'>LOGIN</a>
                             </div>";
