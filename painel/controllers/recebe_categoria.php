@@ -7,8 +7,8 @@ include "../../.env/conexao.php";
   $tipo = $_FILES['img_categoria']['type'];
   if ($tipo == 'image/jpeg' || $tipo == 'image/png') {
       // Verifique se a pasta "categorias" existe, se não existir, crie a pasta
-      if (!file_exists("categorias")) {
-          mkdir("categorias");
+      if (!file_exists("../categorias")) {
+          mkdir("../categorias");
       }
 
       // Mova o novo arquivo para o diretório de uploads

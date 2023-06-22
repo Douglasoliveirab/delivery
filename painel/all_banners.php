@@ -75,6 +75,14 @@ if(isset($_SESSION['previlegios']) && $_SESSION['previlegios'] == 'admin'){
           <input type="file" name="banner" id="banner" required>
         </div>
         <div class="form-group">
+    <label for="status_banner">Status do banner:</label>
+        <select name="status_banner" id="status_banner" required>
+            <option value="ativo">Ativo</option>
+            <option value="inativo">Inativo</option>
+        </select>
+    </div>
+
+        <div class="form-group">
           <input type="submit" value="Enviar">
         </div>
       </form>
