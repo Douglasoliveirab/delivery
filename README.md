@@ -1,7 +1,7 @@
 # Restaurante Online
 
 ## Descrição
-Este projeto é um restaurante online desenvolvido utilizando PHP nativo, JavaScript, CSS, HTML e um banco de dados MySQL. O sistema permite o cadastro de produtos, além de habilitar e desabilitar produtos conforme necessário. Também inclui funcionalidades para listar os 10 produtos mais vendidos com base nas vendas da loja. Há um sistema administrativo com restrição de acesso, que possibilita abrir e fechar a loja, entre outras funcionalidades.
+Este projeto é um restaurante online desenvolvido utilizando PHP nativo, JavaScript, CSS, HTML e um banco de dados MySQL. O sistema permite o cadastro de produtos, além de habilitar e desabilitar produtos conforme necessário. Também inclui funcionalidades para listar os 10 produtos mais vendidos com base nas vendas da loja. Há um sistema administrativo com restrição de acesso, que possibilita abrir e fechar a loja, entre outras funcionalidades como integração com mercado pago.
 
 ## Funcionalidades Principais
 - Cadastro de produtos.
